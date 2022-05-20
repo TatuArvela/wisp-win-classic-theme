@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dts",
+    "emitDeclarationOnly": true,
+    "target": "ES6",
+    "outDir": "dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "moduleResolution": "node"
+  },
+  "exclude": [
+    "dist"
+  ],
+  "include": [
+    "src"
+  ]
+}

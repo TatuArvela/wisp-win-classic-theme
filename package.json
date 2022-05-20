@@ -1,0 +1,80 @@
+{
+  "name": "wisp-win-classic-theme",
+  "version": "0.1.0",
+  "description": "Win Classic theme for Wisp",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "repository": "https://github.com/TatuArvela/wisp-win-classic-theme",
+  "author": {
+    "name": "Tatu Arvela",
+    "email": "tatu@tatuarvela.com",
+    "url": "https://tatuarvela.com/"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build-pages": "build-storybook",
+    "version-patch": "npm version patch -m 'v%s' && git push && git push --tags",
+    "version-minor": "npm version minor -m 'v%s' && git push && git push --tags",
+    "version-major": "npm version major -m 'v%s' && git push && git push --tags",
+    "start": "start-storybook -p 6006 --quiet",
+    "lint": "eslint --ext js,ts,tsx src",
+    "lint:fix": "eslint --fix --ext js,ts,tsx src"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.0"
+  },
+  "peerDependencies": {
+    "@tatuarvela/wisp": "^0.3.0",
+    "@types/styled-components": "^5.1.25",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-transform-runtime": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@storybook/addons": "^6.5.3",
+    "@storybook/react": "^6.1.21",
+    "@storybook/theming": "^6.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-testing-library": "^5.5.0",
+    "prettier": "^2.6.2",
+    "rollup": "^2.74.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dts": "^4.2.1",
+    "rollup-plugin-node-externals": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.6.4"
+  },
+  "browserslist": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+}
