@@ -107,6 +107,7 @@ const buildTitleBar = (themeVariables: ThemeVariables) => css<TitleBarProps>`
   box-sizing: border-box;
   color: ${themeVariables.windowTitleText};
   flex-shrink: 0;
+  display: flex;
   font-family: ${fontFamily};
   font-size: 12px;
   font-weight: bold;
