@@ -1,20 +1,13 @@
-import { AlertText, Window, Wisp } from '@tatuarvela/wisp';
-import React from 'react';
-
-import config from '../config';
+import { AlertText, ControlStoryDecorator } from '@tatuarvela/wisp';
 
 export default {
-  component: Wisp,
-  title: 'controls/AlertText',
+  component: AlertText,
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const AlertTextStory = (): JSX.Element => (
-  <Wisp {...config} enableDefaultElements={false}>
-    <Window id="1">
-      <AlertText>AlertText</AlertText>
-    </Window>
-  </Wisp>
-);
-AlertTextStory.story = {
-  name: 'AlertText',
+export const Default = {
+  args: {
+    children: 'AlertText',
+  },
 };

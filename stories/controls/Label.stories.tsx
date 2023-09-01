@@ -1,13 +1,13 @@
-import { Button, ControlStoryDecorator } from '@tatuarvela/wisp';
+import { ControlStoryDecorator, Label } from '@tatuarvela/wisp';
 
 export default {
-  component: Button,
+  component: Label,
   decorators: [ControlStoryDecorator],
   tags: ['autodocs'],
 };
 
 export const Default = {
   args: {
-    children: 'Button',
+    children: 'Label, label, label!',
   },
 };

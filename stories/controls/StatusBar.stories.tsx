@@ -1,31 +1,31 @@
-import { StatusBar, Window, Wisp } from '@tatuarvela/wisp';
 import React from 'react';
 
-import config from '../config';
+import {
+  ControlStoryDecorator,
+  StatusBar,
+  StatusBarSection,
+} from '@tatuarvela/wisp';
 
 export default {
-  component: Wisp,
-  title: 'controls/StatusBar',
+  component: StatusBar,
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const StatusBarStory = (): JSX.Element => (
-  <Wisp {...config} enableDefaultElements={false}>
-    <Window id="1">
-      <StatusBar>Status bar</StatusBar>
-    </Window>
-  </Wisp>
-);
-StatusBarStory.story = {
-  name: 'StatusBar',
+export const Default = {
+  args: {
+    children: (
+      <>
+        <StatusBarSection>Status bar</StatusBarSection>
+        <StatusBarSection>Yes</StatusBarSection>
+      </>
+    ),
+  },
 };
 
-export const WithResizeHandle = (): JSX.Element => (
-  <Wisp {...config} enableDefaultElements={false}>
-    <Window id="1" initialState={{ title: 'StatusBar' }}>
-      <StatusBar showResizeHandle>Status bar</StatusBar>
-    </Window>
-  </Wisp>
-);
-WithResizeHandle.story = {
-  name: 'StatusBar with resize handle',
+export const WithResizeHandle = {
+  args: {
+    children: <StatusBarSection>Status bar</StatusBarSection>,
+    showResizeHandle: true,
+  },
 };

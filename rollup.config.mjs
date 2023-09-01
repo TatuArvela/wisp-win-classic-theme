@@ -1,13 +1,18 @@
+import { createRequire } from 'node:module';
+
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
+import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import del from 'rollup-plugin-delete';
 import dts from 'rollup-plugin-dts';
 import externals from 'rollup-plugin-node-externals';
-import { terser } from 'rollup-plugin-terser';
 
-import pkg from './package.json';
+const require = createRequire(import.meta.url);
+const pkg = require('./package.json');
 
 export default [
   {
@@ -15,8 +20,12 @@ export default [
     plugins: [
       del({ targets: 'dist/*' }),
       externals({ deps: true }),
+      image(),
       nodeResolve({
         extensions: ['.js', '.ts', '.tsx'],
+      }),
+      replace({
+        'process.env.PACKAGE_VERSION': JSON.stringify(pkg.version),
       }),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
