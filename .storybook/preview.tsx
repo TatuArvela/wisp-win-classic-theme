@@ -1,5 +1,5 @@
 import { Preview } from '@storybook/react';
-import { ArgonDecorator, defaultTheme, storybookConfigContextDecorator } from '@tatuarvela/wisp';
+import { statefulPropsDecorator, defaultTheme, storybookConfigContextDecorator } from '@tatuarvela/wisp';
 
 import vaporwin from '../src/themes/vaporwin';
 import win2k from '../src/themes/win2k';
@@ -28,7 +28,7 @@ const preview: Preview = {
         defaultTheme,
       ],
     }),
-    ArgonDecorator,
+    statefulPropsDecorator,
   ],
 };
 

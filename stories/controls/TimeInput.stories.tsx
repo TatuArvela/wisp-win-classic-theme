@@ -1,4 +1,8 @@
-import { argon, ControlStoryDecorator, TimeInput } from '@tatuarvela/wisp';
+import {
+  ControlStoryDecorator,
+  statefulProps,
+  TimeInput,
+} from '@tatuarvela/wisp';
 
 export default {
   component: TimeInput,
@@ -11,5 +15,5 @@ export const Default = {
     label: 'Time:',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', { minutes: 0, hours: 0 }),
+  parameters: statefulProps('value', 'onChange', { minutes: 0, hours: 0 }),
 };

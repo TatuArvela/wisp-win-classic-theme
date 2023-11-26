@@ -1,4 +1,8 @@
-import { AddressBar, argon, ControlStoryDecorator } from '@tatuarvela/wisp';
+import {
+  AddressBar,
+  ControlStoryDecorator,
+  statefulProps,
+} from '@tatuarvela/wisp';
 
 export default {
   component: AddressBar,
@@ -10,7 +14,7 @@ export const Default = {
   args: {
     value: 'https://www.google.com/',
   },
-  parameters: argon('value', 'onChange', ''),
+  parameters: statefulProps('value', 'onChange', ''),
 };
 
 export const WithLabel = {
@@ -18,5 +22,5 @@ export const WithLabel = {
     children: 'Address:',
     value: 'https://www.google.com/',
   },
-  parameters: argon('value', 'onChange', ''),
+  parameters: statefulProps('value', 'onChange', ''),
 };

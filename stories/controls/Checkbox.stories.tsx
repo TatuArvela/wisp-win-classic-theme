@@ -1,4 +1,8 @@
-import { argon, Checkbox, ControlStoryDecorator } from '@tatuarvela/wisp';
+import {
+  Checkbox,
+  ControlStoryDecorator,
+  statefulProps,
+} from '@tatuarvela/wisp';
 
 export default {
   component: Checkbox,
@@ -11,5 +15,5 @@ export const Default = {
     label: 'Checkbox',
     inlineLabel: false,
   },
-  parameters: argon('checked', 'onChange', false, 'toggle'),
+  parameters: statefulProps('checked', 'onChange', false, 'toggle'),
 };

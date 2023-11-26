@@ -1,4 +1,8 @@
-import { argon, ControlStoryDecorator, Textarea } from '@tatuarvela/wisp';
+import {
+  ControlStoryDecorator,
+  statefulProps,
+  Textarea,
+} from '@tatuarvela/wisp';
 
 export default {
   component: Textarea,
@@ -11,5 +15,5 @@ export const Default = {
     label: 'Feedback:',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', ''),
+  parameters: statefulProps('value', 'onChange', ''),
 };

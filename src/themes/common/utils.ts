@@ -34,7 +34,8 @@ export const generateSharedButtonStyles = (themeVariables: ThemeVariables) => {
     border-left: 1px solid ${themeVariables.shade5};
     border-right: 1px solid ${themeVariables.shade3};
     border-top: 1px solid ${themeVariables.shade5};
-    box-shadow: 0.5px 0.5px 0 0.5px ${themeVariables.shade1},
+    box-shadow:
+      0.5px 0.5px 0 0.5px ${themeVariables.shade1},
       0 0 0 1px ${themeVariables.shade4};
   `;
 
@@ -44,7 +45,8 @@ export const generateSharedButtonStyles = (themeVariables: ThemeVariables) => {
     border-left: 1px solid ${themeVariables.shade3};
     border-right: 1px solid ${themeVariables.shade5};
     border-top: 1px solid ${themeVariables.shade3};
-    box-shadow: 0.5px 0.5px 0 0.5px ${themeVariables.shade4},
+    box-shadow:
+      0.5px 0.5px 0 0.5px ${themeVariables.shade4},
       0 0 0 1px ${themeVariables.shade1};
 
     ${(props) =>

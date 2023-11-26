@@ -1,4 +1,8 @@
-import { argon, ComboBox, ControlStoryDecorator } from '@tatuarvela/wisp';
+import {
+  ComboBox,
+  ControlStoryDecorator,
+  statefulProps,
+} from '@tatuarvela/wisp';
 
 export default {
   component: ComboBox,
@@ -13,5 +17,5 @@ export const Default = {
     label: 'Smoothie',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', undefined),
+  parameters: statefulProps('value', 'onChange', undefined),
 };

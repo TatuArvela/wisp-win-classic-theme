@@ -1,4 +1,8 @@
-import { argon, ControlStoryDecorator, ListBox } from '@tatuarvela/wisp';
+import {
+  ControlStoryDecorator,
+  ListBox,
+  statefulProps,
+} from '@tatuarvela/wisp';
 
 export default {
   component: ListBox,
@@ -13,5 +17,5 @@ export const Default = {
     label: 'Smoothie',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', undefined),
+  parameters: statefulProps('value', 'onChange', undefined),
 };
