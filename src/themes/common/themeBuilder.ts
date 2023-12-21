@@ -1,3 +1,4 @@
+import icons from '../../icons';
 import buildControls from './buildControls';
 import buildElements from './buildElements';
 import buildWindow from './buildWindow';
@@ -16,4 +17,5 @@ export const themeBuilder = <T extends string>({
   controls: Object.assign({}, buildControls(themeVariables), controls),
   elements: Object.assign({}, buildElements(themeVariables), elements),
   window: Object.assign({}, buildWindow(themeVariables), window),
+  icons: icons,
 });
