@@ -16,11 +16,11 @@ export interface ThemeVariables {
   windowTitleText: Color;
 }
 
-export interface ThemeBuilderConfig {
-  themeVariables: ThemeVariables;
+export type ThemeBuilderConfig<T extends string = string> = {
   controls?: Theme['controls'];
   elements?: Theme['elements'];
-  id: string;
+  id: T;
   name: string;
+  themeVariables: ThemeVariables;
   window?: Theme['window'];
-}
+};

@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-
 import {
   AddressBar,
-  icons,
   MenuBar,
   ProgressBar,
   ScrollableContent,
@@ -15,6 +12,7 @@ import {
   WindowContent,
   Wisp,
 } from '@tatuarvela/wisp';
+import React, { useState } from 'react';
 
 export default {
   title: 'Wisp/Advanced Usage',
@@ -151,7 +149,7 @@ export const ComplexWindow = () => {
         <MenuBar isThrobberAnimated></MenuBar>
         <Toolbar>
           <ToolbarButton label="Action" />
-          <ToolbarButton icon={icons.wisp} />
+          <ToolbarButton icon="wisp" />
         </Toolbar>
         <AddressBar value={address} onChange={setAddress}>
           Address:

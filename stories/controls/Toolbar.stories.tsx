@@ -1,11 +1,9 @@
-import React from 'react';
-
 import {
   ControlStoryDecorator,
-  icons,
   Toolbar,
   ToolbarButton,
 } from '@tatuarvela/wisp';
+import React from 'react';
 
 export default {
   component: Toolbar,
@@ -18,7 +16,7 @@ export const Default = {
     children: (
       <>
         <ToolbarButton label="Action" />
-        <ToolbarButton icon={icons.wisp} />
+        <ToolbarButton icon="wisp" />
       </>
     ),
   },
