@@ -32,6 +32,7 @@ const buildTaskbarButton = (themeVariables: ThemeVariables) => {
 
     border-radius: 0;
     color: ${themeVariables.shade5};
+    display: inline-flex;
     font-family: ${fontFamily};
     margin-top: 1px;
     height: 22px;
