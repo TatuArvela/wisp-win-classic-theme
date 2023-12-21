@@ -1,3 +1,4 @@
+import { TaskbarButtonProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import { ThemeBuilderConfig, ThemeVariables } from './types';
@@ -20,11 +21,6 @@ const buildTaskbar = (themeVariables: ThemeVariables) => css`
   white-space: nowrap;
   width: 100%;
 `;
-
-// TODO: Export from Wisp
-interface TaskbarButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  active: boolean;
-}
 
 const buildTaskbarButton = (themeVariables: ThemeVariables) => {
   const activeStyle = css`

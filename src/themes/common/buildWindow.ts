@@ -27,7 +27,7 @@ interface WindowElementProps {
   viewportWindowMargins: ViewportWindowMargins;
 }
 
-const buildWindowContent = () => css`
+const buildWindowElementContent = () => css`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -224,7 +224,7 @@ const buildWindow = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['window'] => ({
   WindowElement: buildWindowElement(themeVariables),
-  WindowContent: buildWindowContent(),
+  WindowElementContent: buildWindowElementContent(),
   TitleBar: buildTitleBar(themeVariables),
   MinimizeButton: buildMinimizeButton(themeVariables),
   MaximizeButton: buildMaximizeButton(themeVariables),
