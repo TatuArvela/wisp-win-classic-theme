@@ -5,6 +5,7 @@ import {
   ControlWrapperProps,
   DividerProps,
   LabelProps,
+  ListBoxOptionsProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
@@ -173,13 +174,6 @@ const buildDivider = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildLabel = () => css<LabelProps>`
-  color: ${(props) => (props.disabled ? 'gray' : 'black')};
-  font-size: 12px;
-  font-family: sans-serif;
-  margin: 0;
-`;
-
 const buildFieldset = (themeVariables: ThemeVariables) => css`
   box-shadow:
     0.5px 0.5px 0 0.5px ${themeVariables.shade1},
@@ -192,6 +186,35 @@ const buildFieldsetLegend = (themeVariables: ThemeVariables) => css`
   background: ${themeVariables.shade3};
   font-size: 12px;
 `;
+
+const buildLabel = () => css<LabelProps>`
+  color: ${(props) => (props.disabled ? 'gray' : 'black')};
+  font-size: 12px;
+  font-family: sans-serif;
+  margin: 0;
+`;
+
+const buildListBoxButton = (themeVariables: ThemeVariables) => css<{
+  disabled?: boolean;
+}>`
+  ${generateActiveLoweredStyles(themeVariables)}
+
+  border-radius: 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 24px;
+  padding: 3px;
+  font-size: 12px;
+  position: relative;
+  width: 100%;
+`;
+
+const buildListBoxOptions = () => css<ListBoxOptionsProps>`
+  ${buildComboBoxOptions()}
+`;
+
+const buildListBoxOption = (themeVariables: ThemeVariables) =>
+  buildComboBoxOption(themeVariables);
 
 const buildControls = (
   themeVariables: ThemeVariables
@@ -210,6 +233,9 @@ const buildControls = (
   Fieldset: buildFieldset(themeVariables),
   FieldsetLegend: buildFieldsetLegend(themeVariables),
   Label: buildLabel(),
+  ListBoxButton: buildListBoxButton(themeVariables),
+  ListBoxOptions: buildListBoxOptions(),
+  ListBoxOption: buildListBoxOption(themeVariables),
 });
 
 export default buildControls;
