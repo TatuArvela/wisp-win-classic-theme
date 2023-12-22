@@ -1,5 +1,11 @@
+import {
+  CheckboxProps,
+  ControlWrapperProps,
+  LabelProps,
+} from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
+import check from './check.png';
 import { ThemeBuilderConfig, ThemeVariables } from './types';
 import {
   generateActiveLoweredStyles,
@@ -34,12 +40,62 @@ const buildButton = (themeVariables: ThemeVariables) => css`
   user-select: none;
 `;
 
+const buildCheckboxWrapper = () => {
+  const inlineStyle = css`
+    align-items: center;
+  `;
+
+  return css`
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    gap: 8px;
+    padding: 2px;
+
+    ${(props: ControlWrapperProps) => props.inlineLabel && inlineStyle}
+  `;
+};
+
+const buildCheckbox = (themeVariables: ThemeVariables) => {
+  const checkedStyle = css`
+    &:before {
+      content: '';
+      background-image: url('${check}');
+      width: 7px;
+      height: 7px;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+    }
+  `;
+
+  return css<CheckboxProps>`
+    ${generateActiveLoweredStyles(themeVariables)}
+    box-sizing: border-box;
+    height: 11px;
+    width: 11px;
+    position: relative;
+
+    ${(props) => props.checked && checkedStyle}
+  `;
+};
+
+const buildLabel = () => css<LabelProps>`
+  color: ${(props) => (props.disabled ? 'gray' : 'black')};
+  font-size: 12px;
+  font-family: sans-serif;
+  margin: 0;
+`;
+
 const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
   AddressBar: buildAddressBar(),
   AddressBarInput: buildAddressBarInput(themeVariables),
   Button: buildButton(themeVariables),
+  CheckboxWrapper: buildCheckboxWrapper(),
+  Checkbox: buildCheckbox(themeVariables),
+  Label: buildLabel(),
 });
 
 export default buildControls;

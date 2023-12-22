@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.6",
-    "@tatuarvela/wisp": "^2.2.0"
+    "@tatuarvela/wisp": "^2.3.0"
   },
   "peerDependencies": {
     "@types/styled-components": "^5.1.26",
