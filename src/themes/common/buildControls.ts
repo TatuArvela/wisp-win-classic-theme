@@ -1,14 +1,18 @@
 import {
   CheckboxProps,
+  ComboBoxButtonProps,
+  ComboBoxOptionsProps,
   ControlWrapperProps,
   LabelProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import check from './check.png';
+import down from './down.png';
 import { ThemeBuilderConfig, ThemeVariables } from './types';
 import {
   generateActiveLoweredStyles,
+  generateRaisedStyles,
   generateSharedButtonStyles,
 } from './utils';
 
@@ -80,6 +84,71 @@ const buildCheckbox = (themeVariables: ThemeVariables) => {
   `;
 };
 
+const buildComboBoxControl = (themeVariables: ThemeVariables) => css`
+  ${generateActiveLoweredStyles(themeVariables)}
+  display: flex;
+`;
+
+const buildComboBoxInput = () => css`
+  outline: none;
+  font-size: 12px;
+  border: none;
+  flex-grow: 1;
+`;
+
+const buildComboBoxButton = (
+  themeVariables: ThemeVariables
+) => css<ComboBoxButtonProps>`
+  ${generateRaisedStyles(themeVariables)}
+
+  width: 16px;
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 1px;
+
+  &:active {
+    ${generateActiveLoweredStyles(themeVariables)}
+  }
+
+  &:before {
+    content: '';
+    background-image: url('${down}');
+    width: 7px;
+    height: 4px;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+`;
+
+const buildComboBoxOptions = () => css<ComboBoxOptionsProps>`
+  background: white;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: ${(props) => `${props.open ? 'block' : 'none'}`};
+  left: ${(props) => `${props.left - 1}`}px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: ${(props) => `${props.top + 1}`}px;
+  width: ${(props) => `${props.width + 16}`}px;
+  z-index: 100;
+`;
+
+const buildComboBoxOption = (themeVariables: ThemeVariables) => css`
+  list-style: none;
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 4px;
+  cursor: pointer;
+  &:hover {
+    background: ${themeVariables.active};
+    color: white;
+  }
+`;
+
 const buildLabel = () => css<LabelProps>`
   color: ${(props) => (props.disabled ? 'gray' : 'black')};
   font-size: 12px;
@@ -95,6 +164,11 @@ const buildControls = (
   Button: buildButton(themeVariables),
   CheckboxWrapper: buildCheckboxWrapper(),
   Checkbox: buildCheckbox(themeVariables),
+  ComboBoxControl: buildComboBoxControl(themeVariables),
+  ComboBoxInput: buildComboBoxInput(),
+  ComboBoxButton: buildComboBoxButton(themeVariables),
+  ComboBoxOptions: buildComboBoxOptions(),
+  ComboBoxOption: buildComboBoxOption(themeVariables),
   Label: buildLabel(),
 });
 
