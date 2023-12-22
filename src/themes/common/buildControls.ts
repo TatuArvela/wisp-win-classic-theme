@@ -180,6 +180,19 @@ const buildLabel = () => css<LabelProps>`
   margin: 0;
 `;
 
+const buildFieldset = (themeVariables: ThemeVariables) => css`
+  box-shadow:
+    0.5px 0.5px 0 0.5px ${themeVariables.shade1},
+    0 0 0 1px ${themeVariables.shade4};
+  border: none;
+  font-family: sans-serif;
+`;
+
+const buildFieldsetLegend = (themeVariables: ThemeVariables) => css`
+  background: ${themeVariables.shade3};
+  font-size: 12px;
+`;
+
 const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
@@ -194,6 +207,8 @@ const buildControls = (
   ComboBoxOptions: buildComboBoxOptions(),
   ComboBoxOption: buildComboBoxOption(themeVariables),
   Divider: buildDivider(themeVariables),
+  Fieldset: buildFieldset(themeVariables),
+  FieldsetLegend: buildFieldsetLegend(themeVariables),
   Label: buildLabel(),
 });
 
