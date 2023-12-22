@@ -13,9 +13,11 @@ import check from './check.png';
 import down from './down.png';
 import { ThemeBuilderConfig, ThemeVariables } from './types';
 import {
-  generateActiveLoweredStyles,
-  generateLoweredStyles,
-  generateRaisedStyles,
+  generateAccentuatedStyles,
+  generateElevatedStyles,
+  generateGroovedStyles,
+  generateIndentedStyles,
+  generateRecessedStyles,
   generateSharedButtonStyles,
 } from './utils';
 
@@ -30,7 +32,7 @@ const buildAddressBar = () => css`
 `;
 
 const buildAddressBarInput = (themeVariables: ThemeVariables) => css`
-  ${generateActiveLoweredStyles(themeVariables)}
+  ${generateIndentedStyles(themeVariables)}
 
   outline: none;
   width: 100%;
@@ -77,7 +79,7 @@ const buildCheckbox = (themeVariables: ThemeVariables) => {
   `;
 
   return css<CheckboxProps>`
-    ${generateActiveLoweredStyles(themeVariables)}
+    ${generateIndentedStyles(themeVariables)}
     box-sizing: border-box;
     height: 11px;
     width: 11px;
@@ -88,7 +90,7 @@ const buildCheckbox = (themeVariables: ThemeVariables) => {
 };
 
 const buildComboBoxControl = (themeVariables: ThemeVariables) => css`
-  ${generateActiveLoweredStyles(themeVariables)}
+  ${generateIndentedStyles(themeVariables)}
   display: flex;
 `;
 
@@ -102,7 +104,7 @@ const buildComboBoxInput = () => css`
 const buildComboBoxButton = (
   themeVariables: ThemeVariables
 ) => css<ComboBoxButtonProps>`
-  ${generateRaisedStyles(themeVariables)}
+  ${generateElevatedStyles(themeVariables)}
 
   width: 16px;
   position: relative;
@@ -112,7 +114,7 @@ const buildComboBoxButton = (
   margin-right: 1px;
 
   &:active {
-    ${generateActiveLoweredStyles(themeVariables)}
+    ${generateIndentedStyles(themeVariables)}
   }
 
   &:before {
@@ -166,19 +168,13 @@ const buildDivider = (themeVariables: ThemeVariables) => {
   `;
 
   return css<DividerProps>`
-    box-shadow:
-      0.5px 0.5px 0 0.5px ${themeVariables.shade1},
-      0 0 0 1px ${themeVariables.shade4};
-
+    ${generateRecessedStyles(themeVariables)}
     ${({ vertical }) => (vertical ? verticalStyle : horizontalStyle)}
   `;
 };
 
 const buildFieldset = (themeVariables: ThemeVariables) => css`
-  box-shadow:
-    0.5px 0.5px 0 0.5px ${themeVariables.shade1},
-    0 0 0 1px ${themeVariables.shade4};
-  border: none;
+  ${generateGroovedStyles(themeVariables)}
   font-family: sans-serif;
 `;
 
@@ -197,7 +193,7 @@ const buildLabel = () => css<LabelProps>`
 const buildListBoxButton = (themeVariables: ThemeVariables) => css<{
   disabled?: boolean;
 }>`
-  ${generateActiveLoweredStyles(themeVariables)}
+  ${generateIndentedStyles(themeVariables)}
 
   border-radius: 0;
   box-sizing: border-box;
@@ -215,6 +211,21 @@ const buildListBoxOptions = () => css<ListBoxOptionsProps>`
 
 const buildListBoxOption = (themeVariables: ThemeVariables) =>
   buildComboBoxOption(themeVariables);
+
+const buildMenuBar = (themeVariables: ThemeVariables) => css`
+  ${generateGroovedStyles(themeVariables)}
+
+  box-sizing: border-box;
+  display: flex;
+  font-size: 14px;
+  font-family: sans-serif;
+  flex-shrink: 0;
+  padding: 0;
+  text-align: left;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+`;
 
 const buildControls = (
   themeVariables: ThemeVariables
@@ -236,6 +247,7 @@ const buildControls = (
   ListBoxButton: buildListBoxButton(themeVariables),
   ListBoxOptions: buildListBoxOptions(),
   ListBoxOption: buildListBoxOption(themeVariables),
+  MenuBar: buildMenuBar(themeVariables),
 });
 
 export default buildControls;
