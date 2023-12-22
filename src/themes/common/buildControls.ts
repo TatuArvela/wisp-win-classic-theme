@@ -3,6 +3,7 @@ import {
   ComboBoxButtonProps,
   ComboBoxOptionsProps,
   ControlWrapperProps,
+  DividerProps,
   LabelProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
@@ -12,6 +13,7 @@ import down from './down.png';
 import { ThemeBuilderConfig, ThemeVariables } from './types';
 import {
   generateActiveLoweredStyles,
+  generateLoweredStyles,
   generateRaisedStyles,
   generateSharedButtonStyles,
 } from './utils';
@@ -149,6 +151,28 @@ const buildComboBoxOption = (themeVariables: ThemeVariables) => css`
   }
 `;
 
+const buildDivider = (themeVariables: ThemeVariables) => {
+  const verticalStyle = css`
+    height: 100%;
+    width: 0;
+    margin: 0 4px;
+  `;
+
+  const horizontalStyle = css`
+    height: 0;
+    width: 100%;
+    margin: 4px 0;
+  `;
+
+  return css<DividerProps>`
+    box-shadow:
+      0.5px 0.5px 0 0.5px ${themeVariables.shade1},
+      0 0 0 1px ${themeVariables.shade4};
+
+    ${({ vertical }) => (vertical ? verticalStyle : horizontalStyle)}
+  `;
+};
+
 const buildLabel = () => css<LabelProps>`
   color: ${(props) => (props.disabled ? 'gray' : 'black')};
   font-size: 12px;
@@ -169,6 +193,7 @@ const buildControls = (
   ComboBoxButton: buildComboBoxButton(themeVariables),
   ComboBoxOptions: buildComboBoxOptions(),
   ComboBoxOption: buildComboBoxOption(themeVariables),
+  Divider: buildDivider(themeVariables),
   Label: buildLabel(),
 });
 
