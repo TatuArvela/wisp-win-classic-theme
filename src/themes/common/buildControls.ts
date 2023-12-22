@@ -6,6 +6,7 @@ import {
   DividerProps,
   LabelProps,
   ListBoxOptionsProps,
+  ProgressBarFillProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
@@ -13,7 +14,6 @@ import check from './check.png';
 import down from './down.png';
 import { ThemeBuilderConfig, ThemeVariables } from './types';
 import {
-  generateAccentuatedStyles,
   generateElevatedStyles,
   generateGroovedStyles,
   generateIndentedStyles,
@@ -227,6 +227,59 @@ const buildMenuBar = (themeVariables: ThemeVariables) => css`
   width: 100%;
 `;
 
+const buildProgressBar = (themeVariables: ThemeVariables) => css`
+  ${generateRecessedStyles(themeVariables)}
+  box-sizing: border-box;
+  font-size: 12px;
+  height: 24px;
+  max-height: 100%;
+  outline: none;
+  width: 100%;
+  overflow: hidden;
+`;
+
+const buildProgressBarFill = (themeVariables: ThemeVariables) => {
+  const indeterminateStyle = css`
+    animation-duration: 1.5s;
+    animation-name: indeterminate-progress-bar-fill-animation;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(30, end);
+
+    @keyframes indeterminate-progress-bar-fill-animation {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(200%);
+      }
+    }
+  `;
+
+  const makeGradient = (color: string) => css`
+    background-image: repeating-linear-gradient(
+      to right,
+      ${color},
+      ${color} 10%,
+      ${themeVariables.shade3} 10%,
+      ${themeVariables.shade3} calc(10% + 2px)
+    );
+  `;
+
+  return css<ProgressBarFillProps>`
+    height: 100%;
+    margin: 1px;
+    width: ${(props) =>
+      props.isIndeterminate ? (props.disabled ? '0%' : '50%') : undefined};
+    ${(props) =>
+      makeGradient(
+        props.disabled ? themeVariables.shade5 : themeVariables.active
+      )}
+
+    ${(props) =>
+      !props.disabled && props.isIndeterminate && indeterminateStyle});
+  `;
+};
+
 const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
@@ -248,6 +301,8 @@ const buildControls = (
   ListBoxOptions: buildListBoxOptions(),
   ListBoxOption: buildListBoxOption(themeVariables),
   MenuBar: buildMenuBar(themeVariables),
+  ProgressBar: buildProgressBar(themeVariables),
+  ProgressBarFill: buildProgressBarFill(themeVariables),
 });
 
 export default buildControls;
