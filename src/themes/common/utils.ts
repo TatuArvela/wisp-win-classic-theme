@@ -27,18 +27,8 @@ export const generateBoxShadows = (
     .join(',\n');
 };
 
-export const generateSharedButtonStyles = (themeVariables: ThemeVariables) => {
-  const activeStyles = css`
-    background: ${themeVariables.shade1};
-    border-bottom: 1px solid ${themeVariables.shade3};
-    border-left: 1px solid ${themeVariables.shade5};
-    border-right: 1px solid ${themeVariables.shade3};
-    border-top: 1px solid ${themeVariables.shade5};
-    box-shadow:
-      0.5px 0.5px 0 0.5px ${themeVariables.shade1},
-      0 0 0 1px ${themeVariables.shade4};
-  `;
-
+// used for buttons, windows
+export const generateRaisedStyles = (themeVariables: ThemeVariables) => {
   return css`
     background: ${themeVariables.shade2};
     border-bottom: 1px solid ${themeVariables.shade5};
@@ -48,7 +38,31 @@ export const generateSharedButtonStyles = (themeVariables: ThemeVariables) => {
     box-shadow:
       0.5px 0.5px 0 0.5px ${themeVariables.shade4},
       0 0 0 1px ${themeVariables.shade1};
+  `;
+};
 
+// used for wells, disabled inputs
+export const generateLoweredStyles = (themeVariables: ThemeVariables) => {};
+
+// used for input fields, active buttons
+export const generateActiveLoweredStyles = (themeVariables: ThemeVariables) => {
+  return css`
+    background: ${themeVariables.shade1};
+    border-bottom: 1px solid ${themeVariables.shade3};
+    border-left: 1px solid ${themeVariables.shade5};
+    border-right: 1px solid ${themeVariables.shade3};
+    border-top: 1px solid ${themeVariables.shade5};
+    box-shadow:
+      0.5px 0.5px 0 0.5px ${themeVariables.shade1},
+      0 0 0 1px ${themeVariables.shade4};
+  `;
+};
+
+export const generateSharedButtonStyles = (themeVariables: ThemeVariables) => {
+  const activeStyles = generateActiveLoweredStyles(themeVariables);
+
+  return css`
+    ${generateRaisedStyles(themeVariables)}
     ${(props) =>
       (props as unknown as { active?: boolean })?.active && activeStyles};
     &:active {
