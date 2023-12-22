@@ -280,6 +280,38 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
   `;
 };
 
+const buildScrollButton = (themeVariables: ThemeVariables) => css`
+  ${generateElevatedStyles(themeVariables)}
+  height: 20px;
+  width: 20px;
+`;
+
+const buildScrollbarVerticalTrack = (themeVariables: ThemeVariables) => css`
+  height: 100%;
+  position: relative;
+  background: ${themeVariables.shade2};
+`;
+
+const buildScrollbarVerticalThumb = (themeVariables: ThemeVariables) => css`
+  ${generateElevatedStyles(themeVariables)}
+  width: 22px;
+  position: absolute;
+  box-sizing: border-box;
+`;
+
+const buildScrollbarHorizontalTrack = (themeVariables: ThemeVariables) => css`
+  width: 100%;
+  position: relative;
+  background: ${themeVariables.shade2};
+`;
+
+const buildScrollbarHorizontalThumb = (themeVariables: ThemeVariables) => css`
+  ${generateElevatedStyles(themeVariables)}
+  height: 22px;
+  position: absolute;
+  box-sizing: border-box;
+`;
+
 const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
@@ -303,6 +335,14 @@ const buildControls = (
   MenuBar: buildMenuBar(themeVariables),
   ProgressBar: buildProgressBar(themeVariables),
   ProgressBarFill: buildProgressBarFill(themeVariables),
+  ScrollUpButton: buildScrollButton(themeVariables),
+  ScrollDownButton: buildScrollButton(themeVariables),
+  ScrollRightButton: buildScrollButton(themeVariables),
+  ScrollLeftButton: buildScrollButton(themeVariables),
+  ScrollbarVerticalTrack: buildScrollbarVerticalTrack(themeVariables),
+  ScrollbarVerticalThumb: buildScrollbarVerticalThumb(themeVariables),
+  ScrollbarHorizontalTrack: buildScrollbarHorizontalTrack(themeVariables),
+  ScrollbarHorizontalThumb: buildScrollbarHorizontalThumb(themeVariables),
 });
 
 export default buildControls;
