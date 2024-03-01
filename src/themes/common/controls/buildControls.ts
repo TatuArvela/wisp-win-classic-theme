@@ -7,19 +7,24 @@ import {
   LabelProps,
   ListBoxOptionsProps,
   ProgressBarFillProps,
+  StatusBarSectionProps,
+  TextInputElementProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
-import check from './check.png';
-import down from './down.png';
-import { ThemeBuilderConfig, ThemeVariables } from './types';
+import generateBorders from '../generateBorders';
+import check from '../icons/check.png';
+import down from '../icons/down.png';
+import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import {
-  generateElevatedStyles,
+  generateButtonStyles,
   generateGroovedStyles,
   generateIndentedStyles,
-  generateRecessedStyles,
-  generateSharedButtonStyles,
-} from './utils';
+  generateSmallButtonStyles,
+} from '../utils';
+import buildScrollbars from './buildScrollbars';
+import buildTimeInput from './buildTimeInput';
+import generateResizeHandle from './generateResizeHandle';
 
 const buildAddressBar = () => css`
   align-items: center;
@@ -32,6 +37,7 @@ const buildAddressBar = () => css`
 `;
 
 const buildAddressBarInput = (themeVariables: ThemeVariables) => css`
+  border: none;
   ${generateIndentedStyles(themeVariables)}
 
   outline: none;
@@ -41,12 +47,16 @@ const buildAddressBarInput = (themeVariables: ThemeVariables) => css`
 `;
 
 const buildButton = (themeVariables: ThemeVariables) => css`
-  ${generateSharedButtonStyles(themeVariables)}
+  ${generateButtonStyles(themeVariables)}
 
   border-radius: 0;
   font-size: 11px;
-  padding: 2px;
+  padding: 4px 10px 4px 10px;
   user-select: none;
+
+  &:active {
+    padding: 5px 9px 3px 11px;
+  }
 `;
 
 const buildCheckboxWrapper = () => {
@@ -73,16 +83,17 @@ const buildCheckbox = (themeVariables: ThemeVariables) => {
       width: 7px;
       height: 7px;
       position: absolute;
-      top: 1px;
-      left: 1px;
+      top: 3px;
+      left: 3px;
     }
   `;
 
   return css<CheckboxProps>`
     ${generateIndentedStyles(themeVariables)}
+    background: ${themeVariables.shade1};
     box-sizing: border-box;
-    height: 11px;
-    width: 11px;
+    height: 13px;
+    width: 13px;
     position: relative;
 
     ${(props) => props.checked && checkedStyle}
@@ -91,6 +102,7 @@ const buildCheckbox = (themeVariables: ThemeVariables) => {
 
 const buildComboBoxControl = (themeVariables: ThemeVariables) => css`
   ${generateIndentedStyles(themeVariables)}
+  padding: 2px;
   display: flex;
 `;
 
@@ -104,7 +116,7 @@ const buildComboBoxInput = () => css`
 const buildComboBoxButton = (
   themeVariables: ThemeVariables
 ) => css<ComboBoxButtonProps>`
-  ${generateElevatedStyles(themeVariables)}
+  ${generateSmallButtonStyles(themeVariables)}
 
   width: 16px;
   position: relative;
@@ -113,18 +125,21 @@ const buildComboBoxButton = (
   margin-bottom: 1px;
   margin-right: 1px;
 
-  &:active {
-    ${generateIndentedStyles(themeVariables)}
-  }
-
   &:before {
     content: '';
     background-image: url('${down}');
-    width: 7px;
-    height: 4px;
+    width: 8px;
+    height: 8px;
     position: absolute;
-    top: 5px;
+    top: 3px;
     left: 3px;
+  }
+
+  &:active {
+    &:before {
+      top: 4px;
+      left: 4px;
+    }
   }
 `;
 
@@ -133,12 +148,12 @@ const buildComboBoxOptions = () => css<ComboBoxOptionsProps>`
   border: 1px solid black;
   box-sizing: border-box;
   display: ${(props) => `${props.open ? 'block' : 'none'}`};
-  left: ${(props) => `${props.left - 1}`}px;
+  left: ${(props) => `${props.left}`}px;
   margin: 0;
   padding: 0;
   position: fixed;
   top: ${(props) => `${props.top + 1}`}px;
-  width: ${(props) => `${props.width + 16}`}px;
+  width: ${(props) => `${props.width + 14}`}px;
   z-index: 100;
 `;
 
@@ -157,18 +172,22 @@ const buildComboBoxOption = (themeVariables: ThemeVariables) => css`
 const buildDivider = (themeVariables: ThemeVariables) => {
   const verticalStyle = css`
     height: 100%;
-    width: 0;
+    width: 2px;
     margin: 0 4px;
   `;
 
   const horizontalStyle = css`
-    height: 0;
+    height: 2px;
     width: 100%;
     margin: 4px 0;
   `;
 
   return css<DividerProps>`
-    ${generateRecessedStyles(themeVariables)}
+    box-shadow: ${generateBorders(
+      1,
+      themeVariables.shade4,
+      themeVariables.shade1
+    )};
     ${({ vertical }) => (vertical ? verticalStyle : horizontalStyle)}
   `;
 };
@@ -183,8 +202,9 @@ const buildFieldsetLegend = (themeVariables: ThemeVariables) => css`
   font-size: 12px;
 `;
 
-const buildLabel = () => css<LabelProps>`
-  color: ${(props) => (props.disabled ? 'gray' : 'black')};
+const buildLabel = (themeVariables: ThemeVariables) => css<LabelProps>`
+  color: ${(props) =>
+    props.disabled ? themeVariables.textDisabled : themeVariables.text};
   font-size: 12px;
   font-family: sans-serif;
   margin: 0;
@@ -194,8 +214,8 @@ const buildListBoxButton = (themeVariables: ThemeVariables) => css<{
   disabled?: boolean;
 }>`
   ${generateIndentedStyles(themeVariables)}
-
-  border-radius: 0;
+  background: ${themeVariables.shade1};
+  border: none;
   box-sizing: border-box;
   display: flex;
   height: 24px;
@@ -228,13 +248,12 @@ const buildMenuBar = (themeVariables: ThemeVariables) => css`
 `;
 
 const buildProgressBar = (themeVariables: ThemeVariables) => css`
-  ${generateRecessedStyles(themeVariables)}
+  ${generateBorders(1, themeVariables.shade1, themeVariables.shade4)}
   box-sizing: border-box;
   font-size: 12px;
   height: 24px;
   max-height: 100%;
   outline: none;
-  width: 100%;
   overflow: hidden;
 `;
 
@@ -280,36 +299,79 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildScrollButton = (themeVariables: ThemeVariables) => css`
-  ${generateElevatedStyles(themeVariables)}
-  height: 20px;
-  width: 20px;
-`;
-
-const buildScrollbarVerticalTrack = (themeVariables: ThemeVariables) => css`
-  height: 100%;
-  position: relative;
-  background: ${themeVariables.shade2};
-`;
-
-const buildScrollbarVerticalThumb = (themeVariables: ThemeVariables) => css`
-  ${generateElevatedStyles(themeVariables)}
-  width: 22px;
-  position: absolute;
+const buildStatusBar = (themeVariables: ThemeVariables) => css`
+  bottom: 0;
   box-sizing: border-box;
-`;
-
-const buildScrollbarHorizontalTrack = (themeVariables: ThemeVariables) => css`
+  display: flex;
+  margin-top: auto;
+  font-size: 14px;
+  flex-shrink: 0;
+  gap: 2px;
+  height: 18px;
+  padding: 2px 0 0;
   width: 100%;
   position: relative;
-  background: ${themeVariables.shade2};
 `;
 
-const buildScrollbarHorizontalThumb = (themeVariables: ThemeVariables) => css`
-  ${generateElevatedStyles(themeVariables)}
-  height: 22px;
+const buildResizeHandle = (themeVariables: ThemeVariables) => css`
+  bottom: -4px;
+  cursor: se-resize;
+  height: 18px;
+  margin: 0;
+  padding: 0;
   position: absolute;
+  right: -4px;
+  width: 18px;
+  overflow: clip;
+  ${generateResizeHandle(themeVariables)}
+`;
+
+const buildStatusBarSection = (
+  themeVariables: ThemeVariables
+) => css<StatusBarSectionProps>`
+  border: none;
+  box-shadow: ${generateBorders(
+    1,
+    themeVariables.shade4,
+    themeVariables.shade1
+  )};
+  display: flex;
+  align-items: center;
+  flex-grow: ${({ width }) => (width !== undefined ? 'unset' : 1)};
+  font-family: sans-serif;
+  font-size: 12px;
+  padding: 2px 4px;
+`;
+
+const buildTextInputElement = (
+  themeVariables: ThemeVariables
+) => css<TextInputElementProps>`
+  ${generateIndentedStyles(themeVariables)}
+  border: none;
   box-sizing: border-box;
+  color: ${(props) =>
+    props.disabled ? themeVariables.textDisabled : themeVariables.text};
+  font-size: 12px;
+  height: 24px;
+  outline: none;
+  padding: 4px 4px;
+  width: 100%;
+`;
+
+const buildTextareaElement = (
+  themeVariables: ThemeVariables
+) => css<TextInputElementProps>`
+  ${generateIndentedStyles(themeVariables)}
+  border: none;
+  box-sizing: border-box;
+  color: ${(props) =>
+    props.disabled ? themeVariables.textDisabled : themeVariables.text};
+  font-size: 12px;
+  height: 24px;
+  outline: none;
+  padding: 4px 4px;
+  width: 100%;
+  resize: none;
 `;
 
 const buildControls = (
@@ -328,21 +390,20 @@ const buildControls = (
   Divider: buildDivider(themeVariables),
   Fieldset: buildFieldset(themeVariables),
   FieldsetLegend: buildFieldsetLegend(themeVariables),
-  Label: buildLabel(),
+  Label: buildLabel(themeVariables),
   ListBoxButton: buildListBoxButton(themeVariables),
   ListBoxOptions: buildListBoxOptions(),
   ListBoxOption: buildListBoxOption(themeVariables),
   MenuBar: buildMenuBar(themeVariables),
   ProgressBar: buildProgressBar(themeVariables),
   ProgressBarFill: buildProgressBarFill(themeVariables),
-  ScrollUpButton: buildScrollButton(themeVariables),
-  ScrollDownButton: buildScrollButton(themeVariables),
-  ScrollRightButton: buildScrollButton(themeVariables),
-  ScrollLeftButton: buildScrollButton(themeVariables),
-  ScrollbarVerticalTrack: buildScrollbarVerticalTrack(themeVariables),
-  ScrollbarVerticalThumb: buildScrollbarVerticalThumb(themeVariables),
-  ScrollbarHorizontalTrack: buildScrollbarHorizontalTrack(themeVariables),
-  ScrollbarHorizontalThumb: buildScrollbarHorizontalThumb(themeVariables),
+  ...buildScrollbars(themeVariables),
+  StatusBar: buildStatusBar(themeVariables),
+  ResizeHandle: buildResizeHandle(themeVariables),
+  StatusBarSection: buildStatusBarSection(themeVariables),
+  TextInputElement: buildTextInputElement(themeVariables),
+  TextareaElement: buildTextareaElement(themeVariables),
+  ...buildTimeInput(themeVariables),
 });
 
 export default buildControls;

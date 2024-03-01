@@ -5,6 +5,7 @@ const theme = themeBuilder({
   name: 'Windows 2000',
   themeVariables: {
     active: 'rgb(10,36,106)',
+    passive: 'rgb(128,128,128)',
     background: 'rgb(58,110,165)',
     shade1: 'rgb(255,255,255)',
     shade2: 'rgb(212,208,200)',
@@ -12,6 +13,7 @@ const theme = themeBuilder({
     shade4: 'rgb(128,128,128)',
     shade5: 'rgb(0,0,0)',
     text: 'rgb(0,0,0)',
+    textDisabled: 'rgb(128,128,128)',
     windowActiveBackground:
       'linear-gradient(90deg, rgb(10,36,106), rgb(166,202,240))',
     windowPassiveBackground:

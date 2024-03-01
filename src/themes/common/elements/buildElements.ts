@@ -1,8 +1,8 @@
 import { TaskbarButtonProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
-import { ThemeBuilderConfig, ThemeVariables } from './types';
-import { fontFamily, generateSharedButtonStyles } from './utils';
+import { ThemeBuilderConfig, ThemeVariables } from '../types';
+import { fontFamily, generateButtonStyles } from '../utils';
 
 const buildTaskbar = (themeVariables: ThemeVariables) => css`
   background: ${themeVariables.shade2};
@@ -28,7 +28,7 @@ const buildTaskbarButton = (themeVariables: ThemeVariables) => {
     font-weight: bold;
   `;
   return css<TaskbarButtonProps>`
-    ${generateSharedButtonStyles(themeVariables)}
+    ${generateButtonStyles(themeVariables)}
 
     border-radius: 0;
     color: ${themeVariables.shade5};

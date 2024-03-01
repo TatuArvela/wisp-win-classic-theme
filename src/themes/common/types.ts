@@ -4,6 +4,7 @@ type Color = string;
 
 export interface ThemeVariables {
   active: Color;
+  passive: Color;
   background: Color;
   shade1: Color;
   shade2: Color;
@@ -11,6 +12,7 @@ export interface ThemeVariables {
   shade4: Color;
   shade5: Color;
   text: Color;
+  textDisabled: Color;
   windowActiveBackground: Color;
   windowPassiveBackground: Color;
   windowTitleText: Color;

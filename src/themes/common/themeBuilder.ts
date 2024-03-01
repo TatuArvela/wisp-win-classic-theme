@@ -1,8 +1,8 @@
 import icons from '../../icons';
-import buildControls from './buildControls';
-import buildElements from './buildElements';
-import buildWindow from './buildWindow';
+import buildControls from './controls/buildControls';
+import buildElements from './elements/buildElements';
 import { ThemeBuilderConfig } from './types';
+import buildWindow from './window/buildWindow';
 
 export const themeBuilder = <T extends string>({
   id,

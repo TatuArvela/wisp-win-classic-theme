@@ -5,6 +5,7 @@ const theme = themeBuilder({
   name: 'Windows 9x, High Color 16-bit',
   themeVariables: {
     active: 'rgb(0,0,120)',
+    passive: 'rgb(120,124,120)',
     background: 'rgb(0,124,120)',
     shade1: 'rgb(247, 251, 247)',
     shade2: 'rgb(216, 220, 216)',
@@ -12,6 +13,7 @@ const theme = themeBuilder({
     shade4: 'rgb(120,124,120)',
     shade5: 'rgb(0,0,0)',
     text: 'rgb(0,0,0)',
+    textDisabled: 'rgb(120,124,120)',
     windowActiveBackground:
       'linear-gradient(90deg, rgb(0,0,120), rgb(8,128,200))',
     windowPassiveBackground:

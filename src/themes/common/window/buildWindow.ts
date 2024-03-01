@@ -1,11 +1,10 @@
+import { WindowElementProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
-import { ThemeBuilderConfig, ThemeVariables } from './types';
-import {
-  fontFamily,
-  generateBoxShadows,
-  generateSharedButtonStyles,
-} from './utils';
+import generateBorders from '../generateBorders';
+import { ThemeBuilderConfig, ThemeVariables } from '../types';
+import { fontFamily, generateButtonStyles } from '../utils';
+import * as resizeBorder from './resizeBorder';
 
 // TODO: Export from Wisp
 interface ViewportWindowMargins {
@@ -13,18 +12,6 @@ interface ViewportWindowMargins {
   right: number;
   bottom: number;
   left: number;
-}
-
-// TODO: Export from Wisp
-interface WindowElementProps {
-  height: number;
-  width: number;
-  positionX: number;
-  positionY: number;
-  isMinimized: boolean;
-  isMaximized: boolean;
-  orderNumber: number;
-  viewportWindowMargins: ViewportWindowMargins;
 }
 
 const buildWindowElementContent = () => css`
@@ -37,7 +24,6 @@ const buildWindowElementContent = () => css`
   height: 100%;
   margin: 0;
   overflow: hidden;
-  padding: 4px;
   text-align: left;
   user-select: none;
   width: 100%;
@@ -70,18 +56,18 @@ const buildWindowElement = (
   color: ${themeVariables.text};
   display: flex;
   flex-direction: column;
-  padding: 2px;
+  padding: 6px;
   position: absolute;
 
   &:before {
     background: ${themeVariables.shade3};
     bottom: 2px;
-    box-shadow: ${generateBoxShadows(
+    box-shadow: ${generateBorders(
         1,
-        themeVariables.shade1,
-        themeVariables.shade3
+        themeVariables.shade3,
+        themeVariables.shade5
       )},
-      ${generateBoxShadows(2, themeVariables.shade3, themeVariables.shade5)};
+      ${generateBorders(2, themeVariables.shade1, themeVariables.shade4)};
     content: '';
     left: 2px;
     pointer-events: none;
@@ -119,7 +105,7 @@ const buildTitleBar = (themeVariables: ThemeVariables) => css<TitleBarProps>`
 `;
 
 const sharedWindowButtonStyle = (themeVariables: ThemeVariables) => css`
-  ${generateSharedButtonStyles(themeVariables)}
+  ${generateButtonStyles(themeVariables)}
 
   border-radius: 0;
   color: ${themeVariables.shade5};
@@ -230,6 +216,7 @@ const buildWindow = (
   MaximizeButton: buildMaximizeButton(themeVariables),
   UnmaximizeButton: buildUnmaximizeButton(themeVariables),
   CloseButton: buildCloseButton(themeVariables),
+  ...resizeBorder,
 });
 
 export default buildWindow;
