@@ -150,10 +150,12 @@ export const ComplexWindow = () => {
         <Toolbar>
           <ToolbarButton label="Action" />
           <ToolbarButton icon="wisp" />
+          <div style={{ width: '100%' }}>
+            <AddressBar value={address} onChange={setAddress}>
+              Address
+            </AddressBar>
+          </div>
         </Toolbar>
-        <AddressBar value={address} onChange={setAddress}>
-          Address:
-        </AddressBar>
 
         <WindowContent>
           <ScrollableContent horizontal vertical>

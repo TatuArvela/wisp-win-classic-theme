@@ -8,7 +8,10 @@ import {
   ListBoxOptionsProps,
   ProgressBarFillProps,
   StatusBarSectionProps,
+  TextareaElementProps,
   TextInputElementProps,
+  ToolbarButtonProps,
+  ToolbarProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
@@ -299,7 +302,7 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildStatusBar = (themeVariables: ThemeVariables) => css`
+const buildStatusBar = () => css`
   bottom: 0;
   box-sizing: border-box;
   display: flex;
@@ -307,7 +310,7 @@ const buildStatusBar = (themeVariables: ThemeVariables) => css`
   font-size: 14px;
   flex-shrink: 0;
   gap: 2px;
-  height: 18px;
+  height: 22px;
   padding: 2px 0 0;
   width: 100%;
   position: relative;
@@ -360,7 +363,7 @@ const buildTextInputElement = (
 
 const buildTextareaElement = (
   themeVariables: ThemeVariables
-) => css<TextInputElementProps>`
+) => css<TextareaElementProps>`
   ${generateIndentedStyles(themeVariables)}
   border: none;
   box-sizing: border-box;
@@ -372,6 +375,79 @@ const buildTextareaElement = (
   padding: 4px 4px;
   width: 100%;
   resize: none;
+`;
+
+const buildToolbar = (themeVariables: ThemeVariables) => css<ToolbarProps>`
+  background: ${themeVariables.shade3};
+  ${generateGroovedStyles(themeVariables)}
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 4px;
+`;
+
+const generateToolbarButtonStyles = (themeVariables: ThemeVariables) => {
+  const activeStyles = css`
+    box-shadow: ${generateBorders(
+      1,
+      themeVariables.shade4,
+      themeVariables.shade1
+    )};
+
+    > * {
+      display: block;
+      position: relative;
+      left: 1px;
+      top: 1px;
+    }
+  `;
+
+  const hoverStyles = css`
+    box-shadow: ${generateBorders(
+      1,
+      themeVariables.shade1,
+      themeVariables.shade4
+    )};
+  `;
+
+  return css`
+    background: ${themeVariables.shade2};
+    border: none;
+
+    &:hover {
+      ${hoverStyles}
+    }
+
+    ${(props) =>
+      (props as unknown as { active?: boolean })?.active && activeStyles};
+    &:active {
+      ${activeStyles}
+    }
+  `;
+};
+
+const buildToolbarButton = (
+  themeVariables: ThemeVariables
+) => css<ToolbarButtonProps>`
+  ${generateToolbarButtonStyles(themeVariables)}
+  font-size: 12px;
+  height: 100%;
+`;
+
+const buildWell = (themeVariables: ThemeVariables) => css`
+  ${generateGroovedStyles(themeVariables)}
+  padding: 4px;
+`;
+
+const buildWindowContent = (themeVariables: ThemeVariables) => css`
+  ${generateIndentedStyles(themeVariables)};
+  padding: 2px;
+  font-family: sans-serif;
+  flex-grow: 1;
+  overflow: hidden;
 `;
 
 const buildControls = (
@@ -398,12 +474,16 @@ const buildControls = (
   ProgressBar: buildProgressBar(themeVariables),
   ProgressBarFill: buildProgressBarFill(themeVariables),
   ...buildScrollbars(themeVariables),
-  StatusBar: buildStatusBar(themeVariables),
+  StatusBar: buildStatusBar(),
   ResizeHandle: buildResizeHandle(themeVariables),
   StatusBarSection: buildStatusBarSection(themeVariables),
   TextInputElement: buildTextInputElement(themeVariables),
   TextareaElement: buildTextareaElement(themeVariables),
   ...buildTimeInput(themeVariables),
+  Toolbar: buildToolbar(themeVariables),
+  ToolbarButton: buildToolbarButton(themeVariables),
+  Well: buildWell(themeVariables),
+  WindowContent: buildWindowContent(themeVariables),
 });
 
 export default buildControls;

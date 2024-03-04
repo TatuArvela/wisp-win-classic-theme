@@ -1,6 +1,8 @@
 import { TaskbarButtonProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
+import generateBorders from '../generateBorders';
+import generateDitheredBackground from '../generateDitheredBackground';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { fontFamily, generateButtonStyles } from '../utils';
 
@@ -22,21 +24,60 @@ const buildTaskbar = (themeVariables: ThemeVariables) => css`
   width: 100%;
 `;
 
+const generateTaskbarButtonStyles = (themeVariables: ThemeVariables) => {
+  const activeStyles = css`
+    ${generateDitheredBackground(themeVariables.shade3, themeVariables.shade1)};
+    box-shadow: ${generateBorders(
+        1,
+        themeVariables.shade5,
+        themeVariables.shade1
+      )},
+      ${generateBorders(2, themeVariables.shade4, 'transparent')};
+
+    > * {
+      display: inline-block;
+      position: relative;
+      left: 1px;
+      top: 1px;
+    }
+  `;
+
+  return css`
+    background: ${themeVariables.shade2};
+    border: none;
+
+    box-shadow: ${generateBorders(
+        1,
+        themeVariables.shade1,
+        themeVariables.shade5
+      )},
+      ${generateBorders(2, 'transparent', themeVariables.shade4)};
+
+    ${(props) =>
+      (props as unknown as { active?: boolean })?.active && activeStyles};
+    &:active {
+      ${activeStyles}
+    }
+  `;
+};
+
 const buildTaskbarButton = (themeVariables: ThemeVariables) => {
   const activeStyle = css`
     color: ${themeVariables.shade5};
     font-weight: bold;
   `;
   return css<TaskbarButtonProps>`
-    ${generateButtonStyles(themeVariables)}
+    ${generateTaskbarButtonStyles(themeVariables)}
 
     border-radius: 0;
     color: ${themeVariables.shade5};
     display: inline-flex;
     font-family: ${fontFamily};
-    margin-top: 1px;
+    font-size: 12px;
     height: 22px;
+    line-height: 18px;
     margin-left: 2px;
+    margin-top: 1px;
     outline: none;
     text-align: left;
     user-select: none;
@@ -48,6 +89,15 @@ const buildTaskbarButton = (themeVariables: ThemeVariables) => {
     }
   `;
 };
+
+const buildTaskbarButtonIcon = () => css`
+  display: block;
+  height: 16px;
+  width: 16px;
+  margin-right: 4px;
+  position: relative;
+  top: 1px;
+`;
 
 const buildDesktop = (themeVariables: ThemeVariables) => css`
   background: ${themeVariables.background};
@@ -81,6 +131,7 @@ const buildElements = (
   Desktop: buildDesktop(themeVariables),
   Taskbar: buildTaskbar(themeVariables),
   TaskbarButton: buildTaskbarButton(themeVariables),
+  TaskbarButtonIcon: buildTaskbarButtonIcon(),
   VersionInfo: buildVersionInfo(),
 });
 

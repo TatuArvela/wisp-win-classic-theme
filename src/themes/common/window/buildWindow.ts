@@ -2,8 +2,12 @@ import { WindowElementProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import generateBorders from '../generateBorders';
+import close from '../icons/close.png';
+import maximize from '../icons/maximize.png';
+import minimize from '../icons/minimize.png';
+import restore from '../icons/restore.png';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
-import { fontFamily, generateButtonStyles } from '../utils';
+import { fontFamily } from '../utils';
 import * as resizeBorder from './resizeBorder';
 
 // TODO: Export from Wisp
@@ -20,7 +24,7 @@ const buildWindowElementContent = () => css`
   flex-direction: column;
   flex-grow: 1;
   font-family: ${fontFamily};
-  font-size: 14px;
+  font-size: 12px;
   height: 100%;
   margin: 0;
   overflow: hidden;
@@ -99,123 +103,120 @@ const buildTitleBar = (themeVariables: ThemeVariables) => css<TitleBarProps>`
   font-weight: bold;
   line-height: 18px;
   height: 18px;
-  padding: 0 4px; // TODO: Icons
+  padding: 0 2px; // TODO: Icons
   user-select: none;
   width: 100%;
 `;
 
-const sharedWindowButtonStyle = (themeVariables: ThemeVariables) => css`
-  ${generateButtonStyles(themeVariables)}
+const buildTitleBarTitle = () => css`
+  position: relative;
+`;
+
+const buildTitleBarButtons = () => css`
+  box-sizing: border-box;
+  display: flex;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  margin: 0;
+`;
+
+const generateWindowButtonStyles = (themeVariables: ThemeVariables) => {
+  const activeStyles = css`
+    box-shadow: ${generateBorders(
+        1,
+        themeVariables.shade5,
+        themeVariables.shade1
+      )},
+      ${generateBorders(2, themeVariables.shade4, 'transparent')};
+  `;
+
+  return css`
+    background: ${themeVariables.shade2};
+    border: none;
+
+    box-shadow: ${generateBorders(
+        1,
+        themeVariables.shade1,
+        themeVariables.shade5
+      )},
+      ${generateBorders(2, 'transparent', themeVariables.shade4)};
+
+    ${(props) =>
+      (props as unknown as { active?: boolean })?.active && activeStyles};
+    &:active {
+      ${activeStyles}
+    }
+  `;
+};
+
+const buildWindowButton = (themeVariables: ThemeVariables) => css`
+  ${generateWindowButtonStyles(themeVariables)}
 
   border-radius: 0;
   color: ${themeVariables.shade5};
   box-sizing: border-box;
   height: 14px;
-  margin: 4px 1px;
+  margin: 4px 0;
   padding: 0;
   position: relative;
   width: 16px;
-`;
-
-const buildMinimizeButton = (themeVariables: ThemeVariables) => css`
-  ${sharedWindowButtonStyle(themeVariables)};
 
   &:before {
-    border-bottom: 2px solid ${themeVariables.text};
     content: '';
+    left: 3px;
+    pointer-events: none;
+    position: absolute;
+    top: 2px;
+    width: 9px;
     height: 9px;
-    left: 2px;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 8px;
+  }
+
+  &:active:before {
+    left: 4px;
+    top: 3px;
   }
 `;
 
-const buildMaximizeButton = (themeVariables: ThemeVariables) => css`
-  ${sharedWindowButtonStyle(themeVariables)};
-
+const buildMinimizeButton = () => css`
   &:before {
-    border: 1px solid ${themeVariables.text};
-    border-top: 2px solid ${themeVariables.text};
-    content: '';
-    height: 7px;
-    left: 2px;
-    pointer-events: none;
-    position: absolute;
-    top: 1px;
-    width: 8px;
+    background-image: url('${minimize}');
   }
 `;
 
-const buildUnmaximizeButton = (themeVariables: ThemeVariables) => css`
-  ${sharedWindowButtonStyle(themeVariables)};
-
+const buildMaximizeButton = () => css`
   &:before {
-    border: 1px solid ${themeVariables.text};
-    border-top: 2px solid ${themeVariables.text};
-    content: '';
-    height: 4px;
-    pointer-events: none;
-    position: absolute;
-    right: 2px;
-    top: 1px;
-    width: 5px;
-  }
-
-  &:after {
-    border: 1px solid ${themeVariables.text};
-    border-top: 2px solid ${themeVariables.text};
-    bottom: 2px;
-    background: ${themeVariables.shade2};
-    content: '';
-    left: 2px;
-    pointer-events: none;
-    position: absolute;
-    height: 4px;
-    top: 4px;
-    width: 5px;
+    background-image: url('${maximize}');
   }
 `;
 
-const buildCloseButton = (themeVariables: ThemeVariables) => css`
-  ${sharedWindowButtonStyle(themeVariables)};
+const buildUnmaximizeButton = () => css`
+  &:before {
+    background-image: url('${restore}');
+  }
+`;
 
-  margin: 4px 4px;
+const buildCloseButton = () => css`
+  margin-left: 2px;
 
   &:before {
-    border-bottom: 2px solid ${themeVariables.text};
-    content: '';
-    left: 1px;
-    pointer-events: none;
-    position: absolute;
-    top: 5px;
-    transform: rotate(45deg);
-    width: 12px;
-  }
-
-  &:after {
-    border-bottom: 2px solid ${themeVariables.text};
-    content: '';
-    left: 1px;
-    pointer-events: none;
-    position: absolute;
-    top: 5px;
-    transform: rotate(-45deg);
-    width: 12px;
+    background-image: url('${close}');
   }
 `;
 
 const buildWindow = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['window'] => ({
+  TitleBarTitle: buildTitleBarTitle(),
   WindowElement: buildWindowElement(themeVariables),
   WindowElementContent: buildWindowElementContent(),
   TitleBar: buildTitleBar(themeVariables),
-  MinimizeButton: buildMinimizeButton(themeVariables),
-  MaximizeButton: buildMaximizeButton(themeVariables),
-  UnmaximizeButton: buildUnmaximizeButton(themeVariables),
-  CloseButton: buildCloseButton(themeVariables),
+  TitleBarButtons: buildTitleBarButtons(),
+  WindowButton: buildWindowButton(themeVariables),
+  MinimizeButton: buildMinimizeButton(),
+  MaximizeButton: buildMaximizeButton(),
+  UnmaximizeButton: buildUnmaximizeButton(),
+  CloseButton: buildCloseButton(),
   ...resizeBorder,
 });
 
