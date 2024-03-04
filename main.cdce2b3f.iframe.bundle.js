@@ -8,38 +8,7 @@
 `,generateIndentedStyles=themeVariables=>styled_components_browser_esm.iv`
   box-shadow: ${common_generateBorders(1,themeVariables.shade4,themeVariables.shade1)},
     ${common_generateBorders(2,themeVariables.shade5,themeVariables.shade3)};
-`,generateButtonStyles=themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
-    box-shadow: ${common_generateBorders(1,themeVariables.shade5,themeVariables.shade5)},
-      ${common_generateBorders(2,themeVariables.shade4,themeVariables.shade4)};
-
-    > * {
-      display: inline-block;
-      position: relative;
-      left: 1px;
-      top: 1px;
-    }
-  `,focusStyles=styled_components_browser_esm.iv`
-    box-shadow:
-      ${common_generateBorders(1,themeVariables.shade5,themeVariables.shade5)},
-      inset -2px -2px ${themeVariables.shade5},
-      inset 2px 2px ${themeVariables.shade1},
-      inset -3px -3px ${themeVariables.shade4};
-  `;return styled_components_browser_esm.iv`
-    background: ${themeVariables.shade2};
-    border: none;
-
-    box-shadow: ${common_generateBorders(1,themeVariables.shade1,themeVariables.shade5)},
-      ${common_generateBorders(2,"transparent",themeVariables.shade4)};
-
-    &:focus {
-      ${focusStyles}
-    }
-
-    ${props=>props?.active&&activeStyles};
-    &:active {
-      ${activeStyles}
-    }
-  `},generateSmallButtonStyles=themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
+`,generateSmallButtonStyles=themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
     box-shadow: ${common_generateBorders(1,themeVariables.shade4,themeVariables.shade4)},
       ${common_generateBorders(2,themeVariables.shade3,themeVariables.shade3)};
 
@@ -249,7 +218,38 @@
   flex-grow: 1;
   font-size: 12px;
 `,buildButton=themeVariables=>styled_components_browser_esm.iv`
-  ${generateButtonStyles(themeVariables)}
+  ${(themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
+    box-shadow: ${common_generateBorders(1,themeVariables.shade5,themeVariables.shade5)},
+      ${common_generateBorders(2,themeVariables.shade4,themeVariables.shade4)};
+
+    > * {
+      display: inline-block;
+      position: relative;
+      left: 1px;
+      top: 1px;
+    }
+  `,focusStyles=styled_components_browser_esm.iv`
+    box-shadow:
+      ${common_generateBorders(1,themeVariables.shade5,themeVariables.shade5)},
+      inset -2px -2px ${themeVariables.shade5},
+      inset 2px 2px ${themeVariables.shade1},
+      inset -3px -3px ${themeVariables.shade4};
+  `;return styled_components_browser_esm.iv`
+    background: ${themeVariables.shade2};
+    border: none;
+
+    box-shadow: ${common_generateBorders(1,themeVariables.shade1,themeVariables.shade5)},
+      ${common_generateBorders(2,"transparent",themeVariables.shade4)};
+
+    &:focus {
+      ${focusStyles}
+    }
+
+    ${props=>props?.active&&activeStyles};
+    &:active {
+      ${activeStyles}
+    }
+  `})(themeVariables)}
 
   border-radius: 0;
   font-size: 11px;
@@ -464,6 +464,52 @@
   padding: 4px 4px;
   width: 100%;
   resize: none;
+`,buildToolbar=themeVariables=>styled_components_browser_esm.iv`
+  background: ${themeVariables.shade3};
+  ${generateGroovedStyles(themeVariables)}
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 4px;
+`,buildToolbarButton=themeVariables=>styled_components_browser_esm.iv`
+  ${(themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
+    box-shadow: ${common_generateBorders(1,themeVariables.shade4,themeVariables.shade1)};
+
+    > * {
+      display: block;
+      position: relative;
+      left: 1px;
+      top: 1px;
+    }
+  `,hoverStyles=styled_components_browser_esm.iv`
+    box-shadow: ${common_generateBorders(1,themeVariables.shade1,themeVariables.shade4)};
+  `;return styled_components_browser_esm.iv`
+    background: ${themeVariables.shade2};
+    border: none;
+
+    &:hover {
+      ${hoverStyles}
+    }
+
+    ${props=>props?.active&&activeStyles};
+    &:active {
+      ${activeStyles}
+    }
+  `})(themeVariables)}
+  font-size: 12px;
+  height: 100%;
+`,buildWell=themeVariables=>styled_components_browser_esm.iv`
+  ${generateGroovedStyles(themeVariables)}
+  padding: 4px;
+`,buildWindowContent=themeVariables=>styled_components_browser_esm.iv`
+  ${generateIndentedStyles(themeVariables)};
+  padding: 2px;
+  font-family: sans-serif;
+  flex-grow: 1;
+  overflow: hidden;
 `,controls_buildControls=themeVariables=>({AddressBar:styled_components_browser_esm.iv`
   align-items: center;
   box-sizing: border-box;
@@ -487,11 +533,11 @@
   font-size: 14px;
   flex-shrink: 0;
   gap: 2px;
-  height: 18px;
+  height: 22px;
   padding: 2px 0 0;
   width: 100%;
   position: relative;
-`,ResizeHandle:buildResizeHandle(themeVariables),StatusBarSection:buildStatusBarSection(themeVariables),TextInputElement:buildTextInputElement(themeVariables),TextareaElement:buildTextareaElement(themeVariables),...controls_buildTimeInput(themeVariables)}),buildTaskbar=themeVariables=>styled_components_browser_esm.iv`
+`,ResizeHandle:buildResizeHandle(themeVariables),StatusBarSection:buildStatusBarSection(themeVariables),TextInputElement:buildTextInputElement(themeVariables),TextareaElement:buildTextareaElement(themeVariables),...controls_buildTimeInput(themeVariables),Toolbar:buildToolbar(themeVariables),ToolbarButton:buildToolbarButton(themeVariables),Well:buildWell(themeVariables),WindowContent:buildWindowContent(themeVariables)}),buildTaskbar=themeVariables=>styled_components_browser_esm.iv`
   background: ${themeVariables.shade2};
   border-top: 1px solid ${themeVariables.shade2};
   bottom: 0;
@@ -511,15 +557,39 @@
     color: ${themeVariables.shade5};
     font-weight: bold;
   `;return styled_components_browser_esm.iv`
-    ${generateButtonStyles(themeVariables)}
+    ${(themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
+    ${common_generateDitheredBackground(themeVariables.shade3,themeVariables.shade1)};
+    box-shadow: ${common_generateBorders(1,themeVariables.shade5,themeVariables.shade1)},
+      ${common_generateBorders(2,themeVariables.shade4,"transparent")};
+
+    > * {
+      display: inline-block;
+      position: relative;
+      left: 1px;
+      top: 1px;
+    }
+  `;return styled_components_browser_esm.iv`
+    background: ${themeVariables.shade2};
+    border: none;
+
+    box-shadow: ${common_generateBorders(1,themeVariables.shade1,themeVariables.shade5)},
+      ${common_generateBorders(2,"transparent",themeVariables.shade4)};
+
+    ${props=>props?.active&&activeStyles};
+    &:active {
+      ${activeStyles}
+    }
+  `})(themeVariables)}
 
     border-radius: 0;
     color: ${themeVariables.shade5};
     display: inline-flex;
     font-family: ${fontFamily};
-    margin-top: 1px;
+    font-size: 12px;
     height: 22px;
+    line-height: 18px;
     margin-left: 2px;
+    margin-top: 1px;
     outline: none;
     text-align: left;
     user-select: none;
@@ -540,7 +610,14 @@
   right: 0;
   top: 0;
   object-fit: cover;
-`,elements_buildElements=themeVariables=>({Desktop:buildDesktop(themeVariables),Taskbar:buildTaskbar(themeVariables),TaskbarButton:buildTaskbarButton(themeVariables),VersionInfo:styled_components_browser_esm.iv`
+`,elements_buildElements=themeVariables=>({Desktop:buildDesktop(themeVariables),Taskbar:buildTaskbar(themeVariables),TaskbarButton:buildTaskbarButton(themeVariables),TaskbarButtonIcon:styled_components_browser_esm.iv`
+  display: block;
+  height: 16px;
+  width: 16px;
+  margin-right: 4px;
+  position: relative;
+  top: 1px;
+`,VersionInfo:styled_components_browser_esm.iv`
   bottom: 30px;
   color: white;
   font-family: ${fontFamily};
@@ -551,7 +628,7 @@
   right: 0;
   text-align: right;
   user-select: none;
-`}),sharedStyle=styled_components_browser_esm.iv`
+`}),close_namespaceObject=__webpack_require__.p+"static/media/close.eb481f5e.png",maximize_namespaceObject=__webpack_require__.p+"static/media/maximize.15fe9091.png",minimize_namespaceObject=__webpack_require__.p+"static/media/minimize.58b293c2.png",restore_namespaceObject=__webpack_require__.p+"static/media/restore.1cb0d0ba.png",sharedStyle=styled_components_browser_esm.iv`
   box-sizing: border-box;
   position: absolute;
 `,NResize=styled_components_browser_esm.iv`
@@ -655,113 +732,88 @@
   font-weight: bold;
   line-height: 18px;
   height: 18px;
-  padding: 0 4px; // TODO: Icons
+  padding: 0 2px; // TODO: Icons
   user-select: none;
   width: 100%;
-`,sharedWindowButtonStyle=themeVariables=>styled_components_browser_esm.iv`
-  ${generateButtonStyles(themeVariables)}
+`,buildWindowButton=themeVariables=>styled_components_browser_esm.iv`
+  ${(themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
+    box-shadow: ${common_generateBorders(1,themeVariables.shade5,themeVariables.shade1)},
+      ${common_generateBorders(2,themeVariables.shade4,"transparent")};
+  `;return styled_components_browser_esm.iv`
+    background: ${themeVariables.shade2};
+    border: none;
+
+    box-shadow: ${common_generateBorders(1,themeVariables.shade1,themeVariables.shade5)},
+      ${common_generateBorders(2,"transparent",themeVariables.shade4)};
+
+    ${props=>props?.active&&activeStyles};
+    &:active {
+      ${activeStyles}
+    }
+  `})(themeVariables)}
 
   border-radius: 0;
   color: ${themeVariables.shade5};
   box-sizing: border-box;
   height: 14px;
-  margin: 4px 1px;
+  margin: 4px 0;
   padding: 0;
   position: relative;
   width: 16px;
-`,buildMinimizeButton=themeVariables=>styled_components_browser_esm.iv`
-  ${sharedWindowButtonStyle(themeVariables)};
 
   &:before {
-    border-bottom: 2px solid ${themeVariables.text};
     content: '';
+    left: 3px;
+    pointer-events: none;
+    position: absolute;
+    top: 2px;
+    width: 9px;
     height: 9px;
-    left: 2px;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 8px;
-  }
-`,buildMaximizeButton=themeVariables=>styled_components_browser_esm.iv`
-  ${sharedWindowButtonStyle(themeVariables)};
-
-  &:before {
-    border: 1px solid ${themeVariables.text};
-    border-top: 2px solid ${themeVariables.text};
-    content: '';
-    height: 7px;
-    left: 2px;
-    pointer-events: none;
-    position: absolute;
-    top: 1px;
-    width: 8px;
-  }
-`,buildUnmaximizeButton=themeVariables=>styled_components_browser_esm.iv`
-  ${sharedWindowButtonStyle(themeVariables)};
-
-  &:before {
-    border: 1px solid ${themeVariables.text};
-    border-top: 2px solid ${themeVariables.text};
-    content: '';
-    height: 4px;
-    pointer-events: none;
-    position: absolute;
-    right: 2px;
-    top: 1px;
-    width: 5px;
   }
 
-  &:after {
-    border: 1px solid ${themeVariables.text};
-    border-top: 2px solid ${themeVariables.text};
-    bottom: 2px;
-    background: ${themeVariables.shade2};
-    content: '';
-    left: 2px;
-    pointer-events: none;
-    position: absolute;
-    height: 4px;
-    top: 4px;
-    width: 5px;
+  &:active:before {
+    left: 4px;
+    top: 3px;
   }
-`,buildCloseButton=themeVariables=>styled_components_browser_esm.iv`
-  ${sharedWindowButtonStyle(themeVariables)};
-
-  margin: 4px 4px;
-
-  &:before {
-    border-bottom: 2px solid ${themeVariables.text};
-    content: '';
-    left: 1px;
-    pointer-events: none;
-    position: absolute;
-    top: 5px;
-    transform: rotate(45deg);
-    width: 12px;
-  }
-
-  &:after {
-    border-bottom: 2px solid ${themeVariables.text};
-    content: '';
-    left: 1px;
-    pointer-events: none;
-    position: absolute;
-    top: 5px;
-    transform: rotate(-45deg);
-    width: 12px;
-  }
-`,window_buildWindow=themeVariables=>({WindowElement:buildWindowElement(themeVariables),WindowElementContent:styled_components_browser_esm.iv`
+`,window_buildWindow=themeVariables=>({TitleBarTitle:styled_components_browser_esm.iv`
+  position: relative;
+`,WindowElement:buildWindowElement(themeVariables),WindowElementContent:styled_components_browser_esm.iv`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   font-family: ${fontFamily};
-  font-size: 14px;
+  font-size: 12px;
   height: 100%;
   margin: 0;
   overflow: hidden;
   text-align: left;
   user-select: none;
   width: 100%;
-`,TitleBar:buildTitleBar(themeVariables),MinimizeButton:buildMinimizeButton(themeVariables),MaximizeButton:buildMaximizeButton(themeVariables),UnmaximizeButton:buildUnmaximizeButton(themeVariables),CloseButton:buildCloseButton(themeVariables),...resizeBorder_namespaceObject}),themeBuilder=({id,name,themeVariables,controls,elements,window})=>({id,name,controls:Object.assign({},controls_buildControls(themeVariables),controls),elements:Object.assign({},elements_buildElements(themeVariables),elements),window:Object.assign({},window_buildWindow(themeVariables),window),icons:src_icons}),vaporwin=themeBuilder({id:"vaporwin",name:"ウィンドウズ",themeVariables:{active:"rgb(10, 36, 106)",passive:"rgb(164, 81, 123)",background:'url("https://i.redd.it/k4o8nz5vfiyy.gif")',shade1:"rgb(255, 255, 255)",shade2:"rgb(253, 181, 218)",shade3:"rgb(253, 181, 218)",shade4:"rgb(164, 81, 123)",shade5:"rgb(164, 81, 123)",text:"rgb(0, 0, 0)",textDisabled:"rgb(164, 81, 123)",windowActiveBackground:"linear-gradient(90deg, #ff6ad5, #c774e8, #ad8cff, #8795e8, #94d0ff)",windowPassiveBackground:"gray",windowTitleText:"rgb(255, 255, 255)"}}),win2k=themeBuilder({id:"win2k",name:"Windows 2000",themeVariables:{active:"rgb(10,36,106)",passive:"rgb(128,128,128)",background:"rgb(58,110,165)",shade1:"rgb(255,255,255)",shade2:"rgb(212,208,200)",shade3:"rgb(212,208,200)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"linear-gradient(90deg, rgb(10,36,106), rgb(166,202,240))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(255,255,255)"}}),win9x_16bit=themeBuilder({id:"win9x-16bit",name:"Windows 9x, High Color 16-bit",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(120,124,120)",background:"rgb(0,124,120)",shade1:"rgb(247, 251, 247)",shade2:"rgb(216, 220, 216)",shade3:"rgb(184,188,184)",shade4:"rgb(120,124,120)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(120,124,120)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,120), rgb(8,128,200))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_16clr=themeBuilder({id:"win9x-16clr",name:"Windows 9x, 16 colors",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(120,124,120)",background:"rgb(0,124,120)",shade1:"rgb(247, 251, 247)",shade2:"rgb(216, 220, 216)",shade3:"rgb(184,188,184)",shade4:"rgb(120,124,120)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(120,124,120)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,120), rgb(8,128,200))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_32bit=themeBuilder({id:"win9x-32bit",name:"Windows 9x, True Color 32-bit",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(128,128,128)",background:"rgb(0,128,128)",shade1:"rgb(255,255,255)",shade2:"rgb(223,223,223)",shade3:"rgb(192,192,192)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,128), rgb(16,132,208))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_256clr=themeBuilder({id:"win9x-256clr",name:"Windows 9x, 256 colors",themeVariables:{active:"rgb(0,0,128)",passive:"rgb(128,128,128)",background:"rgb(0,128,128)",shade1:"rgb(255,255,255)",shade2:"rgb(192,192,192)",shade3:"rgb(192,192,192)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"rgb(0,0,128)",windowPassiveBackground:"rgb(128,128,128)",windowTitleText:"rgb(247, 251, 247)"}}),_storybook_preview={parameters:{options:{storySort:{order:["Wisp",["Basics","Advanced Usage","Theming"],"controls"]}}},decorators:[(0,index_esm.iP)({themes:[win2k,win9x_16bit,win9x_16clr,win9x_32bit,win9x_256clr,vaporwin,index_esm.uH]}),index_esm._9]}},"./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$":(module,__unused_webpack_exports,__webpack_require__)=>{var map={"./AdvancedUsage.stories":["./stories/AdvancedUsage.stories.tsx",49],"./AdvancedUsage.stories.tsx":["./stories/AdvancedUsage.stories.tsx",49],"./Basics.stories":["./stories/Basics.stories.tsx",342],"./Basics.stories.tsx":["./stories/Basics.stories.tsx",342],"./Theming.stories":["./stories/Theming.stories.tsx",774],"./Theming.stories.tsx":["./stories/Theming.stories.tsx",774],"./controls/AddressBar.stories":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AddressBar.stories.tsx":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AlertText.stories":["./stories/controls/AlertText.stories.tsx",897],"./controls/AlertText.stories.tsx":["./stories/controls/AlertText.stories.tsx",897],"./controls/Button.stories":["./stories/controls/Button.stories.tsx",717],"./controls/Button.stories.tsx":["./stories/controls/Button.stories.tsx",717],"./controls/Checkbox.stories":["./stories/controls/Checkbox.stories.tsx",314],"./controls/Checkbox.stories.tsx":["./stories/controls/Checkbox.stories.tsx",314],"./controls/ComboBox.stories":["./stories/controls/ComboBox.stories.tsx",161],"./controls/ComboBox.stories.tsx":["./stories/controls/ComboBox.stories.tsx",161],"./controls/Divider.stories":["./stories/controls/Divider.stories.tsx",958],"./controls/Divider.stories.tsx":["./stories/controls/Divider.stories.tsx",958],"./controls/Fieldset.stories":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Fieldset.stories.tsx":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Label.stories":["./stories/controls/Label.stories.tsx",514],"./controls/Label.stories.tsx":["./stories/controls/Label.stories.tsx",514],"./controls/ListBox.stories":["./stories/controls/ListBox.stories.tsx",923],"./controls/ListBox.stories.tsx":["./stories/controls/ListBox.stories.tsx",923],"./controls/MenuBar.stories":["./stories/controls/MenuBar.stories.tsx",357],"./controls/MenuBar.stories.tsx":["./stories/controls/MenuBar.stories.tsx",357],"./controls/ProgressBar.stories":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ProgressBar.stories.tsx":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ScrollableContent.stories":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/ScrollableContent.stories.tsx":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/StatusBar.stories":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBar.stories.tsx":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBarSection.stories":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/StatusBarSection.stories.tsx":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/TextInput.stories":["./stories/controls/TextInput.stories.tsx",718],"./controls/TextInput.stories.tsx":["./stories/controls/TextInput.stories.tsx",718],"./controls/Textarea.stories":["./stories/controls/Textarea.stories.tsx",336],"./controls/Textarea.stories.tsx":["./stories/controls/Textarea.stories.tsx",336],"./controls/TimeInput.stories":["./stories/controls/TimeInput.stories.tsx",576],"./controls/TimeInput.stories.tsx":["./stories/controls/TimeInput.stories.tsx",576],"./controls/Toolbar.stories":["./stories/controls/Toolbar.stories.tsx",53],"./controls/Toolbar.stories.tsx":["./stories/controls/Toolbar.stories.tsx",53],"./controls/ToolbarButton.stories":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/ToolbarButton.stories.tsx":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/Well.stories":["./stories/controls/Well.stories.tsx",552],"./controls/Well.stories.tsx":["./stories/controls/Well.stories.tsx",552],"./controls/WindowContent.stories":["./stories/controls/WindowContent.stories.tsx",771],"./controls/WindowContent.stories.tsx":["./stories/controls/WindowContent.stories.tsx",771]};function webpackAsyncContext(req){if(!__webpack_require__.o(map,req))return Promise.resolve().then((()=>{var e=new Error("Cannot find module '"+req+"'");throw e.code="MODULE_NOT_FOUND",e}));var ids=map[req],id=ids[0];return __webpack_require__.e(ids[1]).then((()=>__webpack_require__(id)))}webpackAsyncContext.keys=()=>Object.keys(map),webpackAsyncContext.id="./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$",module.exports=webpackAsyncContext},"@storybook/channels":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CHANNELS__},"@storybook/client-logger":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CLIENT_LOGGER__},"@storybook/core-events":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CORE_EVENTS__},"@storybook/global":module=>{"use strict";module.exports=__STORYBOOK_MODULE_GLOBAL__},"@storybook/preview-api":module=>{"use strict";module.exports=__STORYBOOK_MODULE_PREVIEW_API__}},__webpack_require__=>{__webpack_require__.O(0,[776],(()=>{return moduleId="./storybook-config-entry.js",__webpack_require__(__webpack_require__.s=moduleId);var moduleId}));__webpack_require__.O()}]);
-//# sourceMappingURL=main.d2b816e3.iframe.bundle.js.map
+`,TitleBar:buildTitleBar(themeVariables),TitleBarButtons:styled_components_browser_esm.iv`
+  box-sizing: border-box;
+  display: flex;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  margin: 0;
+`,WindowButton:buildWindowButton(themeVariables),MinimizeButton:styled_components_browser_esm.iv`
+  &:before {
+    background-image: url('${minimize_namespaceObject}');
+  }
+`,MaximizeButton:styled_components_browser_esm.iv`
+  &:before {
+    background-image: url('${maximize_namespaceObject}');
+  }
+`,UnmaximizeButton:styled_components_browser_esm.iv`
+  &:before {
+    background-image: url('${restore_namespaceObject}');
+  }
+`,CloseButton:styled_components_browser_esm.iv`
+  margin-left: 2px;
+
+  &:before {
+    background-image: url('${close_namespaceObject}');
+  }
+`,...resizeBorder_namespaceObject}),themeBuilder=({id,name,themeVariables,controls,elements,window})=>({id,name,controls:Object.assign({},controls_buildControls(themeVariables),controls),elements:Object.assign({},elements_buildElements(themeVariables),elements),window:Object.assign({},window_buildWindow(themeVariables),window),icons:src_icons}),vaporwin=themeBuilder({id:"vaporwin",name:"ウィンドウズ",themeVariables:{active:"rgb(10, 36, 106)",passive:"rgb(164, 81, 123)",background:'url("https://i.redd.it/k4o8nz5vfiyy.gif")',shade1:"rgb(255, 255, 255)",shade2:"rgb(253, 181, 218)",shade3:"rgb(253, 181, 218)",shade4:"rgb(164, 81, 123)",shade5:"rgb(164, 81, 123)",text:"rgb(0, 0, 0)",textDisabled:"rgb(164, 81, 123)",windowActiveBackground:"linear-gradient(90deg, #ff6ad5, #c774e8, #ad8cff, #8795e8, #94d0ff)",windowPassiveBackground:"gray",windowTitleText:"rgb(255, 255, 255)"}}),win2k=themeBuilder({id:"win2k",name:"Windows 2000",themeVariables:{active:"rgb(10,36,106)",passive:"rgb(128,128,128)",background:"rgb(58,110,165)",shade1:"rgb(255,255,255)",shade2:"rgb(212,208,200)",shade3:"rgb(212,208,200)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"linear-gradient(90deg, rgb(10,36,106), rgb(166,202,240))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(255,255,255)"}}),win9x_16bit=themeBuilder({id:"win9x-16bit",name:"Windows 9x, High Color 16-bit",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(120,124,120)",background:"rgb(0,124,120)",shade1:"rgb(247, 251, 247)",shade2:"rgb(216, 220, 216)",shade3:"rgb(184,188,184)",shade4:"rgb(120,124,120)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(120,124,120)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,120), rgb(8,128,200))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_16clr=themeBuilder({id:"win9x-16clr",name:"Windows 9x, 16 colors",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(120,124,120)",background:"rgb(0,124,120)",shade1:"rgb(247, 251, 247)",shade2:"rgb(216, 220, 216)",shade3:"rgb(184,188,184)",shade4:"rgb(120,124,120)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(120,124,120)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,120), rgb(8,128,200))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_32bit=themeBuilder({id:"win9x-32bit",name:"Windows 9x, True Color 32-bit",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(128,128,128)",background:"rgb(0,128,128)",shade1:"rgb(255,255,255)",shade2:"rgb(223,223,223)",shade3:"rgb(192,192,192)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,128), rgb(16,132,208))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_256clr=themeBuilder({id:"win9x-256clr",name:"Windows 9x, 256 colors",themeVariables:{active:"rgb(0,0,128)",passive:"rgb(128,128,128)",background:"rgb(0,128,128)",shade1:"rgb(255,255,255)",shade2:"rgb(192,192,192)",shade3:"rgb(192,192,192)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"rgb(0,0,128)",windowPassiveBackground:"rgb(128,128,128)",windowTitleText:"rgb(247, 251, 247)"}}),_storybook_preview={parameters:{options:{storySort:{order:["Wisp",["Basics","Advanced Usage","Theming"],"controls"]}}},decorators:[(0,index_esm.iP)({themes:[win2k,win9x_16bit,win9x_16clr,win9x_32bit,win9x_256clr,vaporwin,index_esm.uH]}),index_esm._9]}},"./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$":(module,__unused_webpack_exports,__webpack_require__)=>{var map={"./AdvancedUsage.stories":["./stories/AdvancedUsage.stories.tsx",49],"./AdvancedUsage.stories.tsx":["./stories/AdvancedUsage.stories.tsx",49],"./Basics.stories":["./stories/Basics.stories.tsx",342],"./Basics.stories.tsx":["./stories/Basics.stories.tsx",342],"./Theming.stories":["./stories/Theming.stories.tsx",774],"./Theming.stories.tsx":["./stories/Theming.stories.tsx",774],"./controls/AddressBar.stories":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AddressBar.stories.tsx":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AlertText.stories":["./stories/controls/AlertText.stories.tsx",897],"./controls/AlertText.stories.tsx":["./stories/controls/AlertText.stories.tsx",897],"./controls/Button.stories":["./stories/controls/Button.stories.tsx",717],"./controls/Button.stories.tsx":["./stories/controls/Button.stories.tsx",717],"./controls/Checkbox.stories":["./stories/controls/Checkbox.stories.tsx",314],"./controls/Checkbox.stories.tsx":["./stories/controls/Checkbox.stories.tsx",314],"./controls/ComboBox.stories":["./stories/controls/ComboBox.stories.tsx",161],"./controls/ComboBox.stories.tsx":["./stories/controls/ComboBox.stories.tsx",161],"./controls/Divider.stories":["./stories/controls/Divider.stories.tsx",958],"./controls/Divider.stories.tsx":["./stories/controls/Divider.stories.tsx",958],"./controls/Fieldset.stories":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Fieldset.stories.tsx":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Label.stories":["./stories/controls/Label.stories.tsx",514],"./controls/Label.stories.tsx":["./stories/controls/Label.stories.tsx",514],"./controls/ListBox.stories":["./stories/controls/ListBox.stories.tsx",923],"./controls/ListBox.stories.tsx":["./stories/controls/ListBox.stories.tsx",923],"./controls/MenuBar.stories":["./stories/controls/MenuBar.stories.tsx",357],"./controls/MenuBar.stories.tsx":["./stories/controls/MenuBar.stories.tsx",357],"./controls/ProgressBar.stories":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ProgressBar.stories.tsx":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ScrollableContent.stories":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/ScrollableContent.stories.tsx":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/StatusBar.stories":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBar.stories.tsx":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBarSection.stories":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/StatusBarSection.stories.tsx":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/TextInput.stories":["./stories/controls/TextInput.stories.tsx",718],"./controls/TextInput.stories.tsx":["./stories/controls/TextInput.stories.tsx",718],"./controls/Textarea.stories":["./stories/controls/Textarea.stories.tsx",336],"./controls/Textarea.stories.tsx":["./stories/controls/Textarea.stories.tsx",336],"./controls/TimeInput.stories":["./stories/controls/TimeInput.stories.tsx",576],"./controls/TimeInput.stories.tsx":["./stories/controls/TimeInput.stories.tsx",576],"./controls/Toolbar.stories":["./stories/controls/Toolbar.stories.tsx",53],"./controls/Toolbar.stories.tsx":["./stories/controls/Toolbar.stories.tsx",53],"./controls/ToolbarButton.stories":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/ToolbarButton.stories.tsx":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/Well.stories":["./stories/controls/Well.stories.tsx",552],"./controls/Well.stories.tsx":["./stories/controls/Well.stories.tsx",552],"./controls/WindowContent.stories":["./stories/controls/WindowContent.stories.tsx",771],"./controls/WindowContent.stories.tsx":["./stories/controls/WindowContent.stories.tsx",771]};function webpackAsyncContext(req){if(!__webpack_require__.o(map,req))return Promise.resolve().then((()=>{var e=new Error("Cannot find module '"+req+"'");throw e.code="MODULE_NOT_FOUND",e}));var ids=map[req],id=ids[0];return __webpack_require__.e(ids[1]).then((()=>__webpack_require__(id)))}webpackAsyncContext.keys=()=>Object.keys(map),webpackAsyncContext.id="./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$",module.exports=webpackAsyncContext},"@storybook/channels":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CHANNELS__},"@storybook/client-logger":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CLIENT_LOGGER__},"@storybook/core-events":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CORE_EVENTS__},"@storybook/global":module=>{"use strict";module.exports=__STORYBOOK_MODULE_GLOBAL__},"@storybook/preview-api":module=>{"use strict";module.exports=__STORYBOOK_MODULE_PREVIEW_API__}},__webpack_require__=>{__webpack_require__.O(0,[776],(()=>{return moduleId="./storybook-config-entry.js",__webpack_require__(__webpack_require__.s=moduleId);var moduleId}));__webpack_require__.O()}]);
+//# sourceMappingURL=main.cdce2b3f.iframe.bundle.js.map
