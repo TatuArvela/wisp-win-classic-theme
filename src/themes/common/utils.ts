@@ -50,7 +50,7 @@ export const generateButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 
   return css`
-    background: ${themeVariables.shade2};
+    background: ${themeVariables.shade3};
     border: none;
 
     box-shadow: ${generateBorders(
@@ -89,12 +89,12 @@ export const generateSmallButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 
   return css`
-    background: ${themeVariables.shade2};
+    background: ${themeVariables.shade3};
     border: none;
 
     box-shadow: ${generateBorders(
         1,
-        themeVariables.shade2,
+        themeVariables.shade3,
         themeVariables.shade5
       )},
       ${generateBorders(2, themeVariables.shade1, themeVariables.shade4)};

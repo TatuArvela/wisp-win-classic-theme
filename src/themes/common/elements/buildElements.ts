@@ -7,8 +7,8 @@ import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { fontFamily, generateButtonStyles } from '../utils';
 
 const buildTaskbar = (themeVariables: ThemeVariables) => css`
-  background: ${themeVariables.shade2};
-  border-top: 1px solid ${themeVariables.shade2};
+  background: ${themeVariables.shade3};
+  border-top: 1px solid ${themeVariables.shade3};
   bottom: 0;
   box-shadow: inset 0 1px 0 0 ${themeVariables.shade1};
   box-sizing: border-box;
@@ -43,7 +43,7 @@ const generateTaskbarButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 
   return css`
-    background: ${themeVariables.shade2};
+    background: ${themeVariables.shade3};
     border: none;
 
     box-shadow: ${generateBorders(

@@ -85,7 +85,7 @@ const generateButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 
   return css`
-    background: ${themeVariables.shade2};
+    background: ${themeVariables.shade3};
     border: none;
 
     box-shadow: ${generateBorders(
