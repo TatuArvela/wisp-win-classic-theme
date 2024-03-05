@@ -6,6 +6,7 @@ import {
   DividerProps,
   LabelProps,
   ListBoxOptionsProps,
+  MenuBarThrobberProps,
   ProgressBarFillProps,
   StatusBarSectionProps,
   TextareaElementProps,
@@ -18,8 +19,11 @@ import { css } from 'styled-components';
 import generateBorders from '../generateBorders';
 import check from '../icons/check.png';
 import down from '../icons/down.png';
+import throbberActive from '../icons/throbber-active.gif';
+import throbberPassive from '../icons/throbber-passive.png';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import {
+  fontFamily,
   generateButtonStyles,
   generateGroovedStyles,
   generateIndentedStyles,
@@ -83,6 +87,7 @@ const buildCheckbox = (themeVariables: ThemeVariables) => {
     &:before {
       content: '';
       background-image: url('${check}');
+      image-rendering: pixelated;
       width: 7px;
       height: 7px;
       position: absolute;
@@ -131,6 +136,7 @@ const buildComboBoxButton = (
   &:before {
     content: '';
     background-image: url('${down}');
+    image-rendering: pixelated;
     width: 8px;
     height: 8px;
     position: absolute;
@@ -243,11 +249,35 @@ const buildMenuBar = (themeVariables: ThemeVariables) => css`
   font-size: 14px;
   font-family: sans-serif;
   flex-shrink: 0;
+  height: 25px;
   padding: 0;
   text-align: left;
   user-select: none;
   white-space: nowrap;
   width: 100%;
+  margin-bottom: -1px;
+`;
+
+const buildMenuBarThrobber = (
+  themeVariables: ThemeVariables
+) => css<MenuBarThrobberProps>`
+  align-self: end;
+  background-color: black;
+  background-image: ${({ isAnimated }) =>
+    isAnimated ? `url('${throbberActive}')` : `url('${throbberPassive}')`};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  box-shadow:
+    0 1px 0 ${themeVariables.shade4},
+    -1px 0 0 ${themeVariables.shade1},
+    -1px 1px 0 ${themeVariables.shade1},
+    -2px 0 0 ${themeVariables.shade4};
+  height: calc(100% - 1px);
+  image-rendering: pixelated;
+  margin-left: auto;
+  width: 38px;
+  position: relative;
 `;
 
 const buildProgressBar = (themeVariables: ThemeVariables) => css`
@@ -438,8 +468,13 @@ const buildToolbarButton = (
 `;
 
 const buildWell = (themeVariables: ThemeVariables) => css`
-  ${generateGroovedStyles(themeVariables)}
-  padding: 4px;
+  ${generateIndentedStyles(themeVariables)}
+  background: ${themeVariables.shade1};
+  padding: 2px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  font-family: ${fontFamily};
 `;
 
 const buildWindowContent = (themeVariables: ThemeVariables) => css`
@@ -471,6 +506,7 @@ const buildControls = (
   ListBoxOptions: buildListBoxOptions(),
   ListBoxOption: buildListBoxOption(themeVariables),
   MenuBar: buildMenuBar(themeVariables),
+  MenuBarThrobber: buildMenuBarThrobber(themeVariables),
   ProgressBar: buildProgressBar(themeVariables),
   ProgressBarFill: buildProgressBarFill(themeVariables),
   ...buildScrollbars(themeVariables),

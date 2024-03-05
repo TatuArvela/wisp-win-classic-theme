@@ -8,6 +8,7 @@ import {
   Toolbar,
   ToolbarButton,
   useWindow,
+  Well,
   Window,
   WindowContent,
   Wisp,
@@ -23,20 +24,13 @@ export const WispInWisp = {
   args: {
     children: (
       <Window id="1" title="Parent window" width={600} height={480}>
-        <div
-          style={{
-            border: '1px solid black',
-            boxSizing: 'border-box',
-            height: '100%',
-            width: '100%',
-          }}
-        >
+        <Well>
           <Wisp>
             <Window id="2" title="Child window">
               Test
             </Window>
           </Wisp>
-        </div>
+        </Well>
       </Window>
     ),
   },

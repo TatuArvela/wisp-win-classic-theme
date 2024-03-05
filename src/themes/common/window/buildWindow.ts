@@ -106,6 +106,7 @@ const buildTitleBar = (themeVariables: ThemeVariables) => css<TitleBarProps>`
   padding: 0 2px; // TODO: Icons
   user-select: none;
   width: 100%;
+  margin-bottom: 1px;
 `;
 
 const buildTitleBarTitle = () => css`
@@ -170,6 +171,7 @@ const buildWindowButton = (themeVariables: ThemeVariables) => css`
     top: 2px;
     width: 9px;
     height: 9px;
+    image-rendering: pixelated;
   }
 
   &:active:before {

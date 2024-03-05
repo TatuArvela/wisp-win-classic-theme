@@ -11,8 +11,11 @@ import { generateSmallButtonStyles } from '../utils';
 
 const SCROLLBAR_WIDTH = 16;
 
-const scrollableContentView = css<ScrollableContentViewProps>`
+const buildScrollableContentView = (
+  themeVariables: ThemeVariables
+) => css<ScrollableContentViewProps>`
   box-sizing: border-box;
+  background: ${themeVariables.shade1};
   height: calc(
     100% - ${({ horizontal }) => (horizontal ? SCROLLBAR_WIDTH : 0)}px
   );
@@ -32,6 +35,7 @@ const buildScrollButton = (themeVariables: ThemeVariables, icon: string) => css`
 
   &:before {
     content: '';
+    image-rendering: pixelated;
     background-image: url('${icon}');
     width: 8px;
     height: 8px;
@@ -105,7 +109,7 @@ const buildScrollbarHorizontalWrapper = (themeVariables: ThemeVariables) => css`
 const buildScrollbars = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
-  ScrollableContentView: scrollableContentView,
+  ScrollableContentView: buildScrollableContentView(themeVariables),
   ScrollbarVerticalWrapper: buildScrollbarVerticalWrapper(themeVariables),
   ScrollbarHorizontalWrapper: buildScrollbarHorizontalWrapper(themeVariables),
   ScrollUpButton: buildScrollButton(themeVariables, up),
