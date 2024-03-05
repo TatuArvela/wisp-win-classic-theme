@@ -1,4 +1,4 @@
-(globalThis.webpackChunkwisp_win_classic_theme=globalThis.webpackChunkwisp_win_classic_theme||[]).push([[179],{"./node_modules/@storybook/addon-interactions/dist sync recursive":module=>{function webpackEmptyContext(req){var e=new Error("Cannot find module '"+req+"'");throw e.code="MODULE_NOT_FOUND",e}webpackEmptyContext.keys=()=>[],webpackEmptyContext.resolve=webpackEmptyContext,webpackEmptyContext.id="./node_modules/@storybook/addon-interactions/dist sync recursive",module.exports=webpackEmptyContext},"./storybook-config-entry.js":(__unused_webpack_module,__unused_webpack___webpack_exports__,__webpack_require__)=>{"use strict";var external_STORYBOOK_MODULE_GLOBAL_=__webpack_require__("@storybook/global"),external_STORYBOOK_MODULE_PREVIEW_API_=__webpack_require__("@storybook/preview-api"),external_STORYBOOK_MODULE_CHANNELS_=__webpack_require__("@storybook/channels");const importers=[async path=>{if(!/^\.[\\/](?:stories(?:\/(?!\.)(?:(?:(?!(?:^|\/)\.).)*?)\/|\/|$)(?!\.)(?=.)[^/]*?\.stories\.tsx)$/.exec(path))return;const pathRemainder=path.substring(10);return __webpack_require__("./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$")("./"+pathRemainder)}];const channel=(0,external_STORYBOOK_MODULE_CHANNELS_.createBrowserChannel)({page:"preview"});external_STORYBOOK_MODULE_PREVIEW_API_.addons.setChannel(channel),"DEVELOPMENT"===external_STORYBOOK_MODULE_GLOBAL_.global.CONFIG_TYPE&&(window.__STORYBOOK_SERVER_CHANNEL__=channel);const preview=new external_STORYBOOK_MODULE_PREVIEW_API_.PreviewWeb;window.__STORYBOOK_PREVIEW__=preview,window.__STORYBOOK_STORY_STORE__=preview.storyStore,window.__STORYBOOK_ADDONS_CHANNEL__=channel,window.__STORYBOOK_CLIENT_API__=new external_STORYBOOK_MODULE_PREVIEW_API_.ClientApi({storyStore:preview.storyStore}),preview.initialize({importFn:async function importFn(path){for(let i=0;i<importers.length;i++){const moduleExports=await(x=()=>importers[i](path),x());if(moduleExports)return moduleExports}var x},getProjectAnnotations:()=>(0,external_STORYBOOK_MODULE_PREVIEW_API_.composeConfigs)([__webpack_require__("./node_modules/@storybook/react/dist/entry-preview.mjs"),__webpack_require__("./node_modules/@storybook/react/dist/entry-preview-docs.mjs"),__webpack_require__("./node_modules/@storybook/addon-links/dist/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/docs/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/actions/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/backgrounds/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/measure/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/outline/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/highlight/preview.js"),__webpack_require__("./node_modules/@storybook/addon-interactions/dist/preview.js"),__webpack_require__("./.storybook/preview.tsx")])})},"./.storybook/preview.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{"use strict";__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{default:()=>_storybook_preview});var resizeBorder_namespaceObject={};__webpack_require__.r(resizeBorder_namespaceObject),__webpack_require__.d(resizeBorder_namespaceObject,{EResize:()=>EResize,NEResize:()=>NEResize,NResize:()=>NResize,NWResize:()=>NWResize,SEResize:()=>SEResize,SResize:()=>SResize,SWResize:()=>SWResize,WResize:()=>WResize});var index_esm=__webpack_require__("./node_modules/@tatuarvela/wisp/dist/index.esm.js");const src_icons={wisp:{48:__webpack_require__.p+"static/media/wisp-win.a7412271.png"}};var styled_components_browser_esm=__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js");const common_generateBorders=(distance,topLeftColor,bottomRightColor)=>[[-distance,-distance,bottomRightColor],[distance,distance,topLeftColor]].map((([x,y,color])=>`inset ${x}px ${y}px 0 0 ${color}`)).join(",\n"),check_namespaceObject=__webpack_require__.p+"static/media/check.d1a47cd4.png",down_namespaceObject=__webpack_require__.p+"static/media/down.0438189f.png",fontFamily="'Microsoft Sans Serif', sans-serif;",generateGroovedStyles=themeVariables=>styled_components_browser_esm.iv`
+(globalThis.webpackChunkwisp_win_classic_theme=globalThis.webpackChunkwisp_win_classic_theme||[]).push([[179],{"./node_modules/@storybook/addon-interactions/dist sync recursive":module=>{function webpackEmptyContext(req){var e=new Error("Cannot find module '"+req+"'");throw e.code="MODULE_NOT_FOUND",e}webpackEmptyContext.keys=()=>[],webpackEmptyContext.resolve=webpackEmptyContext,webpackEmptyContext.id="./node_modules/@storybook/addon-interactions/dist sync recursive",module.exports=webpackEmptyContext},"./storybook-config-entry.js":(__unused_webpack_module,__unused_webpack___webpack_exports__,__webpack_require__)=>{"use strict";var external_STORYBOOK_MODULE_GLOBAL_=__webpack_require__("@storybook/global"),external_STORYBOOK_MODULE_PREVIEW_API_=__webpack_require__("@storybook/preview-api"),external_STORYBOOK_MODULE_CHANNELS_=__webpack_require__("@storybook/channels");const importers=[async path=>{if(!/^\.[\\/](?:stories(?:\/(?!\.)(?:(?:(?!(?:^|\/)\.).)*?)\/|\/|$)(?!\.)(?=.)[^/]*?\.stories\.tsx)$/.exec(path))return;const pathRemainder=path.substring(10);return __webpack_require__("./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$")("./"+pathRemainder)}];const channel=(0,external_STORYBOOK_MODULE_CHANNELS_.createBrowserChannel)({page:"preview"});external_STORYBOOK_MODULE_PREVIEW_API_.addons.setChannel(channel),"DEVELOPMENT"===external_STORYBOOK_MODULE_GLOBAL_.global.CONFIG_TYPE&&(window.__STORYBOOK_SERVER_CHANNEL__=channel);const preview=new external_STORYBOOK_MODULE_PREVIEW_API_.PreviewWeb;window.__STORYBOOK_PREVIEW__=preview,window.__STORYBOOK_STORY_STORE__=preview.storyStore,window.__STORYBOOK_ADDONS_CHANNEL__=channel,window.__STORYBOOK_CLIENT_API__=new external_STORYBOOK_MODULE_PREVIEW_API_.ClientApi({storyStore:preview.storyStore}),preview.initialize({importFn:async function importFn(path){for(let i=0;i<importers.length;i++){const moduleExports=await(x=()=>importers[i](path),x());if(moduleExports)return moduleExports}var x},getProjectAnnotations:()=>(0,external_STORYBOOK_MODULE_PREVIEW_API_.composeConfigs)([__webpack_require__("./node_modules/@storybook/react/dist/entry-preview.mjs"),__webpack_require__("./node_modules/@storybook/react/dist/entry-preview-docs.mjs"),__webpack_require__("./node_modules/@storybook/addon-links/dist/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/docs/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/actions/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/backgrounds/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/measure/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/outline/preview.js"),__webpack_require__("./node_modules/@storybook/addon-essentials/dist/highlight/preview.js"),__webpack_require__("./node_modules/@storybook/addon-interactions/dist/preview.js"),__webpack_require__("./.storybook/preview.tsx")])})},"./.storybook/preview.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{"use strict";__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{default:()=>_storybook_preview});var resizeBorder_namespaceObject={};__webpack_require__.r(resizeBorder_namespaceObject),__webpack_require__.d(resizeBorder_namespaceObject,{EResize:()=>EResize,NEResize:()=>NEResize,NResize:()=>NResize,NWResize:()=>NWResize,SEResize:()=>SEResize,SResize:()=>SResize,SWResize:()=>SWResize,WResize:()=>WResize});var index_esm=__webpack_require__("./node_modules/@tatuarvela/wisp/dist/index.esm.js");const src_icons={wisp:{48:__webpack_require__.p+"static/media/wisp-win.a7412271.png"}};var styled_components_browser_esm=__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js");const common_generateBorders=(distance,topLeftColor,bottomRightColor)=>[[-distance,-distance,bottomRightColor],[distance,distance,topLeftColor]].map((([x,y,color])=>`inset ${x}px ${y}px 0 0 ${color}`)).join(",\n"),check_namespaceObject=__webpack_require__.p+"static/media/check.d1a47cd4.png",down_namespaceObject=__webpack_require__.p+"static/media/down.0438189f.png",throbber_active_namespaceObject=__webpack_require__.p+"static/media/throbber-active.d72bb12c.gif",throbber_passive_namespaceObject=__webpack_require__.p+"static/media/throbber-passive.dbc0e611.png",fontFamily="'Microsoft Sans Serif', sans-serif;",generateGroovedStyles=themeVariables=>styled_components_browser_esm.iv`
   border: 1px solid ${themeVariables.shade4};
   box-shadow:
     inset 1px 1px 0 0 ${themeVariables.shade1},
@@ -31,8 +31,9 @@
   `},common_generateDitheredBackground=(color1,color2)=>{const image=((color1,color2)=>{const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d");return canvas.width=2,canvas.height=2,ctx.fillStyle=color1,ctx.fillRect(0,0,1,1),ctx.fillRect(1,1,1,1),ctx.fillStyle=color2,ctx.fillRect(1,0,1,1),ctx.fillRect(0,1,1,1),canvas.toDataURL()})(color1,color2);return styled_components_browser_esm.iv`
     background-image: url('${image}');
     background-size: 2px 2px;
-  `},left_namespaceObject=__webpack_require__.p+"static/media/left.2b4fbd74.png",right_namespaceObject=__webpack_require__.p+"static/media/right.4bb7ff2a.png",up_namespaceObject=__webpack_require__.p+"static/media/up.93ab41bd.png",scrollableContentView=styled_components_browser_esm.iv`
+  `},left_namespaceObject=__webpack_require__.p+"static/media/left.2b4fbd74.png",right_namespaceObject=__webpack_require__.p+"static/media/right.4bb7ff2a.png",up_namespaceObject=__webpack_require__.p+"static/media/up.93ab41bd.png",buildScrollableContentView=themeVariables=>styled_components_browser_esm.iv`
   box-sizing: border-box;
+  background: ${themeVariables.shade1};
   height: calc(
     100% - ${({horizontal})=>horizontal?16:0}px
   );
@@ -50,6 +51,7 @@
 
   &:before {
     content: '';
+    image-rendering: pixelated;
     background-image: url('${icon}');
     width: 8px;
     height: 8px;
@@ -106,7 +108,7 @@
   left: 0;
   position: absolute;
   width: var(--width);
-`,controls_buildScrollbars=themeVariables=>({ScrollableContentView:scrollableContentView,ScrollbarVerticalWrapper:buildScrollbarVerticalWrapper(themeVariables),ScrollbarHorizontalWrapper:buildScrollbarHorizontalWrapper(themeVariables),ScrollUpButton:buildScrollButton(themeVariables,up_namespaceObject),ScrollDownButton:buildScrollButton(themeVariables,down_namespaceObject),ScrollRightButton:buildScrollButton(themeVariables,right_namespaceObject),ScrollLeftButton:buildScrollButton(themeVariables,left_namespaceObject),ScrollbarVerticalTrack:buildScrollbarVerticalTrack(themeVariables),ScrollbarVerticalThumb:buildScrollbarVerticalThumb(themeVariables),ScrollbarHorizontalTrack:buildScrollbarHorizontalTrack(themeVariables),ScrollbarHorizontalThumb:buildScrollbarHorizontalThumb(themeVariables)}),tiny_down_namespaceObject=__webpack_require__.p+"static/media/tiny-down.3be0c7b3.png",tiny_up_namespaceObject=__webpack_require__.p+"static/media/tiny-up.4217c516.png",TimeInputControl=styled_components_browser_esm.iv`
+`,controls_buildScrollbars=themeVariables=>({ScrollableContentView:buildScrollableContentView(themeVariables),ScrollbarVerticalWrapper:buildScrollbarVerticalWrapper(themeVariables),ScrollbarHorizontalWrapper:buildScrollbarHorizontalWrapper(themeVariables),ScrollUpButton:buildScrollButton(themeVariables,up_namespaceObject),ScrollDownButton:buildScrollButton(themeVariables,down_namespaceObject),ScrollRightButton:buildScrollButton(themeVariables,right_namespaceObject),ScrollLeftButton:buildScrollButton(themeVariables,left_namespaceObject),ScrollbarVerticalTrack:buildScrollbarVerticalTrack(themeVariables),ScrollbarVerticalThumb:buildScrollbarVerticalThumb(themeVariables),ScrollbarHorizontalTrack:buildScrollbarHorizontalTrack(themeVariables),ScrollbarHorizontalThumb:buildScrollbarHorizontalThumb(themeVariables)}),tiny_down_namespaceObject=__webpack_require__.p+"static/media/tiny-down.3be0c7b3.png",tiny_up_namespaceObject=__webpack_require__.p+"static/media/tiny-up.4217c516.png",TimeInputControl=styled_components_browser_esm.iv`
   display: flex;
   height: 20px;
   gap: 2px;
@@ -273,6 +275,7 @@
     &:before {
       content: '';
       background-image: url('${check_namespaceObject}');
+      image-rendering: pixelated;
       width: 7px;
       height: 7px;
       position: absolute;
@@ -305,6 +308,7 @@
   &:before {
     content: '';
     background-image: url('${down_namespaceObject}');
+    image-rendering: pixelated;
     width: 8px;
     height: 8px;
     position: absolute;
@@ -381,11 +385,30 @@
   font-size: 14px;
   font-family: sans-serif;
   flex-shrink: 0;
+  height: 25px;
   padding: 0;
   text-align: left;
   user-select: none;
   white-space: nowrap;
   width: 100%;
+  margin-bottom: -1px;
+`,buildMenuBarThrobber=themeVariables=>styled_components_browser_esm.iv`
+  align-self: end;
+  background-color: black;
+  background-image: ${({isAnimated})=>isAnimated?`url('${throbber_active_namespaceObject}')`:`url('${throbber_passive_namespaceObject}')`};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  box-shadow:
+    0 1px 0 ${themeVariables.shade4},
+    -1px 0 0 ${themeVariables.shade1},
+    -1px 1px 0 ${themeVariables.shade1},
+    -2px 0 0 ${themeVariables.shade4};
+  height: calc(100% - 1px);
+  image-rendering: pixelated;
+  margin-left: auto;
+  width: 38px;
+  position: relative;
 `,buildProgressBar=themeVariables=>styled_components_browser_esm.iv`
   ${common_generateBorders(1,themeVariables.shade1,themeVariables.shade4)}
   box-sizing: border-box;
@@ -502,8 +525,13 @@
   font-size: 12px;
   height: 100%;
 `,buildWell=themeVariables=>styled_components_browser_esm.iv`
-  ${generateGroovedStyles(themeVariables)}
-  padding: 4px;
+  ${generateIndentedStyles(themeVariables)}
+  background: ${themeVariables.shade1};
+  padding: 2px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  font-family: ${fontFamily};
 `,buildWindowContent=themeVariables=>styled_components_browser_esm.iv`
   ${generateIndentedStyles(themeVariables)};
   padding: 2px;
@@ -525,7 +553,7 @@
   flex-grow: 1;
 `,ComboBoxButton:buildComboBoxButton(themeVariables),ComboBoxOptions:buildComboBoxOptions(),ComboBoxOption:buildComboBoxOption(themeVariables),Divider:buildDivider(themeVariables),Fieldset:buildFieldset(themeVariables),FieldsetLegend:buildFieldsetLegend(themeVariables),Label:buildLabel(themeVariables),ListBoxButton:buildListBoxButton(themeVariables),ListBoxOptions:styled_components_browser_esm.iv`
   ${buildComboBoxOptions()}
-`,ListBoxOption:buildListBoxOption(themeVariables),MenuBar:buildMenuBar(themeVariables),ProgressBar:buildProgressBar(themeVariables),ProgressBarFill:buildProgressBarFill(themeVariables),...controls_buildScrollbars(themeVariables),StatusBar:styled_components_browser_esm.iv`
+`,ListBoxOption:buildListBoxOption(themeVariables),MenuBar:buildMenuBar(themeVariables),MenuBarThrobber:buildMenuBarThrobber(themeVariables),ProgressBar:buildProgressBar(themeVariables),ProgressBarFill:buildProgressBarFill(themeVariables),...controls_buildScrollbars(themeVariables),StatusBar:styled_components_browser_esm.iv`
   bottom: 0;
   box-sizing: border-box;
   display: flex;
@@ -735,6 +763,7 @@
   padding: 0 2px; // TODO: Icons
   user-select: none;
   width: 100%;
+  margin-bottom: 1px;
 `,buildWindowButton=themeVariables=>styled_components_browser_esm.iv`
   ${(themeVariables=>{const activeStyles=styled_components_browser_esm.iv`
     box-shadow: ${common_generateBorders(1,themeVariables.shade5,themeVariables.shade1)},
@@ -769,6 +798,7 @@
     top: 2px;
     width: 9px;
     height: 9px;
+    image-rendering: pixelated;
   }
 
   &:active:before {
@@ -816,4 +846,4 @@
     background-image: url('${close_namespaceObject}');
   }
 `,...resizeBorder_namespaceObject}),themeBuilder=({id,name,themeVariables,controls,elements,window})=>({id,name,controls:Object.assign({},controls_buildControls(themeVariables),controls),elements:Object.assign({},elements_buildElements(themeVariables),elements),window:Object.assign({},window_buildWindow(themeVariables),window),icons:src_icons}),vaporwin=themeBuilder({id:"vaporwin",name:"ウィンドウズ",themeVariables:{active:"rgb(10, 36, 106)",passive:"rgb(164, 81, 123)",background:'url("https://i.redd.it/k4o8nz5vfiyy.gif")',shade1:"rgb(255, 255, 255)",shade2:"rgb(253, 181, 218)",shade3:"rgb(253, 181, 218)",shade4:"rgb(164, 81, 123)",shade5:"rgb(164, 81, 123)",text:"rgb(0, 0, 0)",textDisabled:"rgb(164, 81, 123)",windowActiveBackground:"linear-gradient(90deg, #ff6ad5, #c774e8, #ad8cff, #8795e8, #94d0ff)",windowPassiveBackground:"gray",windowTitleText:"rgb(255, 255, 255)"}}),win2k=themeBuilder({id:"win2k",name:"Windows 2000",themeVariables:{active:"rgb(10,36,106)",passive:"rgb(128,128,128)",background:"rgb(58,110,165)",shade1:"rgb(255,255,255)",shade2:"rgb(212,208,200)",shade3:"rgb(212,208,200)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"linear-gradient(90deg, rgb(10,36,106), rgb(166,202,240))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(255,255,255)"}}),win9x_16bit=themeBuilder({id:"win9x-16bit",name:"Windows 9x, High Color 16-bit",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(120,124,120)",background:"rgb(0,124,120)",shade1:"rgb(247, 251, 247)",shade2:"rgb(216, 220, 216)",shade3:"rgb(184,188,184)",shade4:"rgb(120,124,120)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(120,124,120)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,120), rgb(8,128,200))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_16clr=themeBuilder({id:"win9x-16clr",name:"Windows 9x, 16 colors",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(120,124,120)",background:"rgb(0,124,120)",shade1:"rgb(247, 251, 247)",shade2:"rgb(216, 220, 216)",shade3:"rgb(184,188,184)",shade4:"rgb(120,124,120)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(120,124,120)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,120), rgb(8,128,200))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_32bit=themeBuilder({id:"win9x-32bit",name:"Windows 9x, True Color 32-bit",themeVariables:{active:"rgb(0,0,120)",passive:"rgb(128,128,128)",background:"rgb(0,128,128)",shade1:"rgb(255,255,255)",shade2:"rgb(223,223,223)",shade3:"rgb(192,192,192)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"linear-gradient(90deg, rgb(0,0,128), rgb(16,132,208))",windowPassiveBackground:"linear-gradient(90deg, rgb(120,124,120), rgb(176,176,176))",windowTitleText:"rgb(247, 251, 247)"}}),win9x_256clr=themeBuilder({id:"win9x-256clr",name:"Windows 9x, 256 colors",themeVariables:{active:"rgb(0,0,128)",passive:"rgb(128,128,128)",background:"rgb(0,128,128)",shade1:"rgb(255,255,255)",shade2:"rgb(192,192,192)",shade3:"rgb(192,192,192)",shade4:"rgb(128,128,128)",shade5:"rgb(0,0,0)",text:"rgb(0,0,0)",textDisabled:"rgb(128,128,128)",windowActiveBackground:"rgb(0,0,128)",windowPassiveBackground:"rgb(128,128,128)",windowTitleText:"rgb(247, 251, 247)"}}),_storybook_preview={parameters:{options:{storySort:{order:["Wisp",["Basics","Advanced Usage","Theming"],"controls"]}}},decorators:[(0,index_esm.iP)({themes:[win2k,win9x_16bit,win9x_16clr,win9x_32bit,win9x_256clr,vaporwin,index_esm.uH]}),index_esm._9]}},"./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$":(module,__unused_webpack_exports,__webpack_require__)=>{var map={"./AdvancedUsage.stories":["./stories/AdvancedUsage.stories.tsx",49],"./AdvancedUsage.stories.tsx":["./stories/AdvancedUsage.stories.tsx",49],"./Basics.stories":["./stories/Basics.stories.tsx",342],"./Basics.stories.tsx":["./stories/Basics.stories.tsx",342],"./Theming.stories":["./stories/Theming.stories.tsx",774],"./Theming.stories.tsx":["./stories/Theming.stories.tsx",774],"./controls/AddressBar.stories":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AddressBar.stories.tsx":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AlertText.stories":["./stories/controls/AlertText.stories.tsx",897],"./controls/AlertText.stories.tsx":["./stories/controls/AlertText.stories.tsx",897],"./controls/Button.stories":["./stories/controls/Button.stories.tsx",717],"./controls/Button.stories.tsx":["./stories/controls/Button.stories.tsx",717],"./controls/Checkbox.stories":["./stories/controls/Checkbox.stories.tsx",314],"./controls/Checkbox.stories.tsx":["./stories/controls/Checkbox.stories.tsx",314],"./controls/ComboBox.stories":["./stories/controls/ComboBox.stories.tsx",161],"./controls/ComboBox.stories.tsx":["./stories/controls/ComboBox.stories.tsx",161],"./controls/Divider.stories":["./stories/controls/Divider.stories.tsx",958],"./controls/Divider.stories.tsx":["./stories/controls/Divider.stories.tsx",958],"./controls/Fieldset.stories":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Fieldset.stories.tsx":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Label.stories":["./stories/controls/Label.stories.tsx",514],"./controls/Label.stories.tsx":["./stories/controls/Label.stories.tsx",514],"./controls/ListBox.stories":["./stories/controls/ListBox.stories.tsx",923],"./controls/ListBox.stories.tsx":["./stories/controls/ListBox.stories.tsx",923],"./controls/MenuBar.stories":["./stories/controls/MenuBar.stories.tsx",357],"./controls/MenuBar.stories.tsx":["./stories/controls/MenuBar.stories.tsx",357],"./controls/ProgressBar.stories":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ProgressBar.stories.tsx":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ScrollableContent.stories":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/ScrollableContent.stories.tsx":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/StatusBar.stories":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBar.stories.tsx":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBarSection.stories":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/StatusBarSection.stories.tsx":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/TextInput.stories":["./stories/controls/TextInput.stories.tsx",718],"./controls/TextInput.stories.tsx":["./stories/controls/TextInput.stories.tsx",718],"./controls/Textarea.stories":["./stories/controls/Textarea.stories.tsx",336],"./controls/Textarea.stories.tsx":["./stories/controls/Textarea.stories.tsx",336],"./controls/TimeInput.stories":["./stories/controls/TimeInput.stories.tsx",576],"./controls/TimeInput.stories.tsx":["./stories/controls/TimeInput.stories.tsx",576],"./controls/Toolbar.stories":["./stories/controls/Toolbar.stories.tsx",53],"./controls/Toolbar.stories.tsx":["./stories/controls/Toolbar.stories.tsx",53],"./controls/ToolbarButton.stories":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/ToolbarButton.stories.tsx":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/Well.stories":["./stories/controls/Well.stories.tsx",552],"./controls/Well.stories.tsx":["./stories/controls/Well.stories.tsx",552],"./controls/WindowContent.stories":["./stories/controls/WindowContent.stories.tsx",771],"./controls/WindowContent.stories.tsx":["./stories/controls/WindowContent.stories.tsx",771]};function webpackAsyncContext(req){if(!__webpack_require__.o(map,req))return Promise.resolve().then((()=>{var e=new Error("Cannot find module '"+req+"'");throw e.code="MODULE_NOT_FOUND",e}));var ids=map[req],id=ids[0];return __webpack_require__.e(ids[1]).then((()=>__webpack_require__(id)))}webpackAsyncContext.keys=()=>Object.keys(map),webpackAsyncContext.id="./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$",module.exports=webpackAsyncContext},"@storybook/channels":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CHANNELS__},"@storybook/client-logger":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CLIENT_LOGGER__},"@storybook/core-events":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CORE_EVENTS__},"@storybook/global":module=>{"use strict";module.exports=__STORYBOOK_MODULE_GLOBAL__},"@storybook/preview-api":module=>{"use strict";module.exports=__STORYBOOK_MODULE_PREVIEW_API__}},__webpack_require__=>{__webpack_require__.O(0,[776],(()=>{return moduleId="./storybook-config-entry.js",__webpack_require__(__webpack_require__.s=moduleId);var moduleId}));__webpack_require__.O()}]);
-//# sourceMappingURL=main.cdce2b3f.iframe.bundle.js.map
+//# sourceMappingURL=main.bc1683d4.iframe.bundle.js.map
