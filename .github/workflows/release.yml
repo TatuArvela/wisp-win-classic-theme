@@ -29,10 +29,10 @@ jobs:
         if: ${{ env.PUBLISH_ENABLED == 'true' }}
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
 
       - name: Release to npm (dry-run)
         if: ${{ env.PUBLISH_ENABLED == 'false' }}
         run: npm publish --dry-run
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
