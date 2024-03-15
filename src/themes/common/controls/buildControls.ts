@@ -405,6 +405,10 @@ const buildTextInputElement = (
   outline: none;
   padding: 4px 4px;
   width: 100%;
+
+  &:disabled {
+    background: ${themeVariables.shade3};
+  }
 `;
 
 const buildTextareaElement = (

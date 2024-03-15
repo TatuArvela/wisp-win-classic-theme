@@ -14,6 +14,7 @@ export const Default = {
   args: {
     label: 'Feedback:',
     inlineLabel: false,
+    disabled: false,
   },
   parameters: statefulProps('value', 'onChange', ''),
 };
