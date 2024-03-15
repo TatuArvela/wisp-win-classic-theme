@@ -16,6 +16,7 @@ import {
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
+import cursor from '../cursors/cursor';
 import generateBorders from '../generateBorders';
 import check from '../icons/check.png';
 import down from '../icons/down.png';
@@ -44,6 +45,7 @@ const buildAddressBar = () => css`
 `;
 
 const buildAddressBarInput = (themeVariables: ThemeVariables) => css`
+  ${cursor('text')};
   border: none;
   ${generateIndentedStyles(themeVariables)}
 
@@ -54,6 +56,7 @@ const buildAddressBarInput = (themeVariables: ThemeVariables) => css`
 `;
 
 const buildButton = (themeVariables: ThemeVariables) => css`
+  ${cursor('default')};
   ${generateButtonStyles(themeVariables)}
 
   border-radius: 0;
@@ -124,6 +127,7 @@ const buildComboBoxInput = () => css`
 const buildComboBoxButton = (
   themeVariables: ThemeVariables
 ) => css<ComboBoxButtonProps>`
+  ${cursor('default')};
   ${generateSmallButtonStyles(themeVariables)}
 
   width: 16px;
@@ -171,7 +175,7 @@ const buildComboBoxOption = (themeVariables: ThemeVariables) => css`
   font-family: sans-serif;
   font-size: 12px;
   padding: 4px;
-  cursor: pointer;
+  ${cursor('pointer')};
   &:hover {
     background: ${themeVariables.active};
     color: white;
@@ -222,6 +226,7 @@ const buildLabel = (themeVariables: ThemeVariables) => css<LabelProps>`
 const buildListBoxButton = (themeVariables: ThemeVariables) => css<{
   disabled?: boolean;
 }>`
+  ${cursor('default')};
   ${generateIndentedStyles(themeVariables)}
   background: ${themeVariables.shade1};
   border: none;
@@ -358,7 +363,7 @@ const buildStatusBar = () => css`
 
 const buildResizeHandle = (themeVariables: ThemeVariables) => css`
   bottom: -4px;
-  cursor: se-resize;
+  ${cursor('se-resize')}
   height: 18px;
   margin: 0;
   padding: 0;
@@ -389,6 +394,7 @@ const buildStatusBarSection = (
 const buildTextInputElement = (
   themeVariables: ThemeVariables
 ) => css<TextInputElementProps>`
+  ${cursor('text')};
   ${generateIndentedStyles(themeVariables)}
   border: none;
   box-sizing: border-box;
@@ -404,6 +410,7 @@ const buildTextInputElement = (
 const buildTextareaElement = (
   themeVariables: ThemeVariables
 ) => css<TextareaElementProps>`
+  ${cursor('text')};
   ${generateIndentedStyles(themeVariables)}
   border: none;
   box-sizing: border-box;
@@ -454,6 +461,7 @@ const generateToolbarButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 
   return css`
+    ${cursor('default')};
     background: ${themeVariables.shade3};
     border: none;
 

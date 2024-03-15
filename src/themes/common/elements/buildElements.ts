@@ -1,12 +1,14 @@
 import { TaskbarButtonProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
+import cursor from '../cursors/cursor';
 import generateBorders from '../generateBorders';
 import generateDitheredBackground from '../generateDitheredBackground';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { fontFamily, generateButtonStyles } from '../utils';
 
 const buildTaskbar = (themeVariables: ThemeVariables) => css`
+  ${cursor('default')}
   background: ${themeVariables.shade3};
   border-top: 1px solid ${themeVariables.shade3};
   bottom: 0;
@@ -43,6 +45,7 @@ const generateTaskbarButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 
   return css`
+    ${cursor('default')}
     background: ${themeVariables.shade3};
     border: none;
 
@@ -100,6 +103,7 @@ const buildTaskbarButtonIcon = () => css`
 `;
 
 const buildDesktop = (themeVariables: ThemeVariables) => css`
+  ${cursor('default')};
   background: ${themeVariables.background};
   background-size: 100% 100%;
   bottom: 0;

@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import cursor from '../cursors/cursor';
+
 const size = 5;
 const offset = -1;
 
@@ -14,7 +16,7 @@ export const NResize = css`
   left: ${offset}px;
   right: ${offset}px;
   height: ${size}px;
-  cursor: n-resize;
+  ${cursor('n-resize')};
 `;
 
 export const NEResize = css`
@@ -23,7 +25,7 @@ export const NEResize = css`
   right: ${offset}px;
   height: ${size * 2}px;
   width: ${size * 2}px;
-  cursor: ne-resize;
+  ${cursor('ne-resize')};
 `;
 
 export const EResize = css`
@@ -32,7 +34,7 @@ export const EResize = css`
   bottom: ${offset}px;
   right: ${offset}px;
   width: ${size}px;
-  cursor: e-resize;
+  ${cursor('e-resize')};
 `;
 
 export const SEResize = css`
@@ -41,7 +43,7 @@ export const SEResize = css`
   right: ${offset}px;
   height: ${size * 2}px;
   width: ${size * 2}px;
-  cursor: se-resize;
+  ${cursor('se-resize')};
 `;
 
 export const SResize = css`
@@ -50,7 +52,7 @@ export const SResize = css`
   left: ${offset}px;
   right: ${offset}px;
   height: ${size}px;
-  cursor: s-resize;
+  ${cursor('s-resize')};
 `;
 
 export const SWResize = css`
@@ -59,7 +61,7 @@ export const SWResize = css`
   left: ${offset}px;
   height: ${size * 2}px;
   width: ${size * 2}px;
-  cursor: sw-resize;
+  ${cursor('sw-resize')};
 `;
 
 export const WResize = css`
@@ -68,7 +70,7 @@ export const WResize = css`
   bottom: ${offset}px;
   left: ${offset}px;
   width: ${size}px;
-  cursor: w-resize;
+  ${cursor('w-resize')};
 `;
 
 export const NWResize = css`
@@ -77,5 +79,5 @@ export const NWResize = css`
   left: ${offset}px;
   height: ${size * 2}px;
   width: ${size * 2}px;
-  cursor: nw-resize;
+  ${cursor('nw-resize')};
 `;

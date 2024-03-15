@@ -1,6 +1,7 @@
 import { WindowElementProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
+import cursor from '../cursors/cursor';
 import generateBorders from '../generateBorders';
 import close from '../icons/close.png';
 import maximize from '../icons/maximize.png';
@@ -62,6 +63,7 @@ const buildWindowElement = (
   flex-direction: column;
   padding: 6px;
   position: absolute;
+  ${cursor('default')};
 
   &:before {
     background: ${themeVariables.shade3};
@@ -152,7 +154,8 @@ const generateWindowButtonStyles = (themeVariables: ThemeVariables) => {
 };
 
 const buildWindowButton = (themeVariables: ThemeVariables) => css`
-  ${generateWindowButtonStyles(themeVariables)}
+  ${cursor('default')};
+  ${generateWindowButtonStyles(themeVariables)};
 
   border-radius: 0;
   color: ${themeVariables.shade5};
