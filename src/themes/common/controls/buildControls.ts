@@ -281,10 +281,16 @@ const buildMenuBarThrobber = (
 `;
 
 const buildProgressBar = (themeVariables: ThemeVariables) => css`
-  ${generateBorders(1, themeVariables.shade1, themeVariables.shade4)}
+  --step-width: 8px;
+  box-shadow: ${generateBorders(
+    1,
+    themeVariables.shade4,
+    themeVariables.shade1
+  )};
+  padding: 2px;
   box-sizing: border-box;
   font-size: 12px;
-  height: 24px;
+  height: 16px;
   max-height: 100%;
   outline: none;
   overflow: hidden;
@@ -299,7 +305,7 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
 
     @keyframes indeterminate-progress-bar-fill-animation {
       0% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
       }
       100% {
         transform: translateX(200%);
@@ -307,25 +313,29 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
     }
   `;
 
-  const makeGradient = (color: string) => css`
+  const makeBlockStyle = (color: string) => css`
+    background-color: ${color};
+  `;
+
+  const makeStepsStyle = (color: string) => css`
     background-image: repeating-linear-gradient(
       to right,
-      ${color},
-      ${color} 10%,
-      ${themeVariables.shade3} 10%,
-      ${themeVariables.shade3} calc(10% + 2px)
+      ${color} 0px,
+      ${color} calc(var(--step-width) - 1px),
+      transparent calc(var(--step-width) - 1px),
+      transparent var(--step-width)
     );
   `;
 
   return css<ProgressBarFillProps>`
     height: 100%;
-    margin: 1px;
-    width: ${(props) =>
-      props.isIndeterminate ? (props.disabled ? '0%' : '50%') : undefined};
+    width: ${(props) => (props.disabled ? '0%' : 'calc(var(--width))')};
     ${(props) =>
-      makeGradient(
-        props.disabled ? themeVariables.shade5 : themeVariables.active
-      )}
+      props.variant === 'block'
+        ? makeBlockStyle(themeVariables.shade5)
+        : makeStepsStyle(
+            props.disabled ? themeVariables.shade5 : themeVariables.active
+          )}
 
     ${(props) =>
       !props.disabled && props.isIndeterminate && indeterminateStyle});
