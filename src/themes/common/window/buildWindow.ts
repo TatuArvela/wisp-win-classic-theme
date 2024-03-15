@@ -61,13 +61,13 @@ const buildWindowElement = (
   color: ${themeVariables.text};
   display: flex;
   flex-direction: column;
-  padding: 6px;
+  padding: 4px;
   position: absolute;
   ${cursor('default')};
 
   &:before {
     background: ${themeVariables.shade3};
-    bottom: 2px;
+    bottom: 0;
     box-shadow: ${generateBorders(
         1,
         themeVariables.shade3,
@@ -75,11 +75,11 @@ const buildWindowElement = (
       )},
       ${generateBorders(2, themeVariables.shade1, themeVariables.shade4)};
     content: '';
-    left: 2px;
+    left: 0;
     pointer-events: none;
     position: absolute;
-    right: 2px;
-    top: 2px;
+    right: 0;
+    top: 0;
     z-index: -1;
   }
 
@@ -119,8 +119,8 @@ const buildTitleBarButtons = () => css`
   box-sizing: border-box;
   display: flex;
   position: absolute;
-  right: 8px;
-  top: 4px;
+  right: 6px;
+  top: 2px;
   margin: 0;
 `;
 
