@@ -1,7 +1,7 @@
 {
-  "name": "wisp-win-classic-theme",
+  "name": "@tatuarvela/wisp-win-classic-theme",
   "version": "0.1.0",
-  "description": "Win Classic theme for Wisp",
+  "description": "Wisp win-classic theme",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -10,6 +10,9 @@
   ],
   "sideEffects": false,
   "repository": "https://github.com/TatuArvela/wisp-win-classic-theme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "author": {
     "name": "Tatu Arvela",
     "email": "tatu@tatuarvela.com",
