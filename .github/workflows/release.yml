@@ -6,11 +6,11 @@ on:
 
 jobs:
   release-npm:
-    name: Release ${{ github.event.repository.name }} ${{ github.ref }} to npm
-    if: ${{ secrets.NPM_JOB_ENABLED == 'true' }}
+    name: Release ${{ github.event.repository.name }} ${{ github.ref_name }} to npm
     runs-on: ubuntu-latest
+    if: ${{ vars.NPM_JOB_ENABLED == 'true' }}
     env:
-      NPM_PUBLISH_ENABLED: ${{ secrets.NPM_PUBLISH_ENABLED == 'true' }}
+      NPM_PUBLISH_ENABLED: ${{ vars.NPM_PUBLISH_ENABLED == 'true' }}
 
     steps:
       - name: Checkout
@@ -40,11 +40,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   release-packages:
-    name: Release ${{ github.event.repository.name }} ${{ github.ref }} to GitHub Packages
-    if: ${{ secrets.PACKAGES_JOB_ENABLED == 'true' }}
+    name: Release ${{ github.event.repository.name }} ${{ github.ref_name }} to GitHub Packages
     runs-on: ubuntu-latest
+    if: ${{ vars.PACKAGES_JOB_ENABLED == 'true' }}
     env:
-      PACKAGES_PUBLISH_ENABLED: ${{ secrets.PACKAGES_PUBLISH_ENABLED == 'true' }}
+      PACKAGES_PUBLISH_ENABLED: ${{ vars.PACKAGES_PUBLISH_ENABLED == 'true' }}
 
     steps:
       - name: Checkout
