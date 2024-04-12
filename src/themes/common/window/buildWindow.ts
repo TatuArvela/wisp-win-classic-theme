@@ -147,7 +147,7 @@ const generateWindowButtonStyles = (themeVariables: ThemeVariables) => {
 
     ${(props) =>
       (props as unknown as { active?: boolean })?.active && activeStyles};
-    &:active {
+    &:not(:disabled):active {
       ${activeStyles}
     }
   `;
@@ -166,7 +166,8 @@ const buildWindowButton = (themeVariables: ThemeVariables) => css`
   position: relative;
   width: 16px;
 
-  &:before {
+  &:before,
+  &:after {
     content: '';
     left: 3px;
     pointer-events: none;
@@ -177,26 +178,48 @@ const buildWindowButton = (themeVariables: ThemeVariables) => css`
     image-rendering: pixelated;
   }
 
-  &:active:before {
+  &:not(:disabled) {
+    &:after {
+      display: none;
+    }
+  }
+
+  &:not(:disabled):active:before {
     left: 4px;
     top: 3px;
+  }
+
+  &:disabled {
+    &:before {
+      left: 4px;
+      top: 3px;
+      filter: invert(1);
+    }
+    &:after {
+      display: block;
+      content: '';
+      filter: contrast(2.5%);
+    }
   }
 `;
 
 const buildMinimizeButton = () => css`
-  &:before {
+  &:before,
+  &:after {
     background-image: url('${minimize}');
   }
 `;
 
 const buildMaximizeButton = () => css`
-  &:before {
+  &:before,
+  &:after {
     background-image: url('${maximize}');
   }
 `;
 
 const buildUnmaximizeButton = () => css`
-  &:before {
+  &:before,
+  &:after {
     background-image: url('${restore}');
   }
 `;
@@ -204,7 +227,8 @@ const buildUnmaximizeButton = () => css`
 const buildCloseButton = () => css`
   margin-left: 2px;
 
-  &:before {
+  &:before,
+  &:after {
     background-image: url('${close}');
   }
 `;
