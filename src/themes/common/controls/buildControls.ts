@@ -115,13 +115,16 @@ const buildComboBoxControl = (themeVariables: ThemeVariables) => css`
   ${generateIndentedStyles(themeVariables)}
   padding: 2px;
   display: flex;
+  height: 18px;
 `;
 
-const buildComboBoxInput = () => css`
+const buildComboBoxInput = (themeVariables: ThemeVariables) => css`
   outline: none;
   font-size: 12px;
   border: none;
   flex-grow: 1;
+  background: ${themeVariables.shade1};
+  padding: 2px 4px;
 `;
 
 const buildComboBoxButton = (
@@ -133,9 +136,6 @@ const buildComboBoxButton = (
   width: 16px;
   position: relative;
   box-sizing: border-box;
-  margin-top: 1px;
-  margin-bottom: 1px;
-  margin-right: 1px;
 
   &:before {
     content: '';
@@ -144,14 +144,14 @@ const buildComboBoxButton = (
     width: 8px;
     height: 8px;
     position: absolute;
-    top: 3px;
-    left: 3px;
+    top: 5px;
+    left: 4px;
   }
 
   &:active {
     &:before {
-      top: 4px;
-      left: 4px;
+      top: 6px;
+      left: 5px;
     }
   }
 `;
@@ -161,13 +161,9 @@ const buildComboBoxOptions = () => css<ComboBoxOptionsProps>`
   border: 1px solid black;
   box-sizing: border-box;
   display: ${(props) => `${props.open ? 'block' : 'none'}`};
-  left: ${(props) => `${props.left}`}px;
   margin: 0;
   padding: 0;
-  position: fixed;
-  top: ${(props) => `${props.top + 1}`}px;
-  width: ${(props) => `${props.width + 14}`}px;
-  z-index: 100;
+  position: relative;
 `;
 
 const buildComboBoxOption = (themeVariables: ThemeVariables) => css`
@@ -223,21 +219,14 @@ const buildLabel = (themeVariables: ThemeVariables) => css<LabelProps>`
   margin: 0;
 `;
 
-const buildListBoxButton = (themeVariables: ThemeVariables) => css<{
-  disabled?: boolean;
-}>`
-  ${cursor('default')};
-  ${generateIndentedStyles(themeVariables)}
-  background: ${themeVariables.shade1};
-  border: none;
-  box-sizing: border-box;
-  display: flex;
-  height: 24px;
-  padding: 3px;
-  font-size: 12px;
-  position: relative;
-  width: 100%;
-`;
+const buildListBoxControl = (themeVariables: ThemeVariables) =>
+  buildComboBoxControl(themeVariables);
+
+const buildListBoxValue = (themeVariables: ThemeVariables) =>
+  buildComboBoxInput(themeVariables);
+
+const buildListBoxButton = (themeVariables: ThemeVariables) =>
+  buildComboBoxButton(themeVariables);
 
 const buildListBoxOptions = () => css<ListBoxOptionsProps>`
   ${buildComboBoxOptions()}
@@ -516,7 +505,7 @@ const buildControls = (
   CheckboxWrapper: buildCheckboxWrapper(),
   Checkbox: buildCheckbox(themeVariables),
   ComboBoxControl: buildComboBoxControl(themeVariables),
-  ComboBoxInput: buildComboBoxInput(),
+  ComboBoxInput: buildComboBoxInput(themeVariables),
   ComboBoxButton: buildComboBoxButton(themeVariables),
   ComboBoxOptions: buildComboBoxOptions(),
   ComboBoxOption: buildComboBoxOption(themeVariables),
@@ -524,6 +513,8 @@ const buildControls = (
   Fieldset: buildFieldset(themeVariables),
   FieldsetLegend: buildFieldsetLegend(themeVariables),
   Label: buildLabel(themeVariables),
+  ListBoxControl: buildListBoxControl(themeVariables),
+  ListBoxValue: buildListBoxValue(themeVariables),
   ListBoxButton: buildListBoxButton(themeVariables),
   ListBoxOptions: buildListBoxOptions(),
   ListBoxOption: buildListBoxOption(themeVariables),
