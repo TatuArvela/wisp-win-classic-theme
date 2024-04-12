@@ -1,7 +1,12 @@
 import { Preview } from '@storybook/react';
 import { statefulPropsDecorator, defaultTheme, storybookConfigContextDecorator } from '@tatuarvela/wisp';
-
-import themes from '../src/themes';
+import {
+  vaporwin,
+  win2k,
+  win9x16Bit, win9x16Colors,
+  win9x24Bit, win9x256Colors,
+  win9x32Bit
+} from "../src/themes";
 
 const preview: Preview = {
   parameters: {
@@ -14,13 +19,13 @@ const preview: Preview = {
   decorators: [
     storybookConfigContextDecorator({
       themes: [
-        themes["win9x-16-colors"],
-        themes["win9x-256-colors"],
-        themes["win9x-16-bit"],
-        themes["win9x-24-bit"],
-        themes["win9x-32-bit"],
-        themes["win2k"],
-        themes["vaporwin"],
+        win9x16Colors,
+        win9x256Colors,
+        win9x16Bit,
+        win9x24Bit,
+        win9x32Bit,
+        win2k,
+        vaporwin,
         defaultTheme,
       ],
     }),
