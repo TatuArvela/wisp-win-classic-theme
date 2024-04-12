@@ -21,7 +21,7 @@ export const generateIndentedStyles = (themeVariables: ThemeVariables) => css`
       themeVariables.shade4,
       themeVariables.shade1
     )},
-    ${generateBorders(2, themeVariables.shade5, themeVariables.shade3)};
+    ${generateBorders(2, themeVariables.shade5, themeVariables.shade2)};
 `;
 
 export const generateButtonStyles = (themeVariables: ThemeVariables) => {
@@ -79,7 +79,7 @@ export const generateSmallButtonStyles = (themeVariables: ThemeVariables) => {
         themeVariables.shade4,
         themeVariables.shade4
       )},
-      ${generateBorders(2, themeVariables.shade3, themeVariables.shade3)};
+      ${generateBorders(2, themeVariables.shade3, themeVariables.shade2)};
 
     > * {
       position: relative;
@@ -94,7 +94,7 @@ export const generateSmallButtonStyles = (themeVariables: ThemeVariables) => {
 
     box-shadow: ${generateBorders(
         1,
-        themeVariables.shade3,
+        themeVariables.shade2,
         themeVariables.shade5
       )},
       ${generateBorders(2, themeVariables.shade1, themeVariables.shade4)};

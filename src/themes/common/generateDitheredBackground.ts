@@ -24,6 +24,7 @@ const generateDitheredBackground = (color1: string, color2: string) => {
   return css`
     background-image: url('${image}');
     background-size: 2px 2px;
+    image-rendering: pixelated;
   `;
 };
 

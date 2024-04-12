@@ -2,26 +2,26 @@ import generateTitleGradient from './common/generateTitleGradient';
 import { themeBuilder } from './common/themeBuilder';
 
 const theme = themeBuilder({
-  id: 'win2k',
-  name: 'Windows 2000',
+  id: 'win9x-32-bit',
+  name: 'Windows 9x, True Color 32-bit',
   themeVariables: {
-    active: 'rgb(10 36 106)',
+    active: 'rgb(0 0 128)',
     passive: 'rgb(128 128 128)',
-    background: 'rgb(58 110 165)',
+    background: 'rgb(0 128 128)',
     shade1: 'rgb(255 255 255)',
-    shade2: 'rgb(212 208 200)',
-    shade3: 'rgb(212 208 200)',
+    shade2: 'rgb(223 223 223)',
+    shade3: 'rgb(192 192 192)',
     shade4: 'rgb(128 128 128)',
     shade5: 'rgb(0 0 0)',
     text: 'rgb(0 0 0)',
     textDisabled: 'rgb(128 128 128)',
     windowActiveBackground: generateTitleGradient(
-      'rgb(10 36 106)',
-      'rgb(166 202 240)'
+      'rgb(0 0 128)',
+      'rgb(16 132 208)'
     ),
     windowPassiveBackground: generateTitleGradient(
-      'rgb(120 124 120)',
-      'rgb(176 176 176)'
+      'rgb(128 128 128)',
+      'rgb(181 181 181)'
     ),
     windowTitleText: 'rgb(255 255 255)',
   },

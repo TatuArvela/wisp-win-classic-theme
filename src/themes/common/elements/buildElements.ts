@@ -5,12 +5,12 @@ import cursor from '../cursors/cursor';
 import generateBorders from '../generateBorders';
 import generateDitheredBackground from '../generateDitheredBackground';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
-import { fontFamily, generateButtonStyles } from '../utils';
+import { fontFamily } from '../utils';
 
 const buildTaskbar = (themeVariables: ThemeVariables) => css`
   ${cursor('default')}
   background: ${themeVariables.shade3};
-  border-top: 1px solid ${themeVariables.shade3};
+  border-top: 1px solid ${themeVariables.shade2};
   bottom: 0;
   box-shadow: inset 0 1px 0 0 ${themeVariables.shade1};
   box-sizing: border-box;
@@ -28,7 +28,7 @@ const buildTaskbar = (themeVariables: ThemeVariables) => css`
 
 const generateTaskbarButtonStyles = (themeVariables: ThemeVariables) => {
   const activeStyles = css`
-    ${generateDitheredBackground(themeVariables.shade3, themeVariables.shade1)};
+    ${generateDitheredBackground(themeVariables.shade2, themeVariables.shade1)};
     box-shadow: ${generateBorders(
         1,
         themeVariables.shade5,

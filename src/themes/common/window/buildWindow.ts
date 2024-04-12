@@ -70,7 +70,7 @@ const buildWindowElement = (
     bottom: 0;
     box-shadow: ${generateBorders(
         1,
-        themeVariables.shade3,
+        themeVariables.shade2,
         themeVariables.shade5
       )},
       ${generateBorders(2, themeVariables.shade1, themeVariables.shade4)};

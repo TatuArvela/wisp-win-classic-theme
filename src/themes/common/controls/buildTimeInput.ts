@@ -74,7 +74,7 @@ const generateButtonStyles = (themeVariables: ThemeVariables) => {
         themeVariables.shade5,
         themeVariables.shade1
       )},
-      ${generateBorders(2, themeVariables.shade4, themeVariables.shade3)};
+      ${generateBorders(2, themeVariables.shade4, themeVariables.shade2)};
 
     > * {
       display: inline-block;
@@ -93,7 +93,7 @@ const generateButtonStyles = (themeVariables: ThemeVariables) => {
         themeVariables.shade1,
         themeVariables.shade5
       )},
-      ${generateBorders(2, themeVariables.shade3, themeVariables.shade4)};
+      ${generateBorders(2, themeVariables.shade2, themeVariables.shade4)};
 
     ${(props) =>
       (props as unknown as { active?: boolean })?.active && activeStyles};
