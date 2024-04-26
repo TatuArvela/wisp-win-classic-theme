@@ -1,10 +1,9 @@
-import React from 'react';
-
 import {
   AlertWindow,
   ThemeSwitcher as ThemeSwitcherComponent,
   Wisp,
 } from '@tatuarvela/wisp';
+import React from 'react';
 
 export default {
   component: Wisp,
