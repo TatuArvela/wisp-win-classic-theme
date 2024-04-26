@@ -98,17 +98,18 @@ const buildTitleBar = (themeVariables: ThemeVariables) => css<TitleBarProps>`
       : themeVariables.windowPassiveBackground};
   box-sizing: border-box;
   color: ${themeVariables.windowTitleText};
-  flex-shrink: 0;
   display: flex;
+  flex-shrink: 0;
   font-family: ${fontFamily};
   font-size: 12px;
   font-weight: bold;
-  line-height: 18px;
   height: 18px;
-  padding: 0 2px; // TODO: Icons
+  image-rendering: pixelated;
+  line-height: 18px;
+  margin-bottom: 1px;
+  padding: 0 2px;
   user-select: none;
   width: 100%;
-  margin-bottom: 1px;
 `;
 
 const buildTitleBarTitle = () => css`

@@ -418,15 +418,15 @@ const buildTextareaElement = (
 `;
 
 const buildToolbar = (themeVariables: ThemeVariables) => css<ToolbarProps>`
-  background: ${themeVariables.shade3};
   ${generateGroovedStyles(themeVariables)}
+  background: ${themeVariables.shade3};
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 4px;
   padding: 2px;
   text-align: left;
   width: 100%;
-  margin-bottom: 4px;
 `;
 
 const generateToolbarButtonStyles = (themeVariables: ThemeVariables) => {
@@ -476,6 +476,7 @@ const buildToolbarButton = (
   ${generateToolbarButtonStyles(themeVariables)}
   font-size: 12px;
   height: 100%;
+  image-rendering: pixelated;
 `;
 
 const buildWell = (themeVariables: ThemeVariables) => css`

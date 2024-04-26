@@ -14,7 +14,7 @@ const buildTaskbar = (themeVariables: ThemeVariables) => css`
   bottom: 0;
   box-shadow: inset 0 1px 0 0 ${themeVariables.shade1};
   box-sizing: border-box;
-  display: inline-block;
+  display: flex;
   font-size: 16px;
   height: 28px;
   left: 0;
