@@ -96,10 +96,11 @@ const buildTaskbarButton = (themeVariables: ThemeVariables) => {
 const buildTaskbarButtonIcon = () => css`
   display: block;
   height: 16px;
-  width: 16px;
+  image-rendering: pixelated;
   margin-right: 4px;
   position: relative;
   top: 1px;
+  width: 16px;
 `;
 
 const buildDesktop = (themeVariables: ThemeVariables) => css`
