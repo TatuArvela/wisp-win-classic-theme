@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 
 import cursor from '../cursors/cursor';
 import generateBorders from '../generateBorders';
+import generateColorFilter from '../generateColorFilter';
 import close from '../icons/close.png';
 import maximize from '../icons/maximize.png';
 import minimize from '../icons/minimize.png';
@@ -199,7 +200,7 @@ const buildWindowButton = (themeVariables: ThemeVariables) => css`
     &:after {
       display: block;
       content: '';
-      filter: contrast(2.5%);
+      ${generateColorFilter(themeVariables.shade4)};
     }
   }
 `;
