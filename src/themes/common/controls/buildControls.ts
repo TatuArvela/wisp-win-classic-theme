@@ -53,6 +53,7 @@ const buildAddressBarInput = (themeVariables: ThemeVariables) => css`
   width: 100%;
   flex-grow: 1;
   font-size: 12px;
+  height: 20px;
 `;
 
 const buildButton = (themeVariables: ThemeVariables) => css`
