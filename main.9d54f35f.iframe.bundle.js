@@ -55,14 +55,14 @@
   position: relative;
 
   &:before {
-    content: '';
-    image-rendering: pixelated;
     background-image: url('${icon}');
-    width: 8px;
+    content: '';
     height: 8px;
+    image-rendering: pixelated;
+    left: 4px;
     position: absolute;
     top: 4px;
-    left: 4px;
+    width: 8px;
   }
 
   &:active {
@@ -178,14 +178,15 @@
   width: 15px;
 
   &:before {
+    background-image: url('${tiny_up_namespaceObject}');
     content: '';
     display: block;
-    position: relative;
-    background-image: url('${tiny_up_namespaceObject}');
     height: 3px;
-    width: 3px;
+    image-rendering: pixelated;
     left: 3px;
+    position: relative;
     top: -1px;
+    width: 3px;
   }
 `,buildTimeInputDecreaseButton=themeVariables=>styled_components_browser_esm.iv`
   ${buildTimeInput_generateButtonStyles(themeVariables)}
@@ -198,14 +199,15 @@
   width: 15px;
 
   &:before {
+    background-image: url('${tiny_down_namespaceObject}');
     content: '';
     display: block;
-    position: relative;
-    background-image: url('${tiny_down_namespaceObject}');
     height: 3px;
-    width: 3px;
+    image-rendering: pixelated;
     left: 3px;
+    position: relative;
     top: -1px;
+    width: 3px;
   }
 `,controls_buildTimeInput=themeVariables=>({TimeInputControl,TimeInputField:buildTimeInputField(themeVariables),TimeInputValue:buildTimeInputValue(themeVariables),TimeInputSeparator,TimeInputButtons:styled_components_browser_esm.iv`
   display: flex;
@@ -280,14 +282,14 @@
     ${props=>props.inlineLabel&&inlineStyle}
   `},buildCheckbox=themeVariables=>{const checkedStyle=styled_components_browser_esm.iv`
     &:before {
-      content: '';
       background-image: url('${check_namespaceObject}');
-      image-rendering: pixelated;
-      width: 7px;
+      content: '';
       height: 7px;
+      image-rendering: pixelated;
+      left: 3px;
       position: absolute;
       top: 3px;
-      left: 3px;
+      width: 7px;
     }
   `;return styled_components_browser_esm.iv`
     ${generateIndentedStyles(themeVariables)}
@@ -319,14 +321,14 @@
   box-sizing: border-box;
 
   &:before {
-    content: '';
     background-image: url('${down_namespaceObject}');
-    image-rendering: pixelated;
-    width: 8px;
+    content: '';
     height: 8px;
+    image-rendering: pixelated;
+    left: 4px;
     position: absolute;
     top: 5px;
-    left: 4px;
+    width: 8px;
   }
 
   &:active {
@@ -445,6 +447,7 @@
       transparent var(--step-width)
     );
   `)(props.disabled?themeVariables.shade5:themeVariables.active);var color}}
+    image-rendering: pixelated;
 
     ${props=>!props.disabled&&props.isIndeterminate&&indeterminateStyle});
   `},buildResizeHandle=themeVariables=>styled_components_browser_esm.iv`
@@ -663,7 +666,7 @@
   right: 0;
   text-align: right;
   user-select: none;
-`}),close_namespaceObject=__webpack_require__.p+"static/media/close.eb481f5e.png",maximize_namespaceObject=__webpack_require__.p+"static/media/maximize.15fe9091.png",minimize_namespaceObject=__webpack_require__.p+"static/media/minimize.58b293c2.png",restore_namespaceObject=__webpack_require__.p+"static/media/restore.1cb0d0ba.png",sharedStyle=styled_components_browser_esm.iv`
+`}),createColor=(r,g,b)=>({r:clamp(r),g:clamp(g),b:clamp(b)}),parseColor=color=>{const match=color.match(/rgb\((\d+),?\s*(\d+),?\s*(\d+)\)/);if(!match)throw new Error("Invalid color format. Use 'rgb(r, g, b)' or 'rgb(r g b)'");const r=parseInt(match[1]),g=parseInt(match[2]),b=parseInt(match[3]);return createColor(r,g,b)},clamp=value=>Math.max(0,Math.min(255,value)),multiply=(color,matrix)=>{const newR=clamp(color.r*matrix[0]+color.g*matrix[1]+color.b*matrix[2]),newG=clamp(color.r*matrix[3]+color.g*matrix[4]+color.b*matrix[5]),newB=clamp(color.r*matrix[6]+color.g*matrix[7]+color.b*matrix[8]);return createColor(newR,newG,newB)},linear=(color,slope=1,intercept=0)=>createColor(clamp(color.r*slope+255*intercept),clamp(color.g*slope+255*intercept),clamp(color.b*slope+255*intercept)),hsl=color=>{const r=color.r/255,g=color.g/255,b=color.b/255,max=Math.max(r,g,b),min=Math.min(r,g,b);let h,s,l=(max+min)/2;if(max===min)h=s=0;else{const d=max-min;switch(s=l>.5?d/(2-max-min):d/(max+min),max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4}h/=6}return{h:100*h,s:100*s,l:100*l}},fix=(value,idx)=>{let max=100;return 2===idx?max=7500:4!==idx&&5!==idx||(max=200),3===idx?value>max?value%=max:value<0&&(value=max+value%max):value<0?value=0:value>max&&(value=max),value},loss=(target,color,filters)=>{let tempColor=color;tempColor=((color,value=1)=>createColor(clamp(255*(value+color.r/255*(1-2*value))),clamp(255*(value+color.g/255*(1-2*value))),clamp(255*(value+color.b/255*(1-2*value)))))(tempColor,filters[0]/100),tempColor=((color,value=1)=>multiply(color,[.393+.607*(1-value),.769-.769*(1-value),.189-.189*(1-value),.349-.349*(1-value),.686+.314*(1-value),.168-.168*(1-value),.272-.272*(1-value),.534-.534*(1-value),.131+.869*(1-value)]))(tempColor,filters[1]/100),tempColor=((color,value=1)=>multiply(color,[.213+.787*value,.715-.715*value,.072-.072*value,.213-.213*value,.715+.285*value,.072-.072*value,.213-.213*value,.715-.715*value,.072+.928*value]))(tempColor,filters[2]/100),tempColor=((color,angle=0)=>{angle=angle/180*Math.PI;const sin=Math.sin(angle),cos=Math.cos(angle);return multiply(color,[.213+.787*cos-.213*sin,.715-.715*cos-.715*sin,.072-.072*cos+.928*sin,.213-.213*cos+.143*sin,.715+.285*cos+.14*sin,.072-.072*cos-.283*sin,.213-.213*cos-.787*sin,.715-.715*cos+.715*sin,.072+.928*cos+.072*sin])})(tempColor,3.6*filters[3]),tempColor=((color,value=1)=>linear(color,value))(tempColor,filters[4]/100),tempColor=((color,value=1)=>linear(color,value,-.5*value+.5))(tempColor,filters[5]/100);const colorHSL=hsl(tempColor),targetHSL=hsl(target);return Math.abs(tempColor.r-target.r)+Math.abs(tempColor.g-target.g)+Math.abs(tempColor.b-target.b)+Math.abs(colorHSL.h-targetHSL.h)+Math.abs(colorHSL.s-targetHSL.s)+Math.abs(colorHSL.l-targetHSL.l)},spsa=(target,color,A,a,c,values,iters)=>{let best=null,bestLoss=1/0;const deltas=new Array(6),highArgs=new Array(6),lowArgs=new Array(6);for(let k=0;k<iters;k++){const ck=c/Math.pow(k+1,.16666666666666666);for(let i=0;i<6;i++)deltas[i]=Math.random()>.5?1:-1,highArgs[i]=values[i]+ck*deltas[i],lowArgs[i]=values[i]-ck*deltas[i];const lossDiff=loss(target,color,highArgs)-loss(target,color,lowArgs);for(let i=0;i<6;i++){const g=lossDiff/(2*ck)*deltas[i],ak=a[i]/Math.pow(A+k+1,1);values[i]=fix(values[i]-ak*g,i)}const currentLoss=loss(target,color,values);currentLoss<bestLoss&&(best=values.slice(0),bestLoss=currentLoss)}return{values:best,loss:bestLoss}},common_generateColorFilter=targetColor=>{const target=parseColor(targetColor),color=parseColor("rgb(0 0 0)"),wide=((target,color)=>{const a=[60,180,18e3,600,1.2,1.2];let best={loss:1/0,values:[]};for(let i=0;best.loss>25&&i<3;i++){const result=spsa(target,color,5,a,15,[50,20,3750,50,100,100],1e3);result.loss<best.loss&&(best=result)}return best})(target,color),result=((target,color,wide)=>{const A=wide.loss,A1=A+1;return spsa(target,color,A,[.25*A1,.25*A1,A1,.25*A1,.2*A1,.2*A1],2,wide.values,500)})(target,color,wide);return(filters=>{const fmt=(idx,multiplier=1)=>Math.round(filters[idx]*multiplier);return`filter: invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3,3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`})(result.values)},close_namespaceObject=__webpack_require__.p+"static/media/close.eb481f5e.png",maximize_namespaceObject=__webpack_require__.p+"static/media/maximize.15fe9091.png",minimize_namespaceObject=__webpack_require__.p+"static/media/minimize.58b293c2.png",restore_namespaceObject=__webpack_require__.p+"static/media/restore.1cb0d0ba.png",sharedStyle=styled_components_browser_esm.iv`
   box-sizing: border-box;
   position: absolute;
 `,NResize=styled_components_browser_esm.iv`
@@ -803,13 +806,13 @@
   &:before,
   &:after {
     content: '';
+    height: 9px;
+    image-rendering: pixelated;
     left: 3px;
     pointer-events: none;
     position: absolute;
     top: 2px;
     width: 9px;
-    height: 9px;
-    image-rendering: pixelated;
   }
 
   &:not(:disabled) {
@@ -832,7 +835,7 @@
     &:after {
       display: block;
       content: '';
-      filter: contrast(2.5%);
+      ${common_generateColorFilter(themeVariables.shade4)};
     }
   }
 `,window_buildWindow=themeVariables=>({TitleBarTitle:styled_components_browser_esm.iv`
@@ -880,4 +883,4 @@
     background-image: url('${close_namespaceObject}');
   }
 `,...resizeBorder_namespaceObject}),themeBuilder=({id,name,themeVariables,controls,elements,window})=>({id,name,controls:Object.assign({},controls_buildControls(themeVariables),controls),elements:Object.assign({},elements_buildElements(themeVariables),elements),window:Object.assign({},window_buildWindow(themeVariables),window),icons:src_icons}),win9x_16_colors=themeBuilder({id:"win9x-16-colors",name:"Windows 9x, 16 colors",themeVariables:{active:"rgb(0 0 168)",passive:"rgb(135 136 143)",background:"rgb(87 168 168)",shade1:"rgb(255 255 255)",shade2:"rgb(192 199 200)",shade3:"rgb(192 199 200)",shade4:"rgb(135 136 143)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(135 136 143)",windowActiveBackground:"rgb(0 0 168)",windowPassiveBackground:"rgb(135 136 143)",windowTitleText:"rgb(255 255 255)"}}),win9x_256_colors=themeBuilder({id:"win9x-256-colors",name:"Windows 9x, 256 colors",themeVariables:{active:"rgb(0 0 128)",passive:"rgb(128 128 128)",background:"rgb(0 128 128)",shade1:"rgb(255 255 255)",shade2:"rgb(192 192 192)",shade3:"rgb(192 192 192)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:"rgb(0 0 128)",windowPassiveBackground:"rgb(128 128 128)",windowTitleText:"rgb(255 255 255)"}}),common_generateTitleGradient=(color1,color2)=>`linear-gradient(90deg, ${color1}, ${color2})`,win9x_16_bit=themeBuilder({id:"win9x-16-bit",name:"Windows 9x, High Color 16-bit",themeVariables:{active:"rgb(0 0 120)",passive:"rgb(120 124 120)",background:"rgb(0 124 120)",shade1:"rgb(248 252 248)",shade2:"rgb(216  220  216)",shade3:"rgb(184 188 184)",shade4:"rgb(120 124 120)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(120 124 120)",windowActiveBackground:common_generateTitleGradient("rgb(0 0 120)","rgb(8 128 200)"),windowPassiveBackground:common_generateTitleGradient("rgb(120 124 120)","rgb(176 176 176)"),windowTitleText:"rgb(248 252 248)"}}),win9x_24_bit=themeBuilder({id:"win9x-24-bit",name:"Windows 9x, True Color 24-bit",themeVariables:{active:"rgb(0 0 128)",passive:"rgb(128 128 128)",background:"rgb(0 128 128)",shade1:"rgb(255 255 255)",shade2:"rgb(223 223 223)",shade3:"rgb(192 192 192)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:common_generateTitleGradient("rgb(0 0 128)","rgb(16 132 208)"),windowPassiveBackground:common_generateTitleGradient("rgb(128 128 128)","rgb(181 181 181)"),windowTitleText:"rgb(255 255 255)"}}),win9x_32_bit=themeBuilder({id:"win9x-32-bit",name:"Windows 9x, True Color 32-bit",themeVariables:{active:"rgb(0 0 128)",passive:"rgb(128 128 128)",background:"rgb(0 128 128)",shade1:"rgb(255 255 255)",shade2:"rgb(223 223 223)",shade3:"rgb(192 192 192)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:common_generateTitleGradient("rgb(0 0 128)","rgb(16 132 208)"),windowPassiveBackground:common_generateTitleGradient("rgb(128 128 128)","rgb(181 181 181)"),windowTitleText:"rgb(255 255 255)"}}),win2k=themeBuilder({id:"win2k",name:"Windows 2000",themeVariables:{active:"rgb(10 36 106)",passive:"rgb(128 128 128)",background:"rgb(58 110 165)",shade1:"rgb(255 255 255)",shade2:"rgb(212 208 200)",shade3:"rgb(212 208 200)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:common_generateTitleGradient("rgb(10 36 106)","rgb(166 202 240)"),windowPassiveBackground:common_generateTitleGradient("rgb(120 124 120)","rgb(176 176 176)"),windowTitleText:"rgb(255 255 255)"}}),vaporwin=themeBuilder({id:"vaporwin",name:"ウィンドウズ",themeVariables:{active:"rgb(10, 36, 106)",passive:"rgb(164, 81, 123)",background:'url("https://i.redd.it/k4o8nz5vfiyy.gif")',shade1:"rgb(255, 255, 255)",shade2:"rgb(253, 181, 218)",shade3:"rgb(253, 181, 218)",shade4:"rgb(164, 81, 123)",shade5:"rgb(164, 81, 123)",text:"rgb(164, 81, 123)",textDisabled:"rgb(164, 81, 123)",windowActiveBackground:"linear-gradient(90deg, #ff6ad5, #c774e8, #ad8cff, #8795e8, #94d0ff)",windowPassiveBackground:"gray",windowTitleText:"rgb(255, 255, 255)"}}),_storybook_preview={parameters:{options:{storySort:{order:["Wisp",["Basics","Advanced Usage","Theming"],"controls"]}}},decorators:[(0,index_esm.iP)({themes:[win9x_16_colors,win9x_256_colors,win9x_16_bit,win9x_24_bit,win9x_32_bit,win2k,vaporwin,index_esm.uH]}),index_esm._9]}},"./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$":(module,__unused_webpack_exports,__webpack_require__)=>{var map={"./AdvancedUsage.stories":["./stories/AdvancedUsage.stories.tsx",49],"./AdvancedUsage.stories.tsx":["./stories/AdvancedUsage.stories.tsx",49],"./Basics.stories":["./stories/Basics.stories.tsx",342],"./Basics.stories.tsx":["./stories/Basics.stories.tsx",342],"./Theming.stories":["./stories/Theming.stories.tsx",774],"./Theming.stories.tsx":["./stories/Theming.stories.tsx",774],"./controls/AddressBar.stories":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AddressBar.stories.tsx":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AlertText.stories":["./stories/controls/AlertText.stories.tsx",897],"./controls/AlertText.stories.tsx":["./stories/controls/AlertText.stories.tsx",897],"./controls/Button.stories":["./stories/controls/Button.stories.tsx",717],"./controls/Button.stories.tsx":["./stories/controls/Button.stories.tsx",717],"./controls/Checkbox.stories":["./stories/controls/Checkbox.stories.tsx",314],"./controls/Checkbox.stories.tsx":["./stories/controls/Checkbox.stories.tsx",314],"./controls/ComboBox.stories":["./stories/controls/ComboBox.stories.tsx",161],"./controls/ComboBox.stories.tsx":["./stories/controls/ComboBox.stories.tsx",161],"./controls/Divider.stories":["./stories/controls/Divider.stories.tsx",958],"./controls/Divider.stories.tsx":["./stories/controls/Divider.stories.tsx",958],"./controls/Fieldset.stories":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Fieldset.stories.tsx":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Label.stories":["./stories/controls/Label.stories.tsx",514],"./controls/Label.stories.tsx":["./stories/controls/Label.stories.tsx",514],"./controls/ListBox.stories":["./stories/controls/ListBox.stories.tsx",923],"./controls/ListBox.stories.tsx":["./stories/controls/ListBox.stories.tsx",923],"./controls/MenuBar.stories":["./stories/controls/MenuBar.stories.tsx",357],"./controls/MenuBar.stories.tsx":["./stories/controls/MenuBar.stories.tsx",357],"./controls/ProgressBar.stories":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ProgressBar.stories.tsx":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ScrollableContent.stories":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/ScrollableContent.stories.tsx":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/StatusBar.stories":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBar.stories.tsx":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBarSection.stories":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/StatusBarSection.stories.tsx":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/TextInput.stories":["./stories/controls/TextInput.stories.tsx",718],"./controls/TextInput.stories.tsx":["./stories/controls/TextInput.stories.tsx",718],"./controls/Textarea.stories":["./stories/controls/Textarea.stories.tsx",336],"./controls/Textarea.stories.tsx":["./stories/controls/Textarea.stories.tsx",336],"./controls/TimeInput.stories":["./stories/controls/TimeInput.stories.tsx",576],"./controls/TimeInput.stories.tsx":["./stories/controls/TimeInput.stories.tsx",576],"./controls/Toolbar.stories":["./stories/controls/Toolbar.stories.tsx",53],"./controls/Toolbar.stories.tsx":["./stories/controls/Toolbar.stories.tsx",53],"./controls/ToolbarButton.stories":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/ToolbarButton.stories.tsx":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/Well.stories":["./stories/controls/Well.stories.tsx",552],"./controls/Well.stories.tsx":["./stories/controls/Well.stories.tsx",552],"./controls/WindowContent.stories":["./stories/controls/WindowContent.stories.tsx",771],"./controls/WindowContent.stories.tsx":["./stories/controls/WindowContent.stories.tsx",771]};function webpackAsyncContext(req){if(!__webpack_require__.o(map,req))return Promise.resolve().then((()=>{var e=new Error("Cannot find module '"+req+"'");throw e.code="MODULE_NOT_FOUND",e}));var ids=map[req],id=ids[0];return __webpack_require__.e(ids[1]).then((()=>__webpack_require__(id)))}webpackAsyncContext.keys=()=>Object.keys(map),webpackAsyncContext.id="./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$",module.exports=webpackAsyncContext},"@storybook/channels":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CHANNELS__},"@storybook/client-logger":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CLIENT_LOGGER__},"@storybook/core-events":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CORE_EVENTS__},"@storybook/global":module=>{"use strict";module.exports=__STORYBOOK_MODULE_GLOBAL__},"@storybook/preview-api":module=>{"use strict";module.exports=__STORYBOOK_MODULE_PREVIEW_API__}},__webpack_require__=>{__webpack_require__.O(0,[720],(()=>{return moduleId="./storybook-config-entry.js",__webpack_require__(__webpack_require__.s=moduleId);var moduleId}));__webpack_require__.O()}]);
-//# sourceMappingURL=main.57283906.iframe.bundle.js.map
+//# sourceMappingURL=main.9d54f35f.iframe.bundle.js.map
