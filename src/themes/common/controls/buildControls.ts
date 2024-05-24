@@ -88,14 +88,14 @@ const buildCheckboxWrapper = () => {
 const buildCheckbox = (themeVariables: ThemeVariables) => {
   const checkedStyle = css`
     &:before {
-      content: '';
       background-image: url('${check}');
-      image-rendering: pixelated;
-      width: 7px;
+      content: '';
       height: 7px;
+      image-rendering: pixelated;
+      left: 3px;
       position: absolute;
       top: 3px;
-      left: 3px;
+      width: 7px;
     }
   `;
 
@@ -138,14 +138,14 @@ const buildComboBoxButton = (
   box-sizing: border-box;
 
   &:before {
-    content: '';
     background-image: url('${down}');
-    image-rendering: pixelated;
-    width: 8px;
+    content: '';
     height: 8px;
+    image-rendering: pixelated;
+    left: 4px;
     position: absolute;
     top: 5px;
-    left: 4px;
+    width: 8px;
   }
 
   &:active {
@@ -330,6 +330,7 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
         : makeStepsStyle(
             props.disabled ? themeVariables.shade5 : themeVariables.active
           )}
+    image-rendering: pixelated;
 
     ${(props) =>
       !props.disabled && props.isIndeterminate && indeterminateStyle});

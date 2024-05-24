@@ -171,13 +171,13 @@ const buildWindowButton = (themeVariables: ThemeVariables) => css`
   &:before,
   &:after {
     content: '';
+    height: 9px;
+    image-rendering: pixelated;
     left: 3px;
     pointer-events: none;
     position: absolute;
     top: 2px;
     width: 9px;
-    height: 9px;
-    image-rendering: pixelated;
   }
 
   &:not(:disabled) {

@@ -34,14 +34,14 @@ const buildScrollButton = (themeVariables: ThemeVariables, icon: string) => css`
   position: relative;
 
   &:before {
-    content: '';
-    image-rendering: pixelated;
     background-image: url('${icon}');
-    width: 8px;
+    content: '';
     height: 8px;
+    image-rendering: pixelated;
+    left: 4px;
     position: absolute;
     top: 4px;
-    left: 4px;
+    width: 8px;
   }
 
   &:active {

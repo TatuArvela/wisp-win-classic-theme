@@ -116,14 +116,15 @@ const buildTimeInputIncreaseButton = (
   width: 15px;
 
   &:before {
+    background-image: url('${tinyUp}');
     content: '';
     display: block;
-    position: relative;
-    background-image: url('${tinyUp}');
     height: 3px;
-    width: 3px;
+    image-rendering: pixelated;
     left: 3px;
+    position: relative;
     top: -1px;
+    width: 3px;
   }
 `;
 
@@ -140,14 +141,15 @@ const buildTimeInputDecreaseButton = (
   width: 15px;
 
   &:before {
+    background-image: url('${tinyDown}');
     content: '';
     display: block;
-    position: relative;
-    background-image: url('${tinyDown}');
     height: 3px;
-    width: 3px;
+    image-rendering: pixelated;
     left: 3px;
+    position: relative;
     top: -1px;
+    width: 3px;
   }
 `;
 
