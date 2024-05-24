@@ -1,6 +1,6 @@
 {
   "name": "@tatuarvela/wisp-win-classic-theme",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Wisp win-classic theme",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
