@@ -1,4 +1,4 @@
-import { WindowElementProps } from '@tatuarvela/wisp';
+import { ViewportWindowMargins, WindowElementProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import cursor from '../cursors/cursor';
@@ -11,14 +11,6 @@ import restore from '../icons/restore.png';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { fontFamily } from '../utils';
 import * as resizeBorder from './resizeBorder';
-
-// TODO: Export from Wisp
-interface ViewportWindowMargins {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
-}
 
 const buildWindowElementContent = () => css`
   box-sizing: border-box;
