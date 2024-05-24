@@ -35,7 +35,7 @@ const buildTimeInputValue = (
   border: none;
   color: ${(props) =>
     props.disabled ? themeVariables.textDisabled : themeVariables.text};
-  font-size: 11px;
+  font-size: 12px;
   font-family: ${fontFamily};
   outline: none;
   width: 14px;
@@ -63,7 +63,8 @@ const TimeInputSeparator = css`
 const buildTimeInputButtons = (themeVariables: ThemeVariables) => css`
   display: flex;
   flex-direction: column;
-  top: 2px;
+  left: -1px;
+  top: 0;
   position: relative;
 `;
 
@@ -90,10 +91,10 @@ const generateButtonStyles = (themeVariables: ThemeVariables) => {
 
     box-shadow: ${generateBorders(
         1,
-        themeVariables.shade1,
+        themeVariables.shade2,
         themeVariables.shade5
       )},
-      ${generateBorders(2, themeVariables.shade2, themeVariables.shade4)};
+      ${generateBorders(2, themeVariables.shade1, themeVariables.shade4)};
 
     ${(props) =>
       (props as unknown as { active?: boolean })?.active && activeStyles};
@@ -111,9 +112,9 @@ const buildTimeInputIncreaseButton = (
   border: none;
   padding: 2px;
   box-sizing: border-box;
-  height: 8px;
+  height: 9px;
   position: relative;
-  width: 15px;
+  width: 16px;
 
   &:before {
     background-image: url('${tinyUp}');
@@ -121,9 +122,9 @@ const buildTimeInputIncreaseButton = (
     display: block;
     height: 3px;
     image-rendering: pixelated;
-    left: 3px;
+    left: 4px;
     position: relative;
-    top: -1px;
+    top: 0px;
     width: 3px;
   }
 `;
@@ -136,9 +137,9 @@ const buildTimeInputDecreaseButton = (
   border: none;
   padding: 2px;
   box-sizing: border-box;
-  height: 8px;
+  height: 9px;
   position: relative;
-  width: 15px;
+  width: 16px;
 
   &:before {
     background-image: url('${tinyDown}');
@@ -146,7 +147,7 @@ const buildTimeInputDecreaseButton = (
     display: block;
     height: 3px;
     image-rendering: pixelated;
-    left: 3px;
+    left: 4px;
     position: relative;
     top: -1px;
     width: 3px;

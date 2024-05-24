@@ -391,7 +391,7 @@ const buildTextInputElement = (
   color: ${(props) =>
     props.disabled ? themeVariables.textDisabled : themeVariables.text};
   font-size: 12px;
-  height: 24px;
+  height: 20px;
   outline: none;
   padding: 4px 4px;
   width: 100%;
