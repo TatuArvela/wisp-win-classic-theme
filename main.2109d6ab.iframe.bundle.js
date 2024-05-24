@@ -128,7 +128,7 @@
 `,buildTimeInputValue=themeVariables=>styled_components_browser_esm.iv`
   border: none;
   color: ${props=>props.disabled?themeVariables.textDisabled:themeVariables.text};
-  font-size: 11px;
+  font-size: 12px;
   font-family: ${fontFamily};
   outline: none;
   width: 14px;
@@ -160,8 +160,8 @@
     background: ${themeVariables.shade3};
     border: none;
 
-    box-shadow: ${common_generateBorders(1,themeVariables.shade1,themeVariables.shade5)},
-      ${common_generateBorders(2,themeVariables.shade2,themeVariables.shade4)};
+    box-shadow: ${common_generateBorders(1,themeVariables.shade2,themeVariables.shade5)},
+      ${common_generateBorders(2,themeVariables.shade1,themeVariables.shade4)};
 
     ${props=>props?.active&&activeStyles};
     &:active {
@@ -173,9 +173,9 @@
   border: none;
   padding: 2px;
   box-sizing: border-box;
-  height: 8px;
+  height: 9px;
   position: relative;
-  width: 15px;
+  width: 16px;
 
   &:before {
     background-image: url('${tiny_up_namespaceObject}');
@@ -183,9 +183,9 @@
     display: block;
     height: 3px;
     image-rendering: pixelated;
-    left: 3px;
+    left: 4px;
     position: relative;
-    top: -1px;
+    top: 0px;
     width: 3px;
   }
 `,buildTimeInputDecreaseButton=themeVariables=>styled_components_browser_esm.iv`
@@ -194,9 +194,9 @@
   border: none;
   padding: 2px;
   box-sizing: border-box;
-  height: 8px;
+  height: 9px;
   position: relative;
-  width: 15px;
+  width: 16px;
 
   &:before {
     background-image: url('${tiny_down_namespaceObject}');
@@ -204,7 +204,7 @@
     display: block;
     height: 3px;
     image-rendering: pixelated;
-    left: 3px;
+    left: 4px;
     position: relative;
     top: -1px;
     width: 3px;
@@ -212,7 +212,8 @@
 `,controls_buildTimeInput=themeVariables=>({TimeInputControl,TimeInputField:buildTimeInputField(themeVariables),TimeInputValue:buildTimeInputValue(themeVariables),TimeInputSeparator,TimeInputButtons:styled_components_browser_esm.iv`
   display: flex;
   flex-direction: column;
-  top: 2px;
+  left: -1px;
+  top: 0;
   position: relative;
 `,TimeInputIncreaseButton:buildTimeInputIncreaseButton(themeVariables),TimeInputDecreaseButton:buildTimeInputDecreaseButton(themeVariables)}),controls_generateResizeHandle=themeVariables=>{const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d");canvas.width=14,canvas.height=14,ctx.fillStyle=themeVariables.shade3,ctx.fillRect(0,0,14,14);const strokeMirroredLine=(a,b)=>{return x1=a,y1=b,x2=b,y2=a,ctx.beginPath(),ctx.moveTo(x1,y1),ctx.lineTo(x2,y2),void ctx.stroke();var x1,y1,x2,y2};return ctx.strokeStyle=themeVariables.shade1,strokeMirroredLine(0,13),ctx.strokeStyle=themeVariables.shade4,strokeMirroredLine(1,13),strokeMirroredLine(2,13),ctx.strokeStyle=themeVariables.shade1,strokeMirroredLine(4,13),ctx.strokeStyle=themeVariables.shade4,strokeMirroredLine(5,13),strokeMirroredLine(6,13),ctx.strokeStyle=themeVariables.shade1,strokeMirroredLine(8,13),ctx.strokeStyle=themeVariables.shade4,strokeMirroredLine(9,13),strokeMirroredLine(10,13),styled_components_browser_esm.iv`
     background-image: url('${canvas.toDataURL()}');
@@ -477,7 +478,7 @@
   box-sizing: border-box;
   color: ${props=>props.disabled?themeVariables.textDisabled:themeVariables.text};
   font-size: 12px;
-  height: 24px;
+  height: 20px;
   outline: none;
   padding: 4px 4px;
   width: 100%;
@@ -883,4 +884,4 @@
     background-image: url('${close_namespaceObject}');
   }
 `,...resizeBorder_namespaceObject}),themeBuilder=({id,name,themeVariables,controls,elements,window})=>({id,name,controls:Object.assign({},controls_buildControls(themeVariables),controls),elements:Object.assign({},elements_buildElements(themeVariables),elements),window:Object.assign({},window_buildWindow(themeVariables),window),icons:src_icons}),win9x_16_colors=themeBuilder({id:"win9x-16-colors",name:"Windows 9x, 16 colors",themeVariables:{active:"rgb(0 0 168)",passive:"rgb(135 136 143)",background:"rgb(87 168 168)",shade1:"rgb(255 255 255)",shade2:"rgb(192 199 200)",shade3:"rgb(192 199 200)",shade4:"rgb(135 136 143)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(135 136 143)",windowActiveBackground:"rgb(0 0 168)",windowPassiveBackground:"rgb(135 136 143)",windowTitleText:"rgb(255 255 255)"}}),win9x_256_colors=themeBuilder({id:"win9x-256-colors",name:"Windows 9x, 256 colors",themeVariables:{active:"rgb(0 0 128)",passive:"rgb(128 128 128)",background:"rgb(0 128 128)",shade1:"rgb(255 255 255)",shade2:"rgb(192 192 192)",shade3:"rgb(192 192 192)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:"rgb(0 0 128)",windowPassiveBackground:"rgb(128 128 128)",windowTitleText:"rgb(255 255 255)"}}),common_generateTitleGradient=(color1,color2)=>`linear-gradient(90deg, ${color1}, ${color2})`,win9x_16_bit=themeBuilder({id:"win9x-16-bit",name:"Windows 9x, High Color 16-bit",themeVariables:{active:"rgb(0 0 120)",passive:"rgb(120 124 120)",background:"rgb(0 124 120)",shade1:"rgb(248 252 248)",shade2:"rgb(216  220  216)",shade3:"rgb(184 188 184)",shade4:"rgb(120 124 120)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(120 124 120)",windowActiveBackground:common_generateTitleGradient("rgb(0 0 120)","rgb(8 128 200)"),windowPassiveBackground:common_generateTitleGradient("rgb(120 124 120)","rgb(176 176 176)"),windowTitleText:"rgb(248 252 248)"}}),win9x_24_bit=themeBuilder({id:"win9x-24-bit",name:"Windows 9x, True Color 24-bit",themeVariables:{active:"rgb(0 0 128)",passive:"rgb(128 128 128)",background:"rgb(0 128 128)",shade1:"rgb(255 255 255)",shade2:"rgb(223 223 223)",shade3:"rgb(192 192 192)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:common_generateTitleGradient("rgb(0 0 128)","rgb(16 132 208)"),windowPassiveBackground:common_generateTitleGradient("rgb(128 128 128)","rgb(181 181 181)"),windowTitleText:"rgb(255 255 255)"}}),win9x_32_bit=themeBuilder({id:"win9x-32-bit",name:"Windows 9x, True Color 32-bit",themeVariables:{active:"rgb(0 0 128)",passive:"rgb(128 128 128)",background:"rgb(0 128 128)",shade1:"rgb(255 255 255)",shade2:"rgb(223 223 223)",shade3:"rgb(192 192 192)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:common_generateTitleGradient("rgb(0 0 128)","rgb(16 132 208)"),windowPassiveBackground:common_generateTitleGradient("rgb(128 128 128)","rgb(181 181 181)"),windowTitleText:"rgb(255 255 255)"}}),win2k=themeBuilder({id:"win2k",name:"Windows 2000",themeVariables:{active:"rgb(10 36 106)",passive:"rgb(128 128 128)",background:"rgb(58 110 165)",shade1:"rgb(255 255 255)",shade2:"rgb(212 208 200)",shade3:"rgb(212 208 200)",shade4:"rgb(128 128 128)",shade5:"rgb(0 0 0)",text:"rgb(0 0 0)",textDisabled:"rgb(128 128 128)",windowActiveBackground:common_generateTitleGradient("rgb(10 36 106)","rgb(166 202 240)"),windowPassiveBackground:common_generateTitleGradient("rgb(120 124 120)","rgb(176 176 176)"),windowTitleText:"rgb(255 255 255)"}}),vaporwin=themeBuilder({id:"vaporwin",name:"ウィンドウズ",themeVariables:{active:"rgb(10, 36, 106)",passive:"rgb(164, 81, 123)",background:'url("https://i.redd.it/k4o8nz5vfiyy.gif")',shade1:"rgb(255, 255, 255)",shade2:"rgb(253, 181, 218)",shade3:"rgb(253, 181, 218)",shade4:"rgb(164, 81, 123)",shade5:"rgb(164, 81, 123)",text:"rgb(164, 81, 123)",textDisabled:"rgb(164, 81, 123)",windowActiveBackground:"linear-gradient(90deg, #ff6ad5, #c774e8, #ad8cff, #8795e8, #94d0ff)",windowPassiveBackground:"gray",windowTitleText:"rgb(255, 255, 255)"}}),_storybook_preview={parameters:{options:{storySort:{order:["Wisp",["Basics","Advanced Usage","Theming"],"controls"]}}},decorators:[(0,index_esm.iP)({themes:[win9x_16_colors,win9x_256_colors,win9x_16_bit,win9x_24_bit,win9x_32_bit,win2k,vaporwin,index_esm.uH]}),index_esm._9]}},"./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$":(module,__unused_webpack_exports,__webpack_require__)=>{var map={"./AdvancedUsage.stories":["./stories/AdvancedUsage.stories.tsx",49],"./AdvancedUsage.stories.tsx":["./stories/AdvancedUsage.stories.tsx",49],"./Basics.stories":["./stories/Basics.stories.tsx",342],"./Basics.stories.tsx":["./stories/Basics.stories.tsx",342],"./Theming.stories":["./stories/Theming.stories.tsx",774],"./Theming.stories.tsx":["./stories/Theming.stories.tsx",774],"./controls/AddressBar.stories":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AddressBar.stories.tsx":["./stories/controls/AddressBar.stories.tsx",706],"./controls/AlertText.stories":["./stories/controls/AlertText.stories.tsx",897],"./controls/AlertText.stories.tsx":["./stories/controls/AlertText.stories.tsx",897],"./controls/Button.stories":["./stories/controls/Button.stories.tsx",717],"./controls/Button.stories.tsx":["./stories/controls/Button.stories.tsx",717],"./controls/Checkbox.stories":["./stories/controls/Checkbox.stories.tsx",314],"./controls/Checkbox.stories.tsx":["./stories/controls/Checkbox.stories.tsx",314],"./controls/ComboBox.stories":["./stories/controls/ComboBox.stories.tsx",161],"./controls/ComboBox.stories.tsx":["./stories/controls/ComboBox.stories.tsx",161],"./controls/Divider.stories":["./stories/controls/Divider.stories.tsx",958],"./controls/Divider.stories.tsx":["./stories/controls/Divider.stories.tsx",958],"./controls/Fieldset.stories":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Fieldset.stories.tsx":["./stories/controls/Fieldset.stories.tsx",443],"./controls/Label.stories":["./stories/controls/Label.stories.tsx",514],"./controls/Label.stories.tsx":["./stories/controls/Label.stories.tsx",514],"./controls/ListBox.stories":["./stories/controls/ListBox.stories.tsx",923],"./controls/ListBox.stories.tsx":["./stories/controls/ListBox.stories.tsx",923],"./controls/MenuBar.stories":["./stories/controls/MenuBar.stories.tsx",357],"./controls/MenuBar.stories.tsx":["./stories/controls/MenuBar.stories.tsx",357],"./controls/ProgressBar.stories":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ProgressBar.stories.tsx":["./stories/controls/ProgressBar.stories.tsx",913],"./controls/ScrollableContent.stories":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/ScrollableContent.stories.tsx":["./stories/controls/ScrollableContent.stories.tsx",218],"./controls/StatusBar.stories":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBar.stories.tsx":["./stories/controls/StatusBar.stories.tsx",221],"./controls/StatusBarSection.stories":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/StatusBarSection.stories.tsx":["./stories/controls/StatusBarSection.stories.tsx",328],"./controls/TextInput.stories":["./stories/controls/TextInput.stories.tsx",718],"./controls/TextInput.stories.tsx":["./stories/controls/TextInput.stories.tsx",718],"./controls/Textarea.stories":["./stories/controls/Textarea.stories.tsx",336],"./controls/Textarea.stories.tsx":["./stories/controls/Textarea.stories.tsx",336],"./controls/TimeInput.stories":["./stories/controls/TimeInput.stories.tsx",576],"./controls/TimeInput.stories.tsx":["./stories/controls/TimeInput.stories.tsx",576],"./controls/Toolbar.stories":["./stories/controls/Toolbar.stories.tsx",53],"./controls/Toolbar.stories.tsx":["./stories/controls/Toolbar.stories.tsx",53],"./controls/ToolbarButton.stories":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/ToolbarButton.stories.tsx":["./stories/controls/ToolbarButton.stories.tsx",961],"./controls/Well.stories":["./stories/controls/Well.stories.tsx",552],"./controls/Well.stories.tsx":["./stories/controls/Well.stories.tsx",552],"./controls/WindowContent.stories":["./stories/controls/WindowContent.stories.tsx",771],"./controls/WindowContent.stories.tsx":["./stories/controls/WindowContent.stories.tsx",771]};function webpackAsyncContext(req){if(!__webpack_require__.o(map,req))return Promise.resolve().then((()=>{var e=new Error("Cannot find module '"+req+"'");throw e.code="MODULE_NOT_FOUND",e}));var ids=map[req],id=ids[0];return __webpack_require__.e(ids[1]).then((()=>__webpack_require__(id)))}webpackAsyncContext.keys=()=>Object.keys(map),webpackAsyncContext.id="./stories lazy recursive ^\\.\\/.*$ include: (?:\\/stories(?:\\/(?%21\\.)(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/%7C\\/%7C$)(?%21\\.)(?=.)[^/]*?\\.stories\\.tsx)$",module.exports=webpackAsyncContext},"@storybook/channels":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CHANNELS__},"@storybook/client-logger":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CLIENT_LOGGER__},"@storybook/core-events":module=>{"use strict";module.exports=__STORYBOOK_MODULE_CORE_EVENTS__},"@storybook/global":module=>{"use strict";module.exports=__STORYBOOK_MODULE_GLOBAL__},"@storybook/preview-api":module=>{"use strict";module.exports=__STORYBOOK_MODULE_PREVIEW_API__}},__webpack_require__=>{__webpack_require__.O(0,[720],(()=>{return moduleId="./storybook-config-entry.js",__webpack_require__(__webpack_require__.s=moduleId);var moduleId}));__webpack_require__.O()}]);
-//# sourceMappingURL=main.9d54f35f.iframe.bundle.js.map
+//# sourceMappingURL=main.2109d6ab.iframe.bundle.js.map
