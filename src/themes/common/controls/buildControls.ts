@@ -1,4 +1,6 @@
 import {
+  AddressBarInputContainerProps,
+  AddressBarInputProps,
   CheckboxProps,
   ComboBoxButtonProps,
   ComboBoxOptionsProps,
@@ -48,10 +50,13 @@ const buildAddressBarLabel = () => css`
   padding: 1px 4px 0 4px;
 `;
 
-const buildAddressBarInputContainer = (themeVariables: ThemeVariables) => css`
+const buildAddressBarInputContainer = (
+  themeVariables: ThemeVariables
+) => css<AddressBarInputContainerProps>`
   ${generateIndentedStyles(themeVariables)}
   align-items: center;
-  background: ${themeVariables.shade1};
+  background: ${(props) =>
+    props.disabled ? themeVariables.shade3 : themeVariables.shade1};
   border: none;
   display: flex;
   flex-grow: 1;
@@ -59,8 +64,12 @@ const buildAddressBarInputContainer = (themeVariables: ThemeVariables) => css`
   padding: 2px;
 `;
 
-const buildAddressBarInput = () => css`
+const buildAddressBarInput = (
+  themeVariables: ThemeVariables
+) => css<AddressBarInputProps>`
   ${cursor('text')};
+  background: ${(props) =>
+    props.disabled ? themeVariables.shade3 : themeVariables.shade1};
   border: none;
   font-size: 12px;
   height: 16px;
@@ -270,8 +279,9 @@ const buildMenuBarThrobber = (
 ) => css<MenuBarThrobberProps>`
   align-self: end;
   background-color: black;
-  background-image: ${({ isAnimated }) =>
-    isAnimated ? `url('${throbberActive}')` : `url('${throbberPassive}')`};
+  background-image: ${({ image, isAnimated }) =>
+    image ??
+    (isAnimated ? `url('${throbberActive}')` : `url('${throbberPassive}')`)};
   background-position: center;
   background-repeat: no-repeat;
   background-size: 22px 22px;
@@ -525,7 +535,7 @@ const buildControls = (
 ): ThemeBuilderConfig['controls'] => ({
   AddressBarElement: buildAddressBarElement(),
   AddressBarLabel: buildAddressBarLabel(),
-  AddressBarInput: buildAddressBarInput(),
+  AddressBarInput: buildAddressBarInput(themeVariables),
   AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
   Button: buildButton(themeVariables),
   CheckboxWrapper: buildCheckboxWrapper(),
