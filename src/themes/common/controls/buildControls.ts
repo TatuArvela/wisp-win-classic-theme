@@ -82,6 +82,13 @@ const buildAddressBarInput = (
   width: 100%;
 `;
 
+const AddressBarIcon = css<AddressBarInputProps>`
+  height: 16px;
+  margin: 0 4px;
+  width: 16px;
+  image-rendering: pixelated;
+`;
+
 const buildButton = (themeVariables: ThemeVariables) => css`
   ${cursor('default')};
   ${generateButtonStyles(themeVariables)}
@@ -541,6 +548,7 @@ const buildControls = (
   AddressBarLabel: buildAddressBarLabel(),
   AddressBarInput: buildAddressBarInput(themeVariables),
   AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
+  AddressBarIcon,
   Button: buildButton(themeVariables),
   CheckboxWrapper: buildCheckboxWrapper(),
   Checkbox: buildCheckbox(themeVariables),
