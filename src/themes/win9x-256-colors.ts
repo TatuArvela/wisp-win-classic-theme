@@ -16,7 +16,8 @@ const theme = themeBuilder({
     textDisabled: 'rgb(128 128 128)',
     windowActiveBackground: 'rgb(0 0 128)',
     windowPassiveBackground: 'rgb(128 128 128)',
-    windowTitleText: 'rgb(255 255 255)',
+    windowActiveText: 'rgb(255 255 255)',
+    windowPassiveText: 'rgb(192 192 192)',
   },
 });
 

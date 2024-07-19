@@ -17,7 +17,8 @@ const theme = themeBuilder({
     windowActiveBackground:
       'linear-gradient(90deg, #ff6ad5, #c774e8, #ad8cff, #8795e8, #94d0ff)',
     windowPassiveBackground: 'gray',
-    windowTitleText: 'rgb(255, 255, 255)',
+    windowActiveText: 'rgb(255, 255, 255)',
+    windowPassiveText: 'rgb(253, 181, 218)',
   },
 });
 

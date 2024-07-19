@@ -90,7 +90,10 @@ const buildTitleBar = (themeVariables: ThemeVariables) => css<TitleBarProps>`
       ? themeVariables.windowActiveBackground
       : themeVariables.windowPassiveBackground};
   box-sizing: border-box;
-  color: ${themeVariables.windowTitleText};
+  color: ${(props) =>
+    props.isActive
+      ? themeVariables.windowActiveText
+      : themeVariables.windowPassiveText};
   display: flex;
   flex-shrink: 0;
   font-family: ${fontFamily};

@@ -23,7 +23,8 @@ const theme = themeBuilder({
       'rgb(120 124 120)',
       'rgb(176 176 176)'
     ),
-    windowTitleText: 'rgb(255 255 255)',
+    windowActiveText: 'rgb(255 255 255)',
+    windowPassiveText: 'rgb(212 208 200)',
   },
 });
 

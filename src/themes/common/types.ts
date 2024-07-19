@@ -15,7 +15,8 @@ export interface ThemeVariables {
   textDisabled: Color;
   windowActiveBackground: Color;
   windowPassiveBackground: Color;
-  windowTitleText: Color;
+  windowActiveText: Color;
+  windowPassiveText: Color;
 }
 
 export type ThemeBuilderConfig<T extends string = string> = {
