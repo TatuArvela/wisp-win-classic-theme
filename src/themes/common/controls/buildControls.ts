@@ -284,9 +284,8 @@ const buildMenuBarThrobber = (
 ) => css<MenuBarThrobberProps>`
   align-self: end;
   background-color: black;
-  background-image: ${({ image, isAnimated }) =>
-    image ??
-    (isAnimated ? `url('${throbberActive}')` : `url('${throbberPassive}')`)};
+  background-image: url('${({ image, isAnimated }) =>
+    image ?? (isAnimated ? throbberActive : throbberPassive)}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 22px 22px;
