@@ -8,12 +8,13 @@ import {
   Toolbar,
   ToolbarButton,
   useWindow,
-  Well,
   Window,
   WindowContent,
   Wisp,
 } from '@tatuarvela/wisp';
 import React, { useState } from 'react';
+
+import icons from '../src/icons';
 
 export default {
   title: 'Wisp/Advanced Usage',
@@ -24,13 +25,20 @@ export const WispInWisp = {
   args: {
     children: (
       <Window id="1" title="Parent window" width={600} height={480}>
-        <Well>
+        <div
+          style={{
+            border: '1px solid black',
+            boxSizing: 'border-box',
+            height: '100%',
+            width: '100%',
+          }}
+        >
           <Wisp>
             <Window id="2" title="Child window">
               Test
             </Window>
           </Wisp>
-        </Well>
+        </div>
       </Window>
     ),
   },
@@ -144,11 +152,14 @@ export const ComplexWindow = () => {
         <Toolbar>
           <ToolbarButton label="Action" />
           <ToolbarButton icon="wisp" />
-          <div style={{ width: '100%' }}>
-            <AddressBar value={address} onChange={setAddress}>
-              Address
-            </AddressBar>
-          </div>
+        </Toolbar>
+        <Toolbar>
+          <AddressBar
+            value={address}
+            onChange={setAddress}
+            label="Address"
+            icon={icons.wisp}
+          />
         </Toolbar>
 
         <WindowContent>
@@ -167,7 +178,7 @@ export const ComplexWindow = () => {
         <StatusBar showResizeHandle>
           <StatusBarSection>Status bar</StatusBarSection>
           <StatusBarSection width="80px">
-            <ProgressBar />
+            <ProgressBar bordered={false} />
           </StatusBarSection>
           <StatusBarSection></StatusBarSection>
         </StatusBar>

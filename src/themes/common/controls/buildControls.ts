@@ -7,6 +7,7 @@ import {
   LabelProps,
   ListBoxOptionsProps,
   MenuBarThrobberProps,
+  ProgressBarElementProps,
   ProgressBarFillProps,
   StatusBarSectionProps,
   TextareaElementProps,
@@ -34,26 +35,37 @@ import buildScrollbars from './buildScrollbars';
 import buildTimeInput from './buildTimeInput';
 import generateResizeHandle from './generateResizeHandle';
 
-const buildAddressBar = () => css`
+const buildAddressBarElement = () => css`
   align-items: center;
   box-sizing: border-box;
   display: flex;
+  flex-grow: 1;
   font-family: sans-serif;
   font-size: 12px;
-  gap: 4px;
+`;
+
+const buildAddressBarLabel = () => css`
+  padding: 1px 4px 0 4px;
+`;
+
+const buildAddressBarInputContainer = (themeVariables: ThemeVariables) => css`
+  ${generateIndentedStyles(themeVariables)}
+  align-items: center;
+  background: ${themeVariables.shade1};
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
   padding: 2px;
 `;
 
-const buildAddressBarInput = (themeVariables: ThemeVariables) => css`
+const buildAddressBarInput = () => css`
   ${cursor('text')};
   border: none;
-  ${generateIndentedStyles(themeVariables)}
-
+  font-size: 12px;
+  height: 16px;
   outline: none;
   width: 100%;
-  flex-grow: 1;
-  font-size: 12px;
-  height: 20px;
 `;
 
 const buildButton = (themeVariables: ThemeVariables) => css`
@@ -275,21 +287,29 @@ const buildMenuBarThrobber = (
   position: relative;
 `;
 
-const buildProgressBar = (themeVariables: ThemeVariables) => css`
-  --step-width: 8px;
-  box-shadow: ${generateBorders(
-    1,
-    themeVariables.shade4,
-    themeVariables.shade1
-  )};
-  padding: 2px;
-  box-sizing: border-box;
-  font-size: 12px;
-  height: 16px;
-  max-height: 100%;
-  outline: none;
-  overflow: hidden;
-`;
+const buildProgressBarElement = (themeVariables: ThemeVariables) => {
+  const borderedStyle = css`
+    box-shadow: ${generateBorders(
+      1,
+      themeVariables.shade4,
+      themeVariables.shade1
+    )};
+    padding: 2px;
+  `;
+
+  return css<ProgressBarElementProps>`
+    ${(props) => props.bordered && borderedStyle}
+
+    --step-width: 8px;
+    box-sizing: border-box;
+    font-size: 12px;
+    height: 16px;
+    max-height: 100%;
+    outline: none;
+    overflow: hidden;
+    width: 100%;
+  `;
+};
 
 const buildProgressBarFill = (themeVariables: ThemeVariables) => {
   const indeterminateStyle = css`
@@ -300,7 +320,7 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
 
     @keyframes indeterminate-progress-bar-fill-animation {
       0% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
       }
       100% {
         transform: translateX(200%);
@@ -327,7 +347,7 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
     width: ${(props) => (props.disabled ? '0%' : 'calc(var(--width))')};
     ${(props) =>
       props.variant === 'block'
-        ? makeBlockStyle(themeVariables.shade5)
+        ? makeBlockStyle(themeVariables.active)
         : makeStepsStyle(
             props.disabled ? themeVariables.shade5 : themeVariables.active
           )}
@@ -379,7 +399,7 @@ const buildStatusBarSection = (
   flex-grow: ${({ width }) => (width !== undefined ? 'unset' : 1)};
   font-family: sans-serif;
   font-size: 12px;
-  padding: 2px 4px;
+  padding: 2px;
 `;
 
 const buildTextInputElement = (
@@ -425,8 +445,8 @@ const buildToolbar = (themeVariables: ThemeVariables) => css<ToolbarProps>`
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 4px;
-  padding: 2px;
+  margin-bottom: -1px;
+  padding: 1px 0 0 1px;
   text-align: left;
   width: 100%;
 `;
@@ -493,6 +513,7 @@ const buildWell = (themeVariables: ThemeVariables) => css`
 
 const buildWindowContent = (themeVariables: ThemeVariables) => css`
   ${generateIndentedStyles(themeVariables)};
+  margin-top: 4px;
   padding: 2px;
   font-family: sans-serif;
   flex-grow: 1;
@@ -502,8 +523,10 @@ const buildWindowContent = (themeVariables: ThemeVariables) => css`
 const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
-  AddressBar: buildAddressBar(),
-  AddressBarInput: buildAddressBarInput(themeVariables),
+  AddressBarElement: buildAddressBarElement(),
+  AddressBarLabel: buildAddressBarLabel(),
+  AddressBarInput: buildAddressBarInput(),
+  AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
   Button: buildButton(themeVariables),
   CheckboxWrapper: buildCheckboxWrapper(),
   Checkbox: buildCheckbox(themeVariables),
@@ -523,7 +546,7 @@ const buildControls = (
   ListBoxOption: buildListBoxOption(themeVariables),
   MenuBar: buildMenuBar(themeVariables),
   MenuBarThrobber: buildMenuBarThrobber(themeVariables),
-  ProgressBar: buildProgressBar(themeVariables),
+  ProgressBarElement: buildProgressBarElement(themeVariables),
   ProgressBarFill: buildProgressBarFill(themeVariables),
   ...buildScrollbars(themeVariables),
   StatusBar: buildStatusBar(),
