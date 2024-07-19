@@ -1,4 +1,5 @@
 import {
+  AddressBarElementProps,
   AddressBarInputContainerProps,
   AddressBarInputProps,
   CheckboxProps,
@@ -37,8 +38,12 @@ import buildScrollbars from './buildScrollbars';
 import buildTimeInput from './buildTimeInput';
 import generateResizeHandle from './generateResizeHandle';
 
-const buildAddressBarElement = () => css`
+const buildAddressBarElement = (
+  themeVariables: ThemeVariables
+) => css<AddressBarElementProps>`
   align-items: center;
+  background: ${(props) =>
+    props.disabled ? themeVariables.shade3 : themeVariables.shade1};
   box-sizing: border-box;
   display: flex;
   flex-grow: 1;
@@ -533,7 +538,7 @@ const buildWindowContent = (themeVariables: ThemeVariables) => css`
 const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
-  AddressBarElement: buildAddressBarElement(),
+  AddressBarElement: buildAddressBarElement(themeVariables),
   AddressBarLabel: buildAddressBarLabel(),
   AddressBarInput: buildAddressBarInput(themeVariables),
   AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
