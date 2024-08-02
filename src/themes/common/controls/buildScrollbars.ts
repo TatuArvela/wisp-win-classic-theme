@@ -2,10 +2,10 @@ import { ScrollableContentViewProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import generateDitheredBackground from '../generateDitheredBackground';
-import down from '../icons/down.png';
-import left from '../icons/left.png';
-import right from '../icons/right.png';
-import up from '../icons/up.png';
+import down from '../graphics/down.png';
+import left from '../graphics/left.png';
+import right from '../graphics/right.png';
+import up from '../graphics/up.png';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { generateSmallButtonStyles } from '../utils';
 

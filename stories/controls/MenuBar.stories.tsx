@@ -1,8 +1,6 @@
 import { ControlStoryDecorator, MenuBar } from '@tatuarvela/wisp';
 import React from 'react';
 
-import icons from '../../src/icons';
-
 export default {
   component: MenuBar,
   decorators: [ControlStoryDecorator],
@@ -25,7 +23,7 @@ export const Default = {
         </div>
       </>
     ),
-    isThrobberAnimated: true,
+    isThrobberActive: true,
   },
 };
 
@@ -45,7 +43,8 @@ export const CustomIcon = {
         </div>
       </>
     ),
-    isThrobberAnimated: true,
-    throbberImage: icons.warning[48],
+    isThrobberActive: true,
+    throbberIcon: 'warning',
+    throbberActiveIcon: 'error',
   },
 };

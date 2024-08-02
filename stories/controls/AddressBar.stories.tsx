@@ -4,8 +4,6 @@ import {
   statefulProps,
 } from '@tatuarvela/wisp';
 
-import icons from '../../src/icons';
-
 export default {
   component: AddressBar,
   decorators: [ControlStoryDecorator],
@@ -22,7 +20,7 @@ export const Default = {
 export const WithLabel = {
   args: {
     label: 'Address:',
-    icon: icons.wisp,
+    icon: 'wisp',
     value: 'https://www.google.com/',
   },
   parameters: statefulProps('value', 'onChange', 'https://www.google.com/'),

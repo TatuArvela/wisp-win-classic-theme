@@ -12,7 +12,7 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['Wisp', ['Basics', 'Advanced Usage', 'Theming'], 'controls'],
+        order: ['Wisp', ['Basics', 'Advanced Usage', 'Theming'], 'Window', 'controls'],
       },
     },
   },

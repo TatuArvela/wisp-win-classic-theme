@@ -6,8 +6,8 @@ import {
 import { css } from 'styled-components';
 
 import generateBorders from '../generateBorders';
-import tinyDown from '../icons/tiny-down.png';
-import tinyUp from '../icons/tiny-up.png';
+import tinyDown from '../graphics/tiny-down.png';
+import tinyUp from '../graphics/tiny-up.png';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { fontFamily, generateIndentedStyles } from '../utils';
 

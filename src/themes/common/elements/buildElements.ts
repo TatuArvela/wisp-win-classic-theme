@@ -1,4 +1,7 @@
-import { TaskbarButtonProps } from '@tatuarvela/wisp';
+import {
+  TaskbarButtonElementProps,
+  TaskbarButtonProps,
+} from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import cursor from '../cursors/cursor';
@@ -7,7 +10,7 @@ import generateDitheredBackground from '../generateDitheredBackground';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { fontFamily } from '../utils';
 
-const buildTaskbar = (themeVariables: ThemeVariables) => css`
+const buildTaskbarElement = (themeVariables: ThemeVariables) => css`
   ${cursor('default')}
   background: ${themeVariables.shade3};
   border-top: 1px solid ${themeVariables.shade2};
@@ -64,12 +67,12 @@ const generateTaskbarButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildTaskbarButton = (themeVariables: ThemeVariables) => {
+const buildTaskbarButtonElement = (themeVariables: ThemeVariables) => {
   const activeStyle = css`
     color: ${themeVariables.shade5};
     font-weight: bold;
   `;
-  return css<TaskbarButtonProps>`
+  return css<TaskbarButtonElementProps>`
     ${generateTaskbarButtonStyles(themeVariables)}
 
     border-radius: 0;
@@ -93,7 +96,7 @@ const buildTaskbarButton = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildTaskbarButtonIcon = () => css`
+const buildTaskbarButtonIconElement = () => css`
   display: block;
   height: 16px;
   image-rendering: pixelated;
@@ -117,7 +120,7 @@ const buildDesktop = (themeVariables: ThemeVariables) => css`
   object-fit: cover;
 `;
 
-const buildVersionInfo = () => css`
+const buildVersionInfoElement = () => css`
   bottom: 30px;
   color: white;
   font-family: ${fontFamily};
@@ -134,10 +137,10 @@ const buildElements = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['elements'] => ({
   Desktop: buildDesktop(themeVariables),
-  Taskbar: buildTaskbar(themeVariables),
-  TaskbarButton: buildTaskbarButton(themeVariables),
-  TaskbarButtonIcon: buildTaskbarButtonIcon(),
-  VersionInfo: buildVersionInfo(),
+  TaskbarElement: buildTaskbarElement(themeVariables),
+  TaskbarButtonElement: buildTaskbarButtonElement(themeVariables),
+  TaskbarButtonIconElement: buildTaskbarButtonIconElement(),
+  VersionInfoElement: buildVersionInfoElement(),
 });
 
 export default buildElements;

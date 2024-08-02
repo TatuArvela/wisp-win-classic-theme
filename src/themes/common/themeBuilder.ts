@@ -1,6 +1,6 @@
-import icons from '../../icons';
 import buildControls from './controls/buildControls';
 import buildElements from './elements/buildElements';
+import icons from './icons';
 import { ThemeBuilderConfig } from './types';
 import buildWindow from './window/buildWindow';
 

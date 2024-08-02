@@ -9,23 +9,21 @@ import {
   DividerProps,
   LabelProps,
   ListBoxOptionsProps,
+  MenuBarThrobberIconElementProps,
   MenuBarThrobberProps,
   ProgressBarElementProps,
   ProgressBarFillProps,
-  StatusBarSectionProps,
+  StatusBarSectionElementProps,
   TextareaElementProps,
   TextInputElementProps,
-  ToolbarButtonProps,
-  ToolbarProps,
+  ToolbarButtonElementProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import cursor from '../cursors/cursor';
 import generateBorders from '../generateBorders';
-import check from '../icons/check.png';
-import down from '../icons/down.png';
-import throbberActive from '../icons/throbber-active.gif';
-import throbberPassive from '../icons/throbber-passive.png';
+import check from '../graphics/check.png';
+import down from '../graphics/down.png';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import {
   fontFamily,
@@ -38,12 +36,8 @@ import buildScrollbars from './buildScrollbars';
 import buildTimeInput from './buildTimeInput';
 import generateResizeHandle from './generateResizeHandle';
 
-const buildAddressBarElement = (
-  themeVariables: ThemeVariables
-) => css<AddressBarElementProps>`
+const buildAddressBarElement = () => css<AddressBarElementProps>`
   align-items: center;
-  background: ${(props) =>
-    props.disabled ? themeVariables.shade3 : themeVariables.shade1};
   box-sizing: border-box;
   display: flex;
   flex-grow: 1;
@@ -89,7 +83,7 @@ const AddressBarIcon = css<AddressBarInputProps>`
   image-rendering: pixelated;
 `;
 
-const buildButton = (themeVariables: ThemeVariables) => css`
+const buildButtonElement = (themeVariables: ThemeVariables) => css`
   ${cursor('default')};
   ${generateButtonStyles(themeVariables)}
 
@@ -119,7 +113,7 @@ const buildCheckboxWrapper = () => {
   `;
 };
 
-const buildCheckbox = (themeVariables: ThemeVariables) => {
+const buildCheckboxElement = (themeVariables: ThemeVariables) => {
   const checkedStyle = css`
     &:before {
       background-image: url('${check}');
@@ -235,7 +229,7 @@ const buildDivider = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildFieldset = (themeVariables: ThemeVariables) => css`
+const buildFieldsetElement = (themeVariables: ThemeVariables) => css`
   ${generateGroovedStyles(themeVariables)}
   font-family: sans-serif;
 `;
@@ -269,7 +263,7 @@ const buildListBoxOptions = () => css<ListBoxOptionsProps>`
 const buildListBoxOption = (themeVariables: ThemeVariables) =>
   buildComboBoxOption(themeVariables);
 
-const buildMenuBar = (themeVariables: ThemeVariables) => css`
+const buildMenuBarElement = (themeVariables: ThemeVariables) => css`
   ${generateGroovedStyles(themeVariables)}
 
   box-sizing: border-box;
@@ -286,27 +280,32 @@ const buildMenuBar = (themeVariables: ThemeVariables) => css`
   margin-bottom: -1px;
 `;
 
-const buildMenuBarThrobber = (
+const buildMenuBarThrobberContainer = (
   themeVariables: ThemeVariables
 ) => css<MenuBarThrobberProps>`
+  align-items: center;
   align-self: end;
   background-color: black;
-  background-image: url('${({ image, isAnimated }) =>
-    image ?? (isAnimated ? throbberActive : throbberPassive)}');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 22px 22px;
   box-shadow:
     0 1px 0 ${themeVariables.shade4},
     -1px 0 0 ${themeVariables.shade1},
     -1px 1px 0 ${themeVariables.shade1},
     -2px 0 0 ${themeVariables.shade4};
+  display: flex;
   height: calc(100% - 1px);
   image-rendering: pixelated;
+  justify-content: center;
   margin-left: auto;
   width: 38px;
   position: relative;
 `;
+
+const buildMenuBarThrobberIconElement = () => {
+  return css<MenuBarThrobberIconElementProps>`
+    height: 22px;
+    width: 22px;
+  `;
+};
 
 const buildProgressBarElement = (themeVariables: ThemeVariables) => {
   const borderedStyle = css`
@@ -379,7 +378,7 @@ const buildProgressBarFill = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildStatusBar = () => css`
+const buildStatusBarElement = () => css`
   bottom: 0;
   box-sizing: border-box;
   display: flex;
@@ -406,9 +405,9 @@ const buildResizeHandle = (themeVariables: ThemeVariables) => css`
   ${generateResizeHandle(themeVariables)}
 `;
 
-const buildStatusBarSection = (
+const buildStatusBarSectionElement = (
   themeVariables: ThemeVariables
-) => css<StatusBarSectionProps>`
+) => css<StatusBarSectionElementProps>`
   border: none;
   box-shadow: ${generateBorders(
     1,
@@ -460,7 +459,7 @@ const buildTextareaElement = (
   resize: none;
 `;
 
-const buildToolbar = (themeVariables: ThemeVariables) => css<ToolbarProps>`
+const buildToolbarElement = (themeVariables: ThemeVariables) => css`
   ${generateGroovedStyles(themeVariables)}
   background: ${themeVariables.shade3};
   box-sizing: border-box;
@@ -513,9 +512,9 @@ const generateToolbarButtonStyles = (themeVariables: ThemeVariables) => {
   `;
 };
 
-const buildToolbarButton = (
+const buildToolbarButtonElement = (
   themeVariables: ThemeVariables
-) => css<ToolbarButtonProps>`
+) => css<ToolbarButtonElementProps>`
   ${generateToolbarButtonStyles(themeVariables)}
   font-size: 12px;
   height: 100%;
@@ -544,21 +543,21 @@ const buildWindowContent = (themeVariables: ThemeVariables) => css`
 const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
-  AddressBarElement: buildAddressBarElement(themeVariables),
+  AddressBarElement: buildAddressBarElement(),
   AddressBarLabel: buildAddressBarLabel(),
   AddressBarInput: buildAddressBarInput(themeVariables),
   AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
   AddressBarIcon,
-  Button: buildButton(themeVariables),
+  ButtonElement: buildButtonElement(themeVariables),
   CheckboxWrapper: buildCheckboxWrapper(),
-  Checkbox: buildCheckbox(themeVariables),
+  CheckboxElement: buildCheckboxElement(themeVariables),
   ComboBoxControl: buildComboBoxControl(themeVariables),
   ComboBoxInput: buildComboBoxInput(themeVariables),
   ComboBoxButton: buildComboBoxButton(themeVariables),
   ComboBoxOptions: buildComboBoxOptions(),
   ComboBoxOption: buildComboBoxOption(themeVariables),
   Divider: buildDivider(themeVariables),
-  Fieldset: buildFieldset(themeVariables),
+  FieldsetElement: buildFieldsetElement(themeVariables),
   FieldsetLegend: buildFieldsetLegend(themeVariables),
   Label: buildLabel(themeVariables),
   ListBoxControl: buildListBoxControl(themeVariables),
@@ -566,19 +565,20 @@ const buildControls = (
   ListBoxButton: buildListBoxButton(themeVariables),
   ListBoxOptions: buildListBoxOptions(),
   ListBoxOption: buildListBoxOption(themeVariables),
-  MenuBar: buildMenuBar(themeVariables),
-  MenuBarThrobber: buildMenuBarThrobber(themeVariables),
+  MenuBarElement: buildMenuBarElement(themeVariables),
+  MenuBarThrobberContainer: buildMenuBarThrobberContainer(themeVariables),
+  MenuBarThrobberIconElement: buildMenuBarThrobberIconElement(),
   ProgressBarElement: buildProgressBarElement(themeVariables),
   ProgressBarFill: buildProgressBarFill(themeVariables),
   ...buildScrollbars(themeVariables),
-  StatusBar: buildStatusBar(),
+  StatusBarElement: buildStatusBarElement(),
   ResizeHandle: buildResizeHandle(themeVariables),
-  StatusBarSection: buildStatusBarSection(themeVariables),
+  StatusBarSectionElement: buildStatusBarSectionElement(themeVariables),
   TextInputElement: buildTextInputElement(themeVariables),
   TextareaElement: buildTextareaElement(themeVariables),
   ...buildTimeInput(themeVariables),
-  Toolbar: buildToolbar(themeVariables),
-  ToolbarButton: buildToolbarButton(themeVariables),
+  ToolbarElement: buildToolbarElement(themeVariables),
+  ToolbarButtonElement: buildToolbarButtonElement(themeVariables),
   Well: buildWell(themeVariables),
   WindowContent: buildWindowContent(themeVariables),
 });

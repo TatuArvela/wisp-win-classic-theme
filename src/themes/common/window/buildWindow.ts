@@ -1,13 +1,17 @@
-import { ViewportWindowMargins, WindowElementProps } from '@tatuarvela/wisp';
+import {
+  TitleBarElementProps,
+  ViewportWindowMargins,
+  WindowElementProps,
+} from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import cursor from '../cursors/cursor';
 import generateBorders from '../generateBorders';
 import generateColorFilter from '../generateColorFilter';
-import close from '../icons/close.png';
-import maximize from '../icons/maximize.png';
-import minimize from '../icons/minimize.png';
-import restore from '../icons/restore.png';
+import close from '../graphics/close.png';
+import maximize from '../graphics/maximize.png';
+import minimize from '../graphics/minimize.png';
+import restore from '../graphics/restore.png';
 import { ThemeBuilderConfig, ThemeVariables } from '../types';
 import { fontFamily } from '../utils';
 import * as resizeBorder from './resizeBorder';
@@ -84,7 +88,9 @@ interface TitleBarProps {
   isActive: boolean;
 }
 
-const buildTitleBar = (themeVariables: ThemeVariables) => css<TitleBarProps>`
+const buildTitleBarElement = (
+  themeVariables: ThemeVariables
+) => css<TitleBarElementProps>`
   background: ${(props) =>
     props.isActive
       ? themeVariables.windowActiveBackground
@@ -112,7 +118,7 @@ const buildTitleBarTitle = () => css`
   position: relative;
 `;
 
-const buildTitleBarButtons = () => css`
+const buildTitleBarButtonsElement = () => css`
   box-sizing: border-box;
   display: flex;
   position: absolute;
@@ -236,8 +242,8 @@ const buildWindow = (
   TitleBarTitle: buildTitleBarTitle(),
   WindowElement: buildWindowElement(themeVariables),
   WindowElementContent: buildWindowElementContent(),
-  TitleBar: buildTitleBar(themeVariables),
-  TitleBarButtons: buildTitleBarButtons(),
+  TitleBarElement: buildTitleBarElement(themeVariables),
+  TitleBarButtonsElement: buildTitleBarButtonsElement(),
   WindowButton: buildWindowButton(themeVariables),
   MinimizeButton: buildMinimizeButton(),
   MaximizeButton: buildMaximizeButton(),

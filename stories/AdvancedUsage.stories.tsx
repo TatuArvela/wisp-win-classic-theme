@@ -14,8 +14,6 @@ import {
 } from '@tatuarvela/wisp';
 import React, { useState } from 'react';
 
-import icons from '../src/icons';
-
 export default {
   title: 'Wisp/Advanced Usage',
   component: Wisp,
@@ -148,7 +146,7 @@ export const ComplexWindow = () => {
         minWidth={200}
         title="Complex Window"
       >
-        <MenuBar isThrobberAnimated></MenuBar>
+        <MenuBar isThrobberActive></MenuBar>
         <Toolbar>
           <ToolbarButton label="Action" />
           <ToolbarButton icon="wisp" />
@@ -158,7 +156,7 @@ export const ComplexWindow = () => {
             value={address}
             onChange={setAddress}
             label="Address"
-            icon={icons.wisp}
+            icon="wisp"
           />
         </Toolbar>
 
