@@ -83,6 +83,27 @@ const AddressBarIcon = css<AddressBarInputProps>`
   image-rendering: pixelated;
 `;
 
+const AlertButtonElement = css`
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 4px 32px;
+  font-family: ${fontFamily};
+`;
+
+const AlertContent = css`
+  display: flex;
+  gap: 16px;
+  padding: 12px 12px;
+`;
+
+const AlertText = css`
+  display: inline-flex;
+  flex-grow: 1;
+  font-family: sans-serif;
+  align-items: center;
+`;
+
 const buildButtonElement = (themeVariables: ThemeVariables) => css`
   ${cursor('default')};
   ${generateButtonStyles(themeVariables)}
@@ -548,6 +569,9 @@ const buildControls = (
   AddressBarInput: buildAddressBarInput(themeVariables),
   AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
   AddressBarIcon,
+  AlertButtonElement,
+  AlertContent,
+  AlertText,
   ButtonElement: buildButtonElement(themeVariables),
   CheckboxWrapper: buildCheckboxWrapper(),
   CheckboxElement: buildCheckboxElement(themeVariables),

@@ -84,10 +84,6 @@ const buildWindowElement = (
   ${(props) => props.isMinimized && minimizedStyles}
 `;
 
-interface TitleBarProps {
-  isActive: boolean;
-}
-
 const buildTitleBarElement = (
   themeVariables: ThemeVariables
 ) => css<TitleBarElementProps>`
