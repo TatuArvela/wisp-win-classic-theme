@@ -218,6 +218,7 @@ const buildComboBoxOptions = () => css<ComboBoxOptionsProps>`
   box-sizing: border-box;
   display: ${(props) => `${props.open ? 'block' : 'none'}`};
   margin: 0;
+  outline: none;
   padding: 0;
   position: relative;
 `;

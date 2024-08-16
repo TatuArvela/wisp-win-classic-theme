@@ -90,6 +90,7 @@ export const generateSmallButtonStyles = (themeVariables: ThemeVariables) => {
   return css`
     background: ${themeVariables.shade3};
     border: none;
+    outline: none;
 
     box-shadow: ${generateBorders(
         1,
