@@ -1,7 +1,4 @@
-import {
-  TaskbarButtonElementProps,
-  TaskbarButtonProps,
-} from '@tatuarvela/wisp';
+import { TaskbarButtonElementProps } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
 
 import cursor from '../cursors/cursor';

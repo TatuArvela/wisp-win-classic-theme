@@ -83,12 +83,17 @@ const AddressBarIcon = css<AddressBarInputProps>`
   image-rendering: pixelated;
 `;
 
-const AlertButtonElement = css`
+const buildAlertButtonElement = (themeVariables: ThemeVariables) => css`
+  ${buildButtonElement(themeVariables)}
+
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
-  padding: 4px 32px;
-  font-family: ${fontFamily};
+  padding: 4px 32px 4px 32px;
+
+  &:active {
+    padding: 5px 31px 3px 33px;
+  }
 `;
 
 const AlertContent = css`
@@ -109,7 +114,9 @@ const buildButtonElement = (themeVariables: ThemeVariables) => css`
   ${generateButtonStyles(themeVariables)}
 
   border-radius: 0;
+  font-family: ${fontFamily};
   font-size: 11px;
+  outline: none;
   padding: 4px 10px 4px 10px;
   user-select: none;
 
@@ -569,7 +576,7 @@ const buildControls = (
   AddressBarInput: buildAddressBarInput(themeVariables),
   AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
   AddressBarIcon,
-  AlertButtonElement,
+  AlertButtonElement: buildAlertButtonElement(themeVariables),
   AlertContent,
   AlertText,
   ButtonElement: buildButtonElement(themeVariables),

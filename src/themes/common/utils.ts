@@ -5,7 +5,6 @@ import { ThemeVariables } from './types';
 
 export const fontFamily = "'Microsoft Sans Serif', sans-serif;";
 
-// FIXME
 export const generateGroovedStyles = (themeVariables: ThemeVariables) => css`
   border: 1px solid ${themeVariables.shade4};
   box-shadow:
