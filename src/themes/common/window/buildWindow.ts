@@ -38,12 +38,17 @@ const getWidth = (viewportWindowMargins: ViewportWindowMargins) =>
   `calc(100% - ${viewportWindowMargins.left + viewportWindowMargins.right}px)`;
 
 const maximizedStyles = css<WindowElementProps>`
+  border-radius: 0;
   height: ${(props) => getHeight(props.viewportWindowMargins)} !important;
   left: ${(props) => props.viewportWindowMargins.left} !important;
+  padding: 0 !important;
   top: ${(props) => props.viewportWindowMargins.top} !important;
   width: ${(props) => getWidth(props.viewportWindowMargins)} !important;
   z-index: ${(props) => props.orderNumber} !important;
-  border-radius: 0;
+
+  &:before {
+    box-shadow: none;
+  }
 `;
 
 const minimizedStyles = css`
@@ -106,6 +111,7 @@ const buildTitleBarElement = (
   line-height: 18px;
   margin-bottom: 1px;
   padding: 0 2px;
+  position: relative;
   user-select: none;
   width: 100%;
 `;
@@ -118,8 +124,8 @@ const buildTitleBarButtonsElement = () => css`
   box-sizing: border-box;
   display: flex;
   position: absolute;
-  right: 6px;
-  top: 2px;
+  right: 2px;
+  top: -2px;
   margin: 0;
 `;
 
