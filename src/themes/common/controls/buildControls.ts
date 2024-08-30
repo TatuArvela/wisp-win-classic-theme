@@ -102,6 +102,12 @@ const AlertContent = css`
   padding: 12px 12px;
 `;
 
+const AlertIcon = css`
+  height: 32px;
+  width: 32px;
+  image-rendering: pixelated;
+`;
+
 const AlertText = css`
   display: inline-flex;
   flex-grow: 1;
@@ -579,6 +585,7 @@ const buildControls = (
   AddressBarIcon,
   AlertButtonElement: buildAlertButtonElement(themeVariables),
   AlertContent,
+  AlertIcon,
   AlertText,
   ButtonElement: buildButtonElement(themeVariables),
   CheckboxWrapper: buildCheckboxWrapper(),
