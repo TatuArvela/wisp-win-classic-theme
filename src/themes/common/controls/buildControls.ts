@@ -83,7 +83,7 @@ const AddressBarIcon = css<AddressBarInputProps>`
   image-rendering: pixelated;
 `;
 
-const buildAlertButtonElement = (themeVariables: ThemeVariables) => css`
+const buildMessageBoxButtonElement = (themeVariables: ThemeVariables) => css`
   ${buildButtonElement(themeVariables)}
 
   margin-left: auto;
@@ -96,19 +96,19 @@ const buildAlertButtonElement = (themeVariables: ThemeVariables) => css`
   }
 `;
 
-const AlertContent = css`
+const MessageBoxContent = css`
   display: flex;
   gap: 16px;
   padding: 12px 12px;
 `;
 
-const AlertIcon = css`
+const MessageBoxIconElement = css`
   height: 32px;
   width: 32px;
   image-rendering: pixelated;
 `;
 
-const AlertText = css`
+const MessageBoxText = css`
   display: inline-flex;
   flex-grow: 1;
   font-family: sans-serif;
@@ -553,6 +553,7 @@ const buildToolbarButtonElement = (
   ${generateToolbarButtonStyles(themeVariables)}
   font-size: 12px;
   height: 100%;
+  outline: none;
   image-rendering: pixelated;
 `;
 
@@ -579,45 +580,45 @@ const buildControls = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['controls'] => ({
   AddressBarElement: buildAddressBarElement(),
-  AddressBarLabel: buildAddressBarLabel(),
+  AddressBarIcon,
   AddressBarInput: buildAddressBarInput(themeVariables),
   AddressBarInputContainer: buildAddressBarInputContainer(themeVariables),
-  AddressBarIcon,
-  AlertButtonElement: buildAlertButtonElement(themeVariables),
-  AlertContent,
-  AlertIcon,
-  AlertText,
+  AddressBarLabel: buildAddressBarLabel(),
   ButtonElement: buildButtonElement(themeVariables),
-  CheckboxWrapper: buildCheckboxWrapper(),
   CheckboxElement: buildCheckboxElement(themeVariables),
+  CheckboxWrapper: buildCheckboxWrapper(),
+  ComboBoxButton: buildComboBoxButton(themeVariables),
   ComboBoxControl: buildComboBoxControl(themeVariables),
   ComboBoxInput: buildComboBoxInput(themeVariables),
-  ComboBoxButton: buildComboBoxButton(themeVariables),
-  ComboBoxOptions: buildComboBoxOptions(),
   ComboBoxOption: buildComboBoxOption(themeVariables),
+  ComboBoxOptions: buildComboBoxOptions(),
   Divider: buildDivider(themeVariables),
   FieldsetElement: buildFieldsetElement(themeVariables),
   FieldsetLegend: buildFieldsetLegend(themeVariables),
   Label: buildLabel(themeVariables),
-  ListBoxControl: buildListBoxControl(themeVariables),
-  ListBoxValue: buildListBoxValue(themeVariables),
   ListBoxButton: buildListBoxButton(themeVariables),
-  ListBoxOptions: buildListBoxOptions(),
+  ListBoxControl: buildListBoxControl(themeVariables),
   ListBoxOption: buildListBoxOption(themeVariables),
+  ListBoxOptions: buildListBoxOptions(),
+  ListBoxValue: buildListBoxValue(themeVariables),
   MenuBarElement: buildMenuBarElement(themeVariables),
   MenuBarThrobberContainer: buildMenuBarThrobberContainer(themeVariables),
   MenuBarThrobberIconElement: buildMenuBarThrobberIconElement(),
+  MessageBoxButtonElement: buildMessageBoxButtonElement(themeVariables),
+  MessageBoxContent,
+  MessageBoxIconElement,
+  MessageBoxText,
   ProgressBarElement: buildProgressBarElement(themeVariables),
   ProgressBarFill: buildProgressBarFill(themeVariables),
   ...buildScrollbars(themeVariables),
-  StatusBarElement: buildStatusBarElement(),
   ResizeHandle: buildResizeHandle(themeVariables),
+  StatusBarElement: buildStatusBarElement(),
   StatusBarSectionElement: buildStatusBarSectionElement(themeVariables),
   TextInputElement: buildTextInputElement(themeVariables),
   TextareaElement: buildTextareaElement(themeVariables),
   ...buildTimeInput(themeVariables),
-  ToolbarElement: buildToolbarElement(themeVariables),
   ToolbarButtonElement: buildToolbarButtonElement(themeVariables),
+  ToolbarElement: buildToolbarElement(themeVariables),
   Well: buildWell(themeVariables),
   WindowContent: buildWindowContent(themeVariables),
 });

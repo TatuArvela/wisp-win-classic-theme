@@ -1,6 +1,6 @@
 import {
   TitleBarElementProps,
-  ViewportWindowMargins,
+  ViewportMargins,
   WindowElementProps,
 } from '@tatuarvela/wisp';
 import { css } from 'styled-components';
@@ -31,19 +31,19 @@ const buildWindowElementContent = () => css`
   width: 100%;
 `;
 
-const getHeight = (viewportWindowMargins: ViewportWindowMargins) =>
+const getHeight = (viewportWindowMargins: ViewportMargins) =>
   `calc(100% - ${viewportWindowMargins.top + viewportWindowMargins.bottom}px)`;
 
-const getWidth = (viewportWindowMargins: ViewportWindowMargins) =>
+const getWidth = (viewportWindowMargins: ViewportMargins) =>
   `calc(100% - ${viewportWindowMargins.left + viewportWindowMargins.right}px)`;
 
 const maximizedStyles = css<WindowElementProps>`
   border-radius: 0;
-  height: ${(props) => getHeight(props.viewportWindowMargins)} !important;
-  left: ${(props) => props.viewportWindowMargins.left} !important;
+  height: ${(props) => getHeight(props.viewportMargins)} !important;
+  left: ${(props) => props.viewportMargins.left} !important;
   padding: 0 !important;
-  top: ${(props) => props.viewportWindowMargins.top} !important;
-  width: ${(props) => getWidth(props.viewportWindowMargins)} !important;
+  top: ${(props) => props.viewportMargins.top} !important;
+  width: ${(props) => getWidth(props.viewportMargins)} !important;
   z-index: ${(props) => props.orderNumber} !important;
 
   &:before {

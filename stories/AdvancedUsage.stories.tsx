@@ -1,6 +1,7 @@
 import {
   AddressBar,
   MenuBar,
+  MessageBox,
   ProgressBar,
   ScrollableContent,
   StatusBar,
@@ -181,6 +182,29 @@ export const ComplexWindow = () => {
           <StatusBarSection></StatusBarSection>
         </StatusBar>
       </Window>
+    </Wisp>
+  );
+};
+
+export const ChildMessageBoxes = () => {
+  return (
+    <Wisp>
+      <Window id="parent" title="Parent" icon="wisp">
+        Parent
+      </Window>
+
+      <MessageBox
+        id="nonModal"
+        title="Non-modal"
+        parentId="parent"
+        isModal={false}
+      >
+        Not a modal
+      </MessageBox>
+
+      <MessageBox id="modal" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
     </Wisp>
   );
 };

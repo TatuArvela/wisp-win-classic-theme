@@ -21,6 +21,7 @@ const buildScrollableContentView = (
   );
   width: calc(100% - ${({ vertical }) => (vertical ? SCROLLBAR_WIDTH : 0)}px);
   overscroll-behavior: none;
+  outline: none;
   overflow-x: ${({ horizontal }) => (horizontal ? 'scroll' : 'clip')};
   overflow-y: ${({ vertical }) => (vertical ? 'scroll' : 'clip')};
   scrollbar-width: none;
