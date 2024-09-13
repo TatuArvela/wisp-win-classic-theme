@@ -89,6 +89,14 @@ const buildWindowElement = (
   ${(props) => props.isMinimized && minimizedStyles}
 `;
 
+const buildTitleBarTitleContainer = () => css`
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+`;
+
 const buildTitleBarElement = (
   themeVariables: ThemeVariables
 ) => css<TitleBarElementProps>`
@@ -102,7 +110,6 @@ const buildTitleBarElement = (
       ? themeVariables.windowActiveText
       : themeVariables.windowPassiveText};
   display: flex;
-  flex-shrink: 0;
   font-family: ${fontFamily};
   font-size: 12px;
   font-weight: bold;
@@ -114,19 +121,24 @@ const buildTitleBarElement = (
   position: relative;
   user-select: none;
   width: 100%;
+  max-width: 100%;
 `;
 
 const buildTitleBarTitle = () => css`
   position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-shrink: 1;
 `;
 
 const buildTitleBarButtonsElement = () => css`
   box-sizing: border-box;
   display: flex;
-  position: absolute;
-  right: 2px;
-  top: -2px;
   margin: 0;
+  position: relative;
+  top: -2px;
+  flex-shrink: 0;
 `;
 
 const generateWindowButtonStyles = (themeVariables: ThemeVariables) => {
@@ -242,6 +254,7 @@ const buildWindow = (
   themeVariables: ThemeVariables
 ): ThemeBuilderConfig['window'] => ({
   TitleBarTitle: buildTitleBarTitle(),
+  TitleBarTitleContainer: buildTitleBarTitleContainer(),
   WindowElement: buildWindowElement(themeVariables),
   WindowElementContent: buildWindowElementContent(),
   TitleBarElement: buildTitleBarElement(themeVariables),
